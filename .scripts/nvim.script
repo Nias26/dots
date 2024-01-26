@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+function vim(){
+    NVIM_APPNAME=nvim $NVIM_BIN $@
+ }
+
+function mvim(){
+    NVIM_APPNAME=mini $NVIM_BIN $@
+}
+
+function vi(){
+	NVIM_APPNAME=default $NVIM_BIN $@
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+# AUR Helper with fzf
+# Install packages using yay (change to pacman/AUR helper of your choice)
+function in() {
+    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S --needed
+}
+bindkey -s "^[i" "in\n"
+
+# Remove installed packages (change to pacman/AUR helper of your choice)
+function re() {
+    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+}
+bindkey -s "^[r" "re\n"

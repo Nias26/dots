@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+# TypeFX (https://github.com/urbanware-org/typefx)
+function typefx() {
+    delay=$1
+    string=$2
+
+    for char in $(seq 0 $(expr length "${string}")); do
+        echo -n "${string:$char:1}"
+        sleep $delay
+    done
+    echo
+}

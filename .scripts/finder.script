@@ -1,0 +1,29 @@
+#!/usr/bin/zsh
+
+# Find Query Helper
+function search() {
+    set -o pipefail
+    keyword=$(gum input --placeholder="Type here the file extension you are trying to find")
+    if [[ -z $keyword ]]; then
+        echo "Nothing Found"
+        return 1
+    else
+        file=$(realpath $(find *.$keyword) | fzf --border --ansi --reverse)
+    fi
+    if [[ -z $file ]]; then
+        echo "Exiting..."
+        return 1
+    else
+        gum confirm "Do you want to modify the file? (If no then the will be copied)"
+        if [[ $? == 0 ]]; then
+            nvim $file
+        elif [[ $? == 1 ]]; then
+            echo $file | xclip -selection clipboard
+            return 0
+        elif [[ -z $1 ]]; then
+            return 1
+        fi
+    fi
+}
+bindkey -s "^[s" "search\n"
+

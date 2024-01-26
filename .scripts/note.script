@@ -1,0 +1,30 @@
+#!/usr/bin/zsh
+
+function note() {
+    if [[ -a $HOME/notes.md ]]; then
+        choice=$(gum choose --header="Do you want to add, view or delete the notes?" Add View Delete)
+        if [[ $choice == Add ]]; then
+            note=$(gum write --placeholder="Press Ctlr-d to confirm.")
+            echo $note >> $HOME/notes.md
+            return 0   
+        elif [[ $choice == View ]]; then
+            cat $HOME/notes.md
+            return 0
+        elif [[ $choice == Delete ]]; then
+            rm $HOME/notes.md
+        fi       
+    else
+        touch $HOME/notes.md
+        choice=$(gum choose --header="Do you want to add or view the notes?" Add View Delete)
+        if [[ $choice == Add ]]; then
+            note=$(gum write --placeholder="Press Ctlr-d to confirm.")
+            echo $note >> $HOME/notes.md
+            return 0   
+        elif [[ $choice == View ]]; then
+            cat $HOME/notes.md
+            return 0
+        elif [[ $choice == Delete ]]; then
+            rm $HOME/notes.md
+        fi
+    fi
+}

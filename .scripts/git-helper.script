@@ -1,0 +1,119 @@
+#!/usr/bin/zsh
+
+# Git Helper
+#NOTE:Da riscrivere
+function gith() {
+    local menu=$(gum choose --cursor="> " --header="Select an index" "New Workspace" "Local Workspace Files" "Revisions" "Local Workspace" "Collaborate")
+    case "$menu" in
+        "New Workspace") gith-new
+        ;;
+        "Local Workspace Files") gith-work-files
+        ;;
+        "Revisions") gith-revisions
+        ;;
+        "Local Workspace") gith-local-work
+        ;;
+        "Collaborate") gith-collab
+        ;;
+        *) echo "Exiting..."
+        ;;
+    esac
+}
+
+function gith-new() {
+new_workspace=$(gum choose --cursor="* " --header="Select an option" "Clone" "Init")
+case "$new_workspace" in
+    "Clone") clone_url=$(gum input --placeholder="Type here the url")
+             git clone $clone_url
+             return $?
+    ;;
+    "Init") git init  
+    ;;
+    *) echo "Exiting..."
+    ;;
+esac
+}
+
+function gith-work-files(){
+    local_workspace_files=$(gum choose --cursor="* " --header="Select an option" "Add" "Mv" "Restore" "Rm")
+    case "$local_workspace_files" in
+        "Add") local file=$(gum file)
+               git add $file
+               return $?
+        ;;
+        "Mv") git mv $(gum file) $(gum input)
+              return $?
+        ;;
+        "Restore") git restore $(gum file)
+        ;; 
+        "Rm") git rm $(gum file)
+        ;;
+        *) echo "Exiting..."
+        ;;
+    esac
+}
+
+function gith-revisions() {
+    revisions=$(gum choose --cursor="* " --header="Select an option" "Bisect" "Diff" "Grep" "Log" "Show" "Status")
+    case "$revisions" in
+        "Bisect") local options=$(gum input --placeholder="")
+                  git bisect $options
+                  return $?
+        ;;
+        "Diff") local options=$(gum input --placeholder="")
+                git diff $options
+                return $?
+        ;;
+        "Grep") local options=$(gum input --placeholder="")
+                git grep $options
+                return $?
+        ;;
+        "Log") git log $(gum input --placeholder="")
+               return $?
+        ;;
+        "Show") git show $(gum input --placeholder="")
+                return $?
+        ;;
+        "Status") git status $(gum input --placeholder="")
+                  return $?
+        ;;
+        *) echo "Exiting..."
+        ;;
+    esac
+}
+
+function gith-local-work() {
+    local_workspace=$(gum choose --cursor="* " --header="Select an option" "Branch" "Commit" "Merge" "Rebase" "Reset" "Switch" "Tag")
+    case $local_workspace in
+        "Branch") git branch $(gum input --placeholder="")
+        ;;
+        "Commit") git commit -m "$(gum write --placeholder="Commit Changes")"
+        ;;
+        "Merge") git merge $(gum input --placeholder="")
+        ;;
+        "Rebase") git rebase $(gum choose --placeholder="" $(git branch --list --format="%(refname:short)"))
+        ;;
+        "Reset") git reset $(gum input --placeholder="")
+        ;;
+        "Switch") git switch $(gum choose $(git branch --list --format="%(refname:short)"))
+        ;;
+        "Tag") git tag $(gum input --placeholder="")
+        ;;
+        *) echo "Exiting..."
+        ;;
+    esac
+}
+
+function gith-collab() {
+    collab=$(gum choose --curosr="* " --header="Select an option" "Fetch" "Pull" "Push")
+    case "$collab" in
+        "Fetch") git fetch $(gum input --placeholder="")
+        ;;
+        "Pull") git pull $(gum input --placeholder="") $(gum choose --placeholder="" $(git branch --list --format="%(refname:short)"))
+        ;;
+        "Push") git push $(gum input --placeholder="")
+        ;;
+        *) echo "Exiting..."
+        ;;
+    esac
+}
