@@ -30,7 +30,6 @@ plugins=(
   fzf-tab
   z
   zsh-autosuggestions
-  zsh-interactive-cd
   zsh-syntax-highlighting
   colored-man-pages
 )
