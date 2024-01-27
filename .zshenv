@@ -38,3 +38,4 @@ fi
 
 # Git Credentail Manager (GCM)
 export GCM_CREDENTIAL_STORE=secretservice
+
