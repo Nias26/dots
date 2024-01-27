@@ -1,0 +1,21 @@
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
+
+[General]
+Version=202
+ViewPropsTimestamp=2024,1,22,22,18,19.075
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[KPropertiesDialog]
+1920x1080 screen: Height=616
+1920x1080 screen: Width=606
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,webarchivethumbnail,itinerarythumbnail,marble_thumbnail_kmz,marble_thumbnail_geojson,marble_thumbnail_gpx,marble_thumbnail_kml,marble_thumbnail_osm,opendocumentthumbnail,kraorathumbnail,ebookthumbnail,windowsexethumbnail,audiothumbnail,blenderthumbnail,fontthumbnail,cursorthumbnail,quithumbnail,djvuthumbnail,rawthumbnail,mobithumbnail,gsthumbnail,ffmpegthumbs,comicbookthumbnail,imagethumbnail,windowsimagethumbnail,exrthumbnail,jpegthumbnail,svgthumbnail,mltpreview,palathumbcreator,marble_thumbnail_shp,pothumbnail
