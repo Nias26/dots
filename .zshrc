@@ -128,6 +128,7 @@ alias s='sudo'
 alias lg='lazygit'
 alias copy='xclip -selection clipboard'
 alias t='touch'
+alias dmesg='watch -n 0.1 -c "sudo dmesg -H --color=always | tail -n $((LINES-3))"'
 
 # Set Personal Bindkeys
 bindkey -s ^z "sourcez\n"
