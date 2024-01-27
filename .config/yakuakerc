@@ -1,0 +1,21 @@
+[Animation]
+Frames=50
+
+[Appearance]
+HideSkinBorders=true
+Skin=breeze-gruvbox-dark
+SkinInstalledWithKns=true
+Translucency=true
+
+[Dialogs]
+ConfirmQuit=false
+FirstRun=false
+
+[Notification Messages]
+hinding_title_bar=false
+
+[Window]
+Height=40
+ShowTabBar=false
+ShowTitleBar=false
+Width=70
