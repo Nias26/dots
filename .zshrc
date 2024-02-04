@@ -126,8 +126,11 @@ alias tree='exa -1 -L 1 --color=always -T --icons -a'
 alias s='sudo'
 alias lg='lazygit'
 alias copy='xclip -selection clipboard'
+alias wcopy='wl-copy'
 alias t='touch'
 alias dmesg='watch -n 0.1 -c "sudo dmesg -H --color=always | tail -n $((LINES-3))"'
+alias logoff="qdbus org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
+alias fm="bfm"
 
 # Set Personal Bindkeys
 bindkey -s ^z "sourcez\n"
