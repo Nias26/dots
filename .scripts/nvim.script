@@ -11,3 +11,15 @@ function mvim(){
 function vi(){
 	NVIM_APPNAME=default $NVIM_BIN $@
 }
+
+function v(){
+	if [[ -z $1 ]]; then 
+		file=$(gum file -c"*" -a)
+		if [[ -z $file ]]; then
+			return 1
+		fi
+		NVIM_APPNAME=nvim $NVIM_BIN $file
+	else
+		NVIM_APPNAME=nvim $NVIM_BIN $1
+	fi
+}
