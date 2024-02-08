@@ -14,7 +14,7 @@ function vi(){
 
 function v(){
 	if [[ -z $1 ]]; then 
-		file=$(gum file -c"*" -a)
+		file=$(gum file -c"* " -a)
 		if [[ -z $file ]]; then
 			return 1
 		fi
