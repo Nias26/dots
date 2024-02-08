@@ -30,6 +30,7 @@ export GCM_CREDENTIAL_STORE=gpg
 # Sudo prompt
 # $(tput setaf <colour>)<text>$(tput sgr0)
 export SUDO_PROMPT=" $(tput setaf 6)[sudo] $(tput setaf sgr0)- $(tput setaf 1)%h$(tput setaf 0):$(tput setaf 3)%p: $(tput sgr0)"
+export SUDO_ASKPASS=/usr/bin/ksshaskpass
 
 # Firefox on wayland
 if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
