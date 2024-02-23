@@ -23,3 +23,7 @@ function v(){
 		NVIM_APPNAME=nvim $NVIM_BIN $1
 	fi
 }
+
+function nyoom(){
+	NVIM_APPNAME=nyoom $NVIM_BIN $@
+}

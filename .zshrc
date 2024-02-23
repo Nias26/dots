@@ -163,5 +163,6 @@ HEADLINE_RPROMPT=''
 HEADLINE_DO_CLOCK=true # whether to show the clock
 HEADLINE_STYLE_CLOCK=$faint
 HEADLINE_CLOCK_FORMAT='%l:%M:%S %p' # consider "%+" for full date (see man strftime)
+
 # Startup ascii art script
 colorscript -r
