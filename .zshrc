@@ -166,3 +166,4 @@ HEADLINE_CLOCK_FORMAT='%l:%M:%S %p' # consider "%+" for full date (see man strft
 
 # Startup ascii art script
 colorscript -r
+
