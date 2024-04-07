@@ -8,9 +8,8 @@ function mvim(){
     NVIM_APPNAME=mini $NVIM_BIN $@
 }
 
-function vi(){
-	NVIM_APPNAME=default $NVIM_BIN $@
-}
+alias nvim='NVIM_APPNAME=default $NVIM_BIN'
+alias vi='/usr/bin/vim'
 
 function v(){
 	if [[ -z $1 ]]; then 

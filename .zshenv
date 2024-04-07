@@ -14,9 +14,9 @@ export XDG_VIDEOS_DIR=$HOME/Video/
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR=nvim
+	export EDITOR=/home/Nias/.local/share/bob/nvim-bin/nvim
 else
-	export EDITOR=nvim
+	export EDITOR=/home/Nias/.local/share/bob/nvim-bin/nvim
 fi
 
 # Manpager
