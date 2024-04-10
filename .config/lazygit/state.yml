@@ -5,7 +5,8 @@ recentrepos:
 - /home/Nias/colorscheme
 startuppopupversion: 5
 lastversion: 0.41.0
-customcommandshistory: []
+customcommandshistory:
+- git push -u soft main
 hidecommandlog: false
 ignorewhitespaceindiffview: false
 diffcontextsize: 3
