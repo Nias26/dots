@@ -28,10 +28,8 @@ plugins=(
   sudo
   tmux
   fzf-tab
-  z
   zsh-autosuggestions
   zsh-syntax-highlighting
-  colored-man-pages
 )
 
 # Plugins Configs
@@ -91,6 +89,7 @@ zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $wor
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
   '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
 
+
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -101,9 +100,6 @@ function source-scripts() {
     done
 }
 source-scripts
-
-# You may need to manually set your language environment
-export LANG=it_IT.UTF-8
 
 # Aliases
 alias cat='bat --style=numbers,changes --wrap=never --color=always'
@@ -125,12 +121,11 @@ alias man='macho.sh'
 alias tree='exa -1 -L 1 --color=always -T --icons -a'
 alias s='sudo'
 alias lg='lazygit'
-alias copy='xclip -selection clipboard'
+alias xcopy='xclip -selection clipboard'
 alias wcopy='wl-copy'
 alias t='touch'
 alias dmesg='watch -n 0.1 -c "sudo dmesg -H --color=always | tail -n $((LINES-3))"'
 alias logoff="qdbus org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
-alias fm="bfm"
 alias checkpkg="pacman -Qkk"
 alias downgrade="sudo downgrade"
 
@@ -165,6 +160,11 @@ HEADLINE_RPROMPT=''
 HEADLINE_DO_CLOCK=true # whether to show the clock
 HEADLINE_STYLE_CLOCK=$faint
 HEADLINE_CLOCK_FORMAT='%l:%M:%S %p' # consider "%+" for full date (see man strftime)
+
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias cdi='zi'
 
 # Startup ascii art script
 colorscript -r
