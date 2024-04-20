@@ -9,14 +9,13 @@ export ZSH="$HOME/.oh-my-zsh"
 COMPLETION_WAITING_DOTS=" %F{yellow}loading %F{red}.%F{green}.%F{blue}.%f"
 
 # zsh-tmux config
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOQUIT=true
-ZSH_TMUX_FIXTERM=true
-ZSH_TMUX_AUTOCONNECT=false
+# ZSH_TMUX_AUTOSTART_ONCE=true
+# ZSH_TMUX_AUTOCONNECT=false
+# ZSH_TMUX_AUTOQUIT=true
+# ZSH_TMUX_FIXTERM=true
 
 # Theme settings
 ZSH_THEME="headline"
-
 
 # Plugins
 # Add wisely, as too many plugins slow down shell startup.
@@ -26,7 +25,7 @@ plugins=(
   history
   ripgrep
   sudo
-  tmux
+  # tmux
   fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -112,12 +111,12 @@ alias lt='lsd --tree'
 alias pacman='sudo pacman'
 alias ping='gping'
 alias pipes='pipes.sh -p 3 -r 10000 -R'
-alias :q='exit'
+alias :q='tmux detach'
 alias clear='clear && colorscript -r'
 alias 'pacman -R'='pacman -Rns'
 alias rmf='rm -rf'
 alias catt='/usr/bin/cat'
-alias man='macho.sh'
+alias man='mancho.sh'
 alias tree='exa -1 -L 1 --color=always -T --icons -a'
 alias s='sudo'
 alias lg='lazygit'
@@ -166,6 +165,15 @@ eval "$(zoxide init zsh)"
 alias cd='z'
 alias cdi='zi'
 
+# Tmux
+# INFO:Attach to an unattached session and if not create one
+tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2> /dev/null | \
+	grep 'not attached$' | \
+	tail -n 1 | \
+	cut -d '|' -f1) 2> /dev/null;	echo ${sess}) 2>/dev/null || tmux new-session &>/dev/null
+# INFO:If not in tmux session, exit
+if [[ -z $TMUX ]]; then
+	exit
+fi
 # Startup ascii art script
 colorscript -r
-
