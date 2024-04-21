@@ -112,7 +112,7 @@ alias pacman='sudo pacman'
 alias ping='gping'
 alias pipes='pipes.sh -p 3 -r 10000 -R'
 alias :q='tmux detach'
-alias clear='clear && colorscript -r'
+alias clear='clear && shell-color'
 alias 'pacman -R'='pacman -Rns'
 alias rmf='rm -rf'
 alias catt='/usr/bin/cat'
@@ -175,5 +175,6 @@ tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached
 if [[ -z $TMUX ]]; then
 	exit
 fi
+
 # Startup ascii art script
-colorscript -r
+shell-color
