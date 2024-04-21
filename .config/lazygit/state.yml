@@ -6,6 +6,7 @@ recentrepos:
 startuppopupversion: 5
 lastversion: 0.41.0
 customcommandshistory:
+- q
 - git push -u soft main
 hidecommandlog: false
 ignorewhitespaceindiffview: false
