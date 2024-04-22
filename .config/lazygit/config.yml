@@ -7,4 +7,5 @@ gui:
   showRandomTip: false
 disableStartupPopups: true
 notARepository: 'skip'
+promptToReturnFromSubprocess: false
 
