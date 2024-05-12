@@ -2,60 +2,7 @@
 
 # Git clone
 function clone() {
-    usage=("Usage: $0 [-h http] [-s ssh] [-d dir]
-
-Options:
-    -h  Use the http protocol to clone the git repo (https://github.com/<your repository>)
-    -s  Use ssh to clone the git repo (git@github.com:<your repository>)
-    -d  Destination Directory (NOT WORKING!!!)
-    -q  Quiet clone (NOT WORKING!!!)")
-    githttp=(git clone https://github.com/)
-    gitssh=(git clone git@github.com:)
-    while getopts ":h:s:d:q:" opt; do
-        case "$opt" in
-            h) http=$OPTARG
-               echo $dir
-               echo $quiet
-               $quiet git clone https://github.com/$http $dir
-               return $?
-               ;;
-            s) ssh=$OPTARG
-               $quiet git clone git@github.com:$ssh $dir
-               return $?
-               ;;
-            d) dir=$OPTARG 
-               ;;
-            q) quiet=(gum spin)
-               ;;
-            *) echo "Invalid option"
-               echo $usage
-               return 1
-               ;;
-        esac
-    done
-
-    method=$(gum choose "http" "ssh")
-    case "$method" in
-        http) http=$(gum input --prompt="󰿘 " --placeholder="Type url here")
-              dir=$(gum input --prompt="󰉋 " --placeholder="Type here the directory. Leave blank for current")
-              if [[ -z $http || -z $dir ]]; then
-                echo "Exiting..."
-                return 1
-              else
-                $githttp$http $dir
-              fi
-              ;;
-        ssh)  ssh=$(gum input --prompt="󰣀 " --placeholder="")
-              dir=$(gum input --prompt="󰉋 " --placeholder="Type here the directory. Leave blank for current")
-              if [[ -z $ssh || -z $dir ]]; then
-                echo "Exiting..."
-                return 1
-              else
-                $gitssh$ssh $dir
-              fi
-              ;;
-        *)    echo "Exiting..."
-              return 1
-              ;;
-    esac
+	url=$(gh s)
+	dir=$(gum input --prompt="󰉋 " --placeholder="$(pwd)")
+	git clone $url $dir
 }

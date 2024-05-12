@@ -8,21 +8,10 @@ function mvim(){
     NVIM_APPNAME=mini $NVIM_BIN $@
 }
 
-alias nvim='NVIM_APPNAME=default $NVIM_BIN'
-alias vi='/usr/bin/vim'
-
-function v(){
-	if [[ -z $1 ]]; then 
-		file=$(gum file -c"* " -a)
-		if [[ -z $file ]]; then
-			return 1
-		fi
-		NVIM_APPNAME=nvim $NVIM_BIN $file
-	else
-		NVIM_APPNAME=nvim $NVIM_BIN $1
-	fi
-}
-
 function nyoom(){
 	NVIM_APPNAME=nyoom $NVIM_BIN $@
 }
+
+alias nvim='NVIM_APPNAME=default $NVIM_BIN'
+alias vi='/usr/bin/vim'
+

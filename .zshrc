@@ -22,13 +22,10 @@ ZSH_THEME="headline"
 plugins=(
   git
   fzf
-  history
-  ripgrep
-  sudo
-  # tmux
   fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
+  forgit
 )
 
 # Plugins Configs
@@ -93,12 +90,9 @@ zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-function source-scripts() {
-    for f in $HOME/.scripts/*.script; do
-        . $f
-    done
-}
-source-scripts
+for f in ~/.scripts/*.zsh; do
+	source $f
+done
 
 # Aliases
 alias cat='bat --style=numbers,changes --wrap=never --color=always'
@@ -133,13 +127,6 @@ bindkey -s ^z "sourcez\n"
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
-
-
-# Command to source Zsh any moment
-function sourcez() {
-  source $HOME/.zshrc
-  clear
-}
 
 # Theme Settings
 # Info symbols (optional)

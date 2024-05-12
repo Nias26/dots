@@ -1,37 +1,23 @@
 #!/usr/bin/zsh
 
-function mp3_download(){
-	URL=$(gum input --placeholder="Insert video URL")
-	yt-dlp --no-part -x --audio-format mp3 -o "%(title)s.%(ext)s" $URL
-}
-
-function mp3_playlist(){
-	URL=$(gum input --placeholder="Insert playlist URL")
-	yt-dlp --no-part -x --yes-playlist --audio-format mp3 -o "%(title)s.%(ext)s" $URL
-}
-
-function mp4_download(){
-	URL=$(gum input --placeholder="Insert video URL")
-	yt-dlp -S "height:1080" $URL
-}
-
-function mp4_playlist(){
-	URL=$(gum input --placeholder="Insert playlist URL")
-	yt-dlp --no-part -S "height:1080" --yes-playlist --playlist-items 1-100 --output "%(playlist_index)s-%(title)s.%(ext)s" $URL
-}
-
 function ytd(){
-	choice=$(gum choose "1) Audio Download" "2) Audio Playlist Download" "3) Video Download" "4) Video Playlist Download")
+	choice=$(gum choose "Audio Download" "Audio Playlist Download" "Video Download" "Video Playlist Download" --cursor="* ")
 	case "$choice" in
-		"1) Audio Download") mp3_download
+		"Audio Download")
+			URL=$(gum input --placeholder="Insert video URL")
+			yt-dlp --no-part -x --audio-format mp3 -o "%(title)s.%(ext)s" $URL
 			;;
-		"2) Audio Playlist Download") mp3_playlist
+		"Audio Playlist Download")
+			URL=$(gum input --placeholder="Insert playlist URL")
+			yt-dlp --no-part -x --yes-playlist --audio-format mp3 -o "%(title)s.%(ext)s" $URL
 			;;
-		"3) Video Download") mp4_download
+		"Video Download")
+			URL=$(gum input --placeholder="Insert video URL")
+			yt-dlp -S "height:1080" $URL
 			;;
-		"4) Video Playlist Download") mp4_playlist
-			;;
-		*) echo not
+		"Video Playlist Download")
+			URL=$(gum input --placeholder="Insert playlist URL")
+			yt-dlp --no-part -S "height:1080" --yes-playlist --playlist-items 1-100 --output "%(playlist_index)s-%(title)s.%(ext)s" $URL
 			;;
 	esac
 }
