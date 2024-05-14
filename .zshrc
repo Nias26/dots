@@ -25,7 +25,6 @@ plugins=(
   fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
-  forgit
 )
 
 # Plugins Configs
@@ -121,6 +120,7 @@ alias dmesg='watch -n 0.1 -c "sudo dmesg -H --color=always | tail -n $((LINES-3)
 alias logoff="qdbus org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
 alias checkpkg="pacman -Qkk"
 alias downgrade="sudo downgrade"
+alias fetch="fastfetch"
 
 # Set Personal Bindkeys
 bindkey -s ^z "sourcez\n"
