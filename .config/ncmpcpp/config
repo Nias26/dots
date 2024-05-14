@@ -22,7 +22,7 @@ lyrics_directory = ~/Musica/.lyrics
 #
 ##### connection settings #####
 #
-mpd_host = localhost
+mpd_host = ~/.mpd/socket
 #
 mpd_port = 6600
 #
