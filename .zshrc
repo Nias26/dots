@@ -138,13 +138,13 @@ HEADLINE_BRANCH_PREFIX=' ' # consider " "
 
 # Separator options
 HEADLINE_LINE_MODE=auto # on|auto|off (whether to print the line above the prompt)
+HEADLINE_LINE_MODE=on # on|auto|off (whether to print the line above the prompt)
 
 # Prompt
 HEADLINE_PROMPT='%F{blue}:: %F{yellow}' #'%(#.#.%(!.!.$)) ' # consider "%#"
 HEADLINE_RPROMPT=''
 
 # Clock (prepends to RPROMPT)
-HEADLINE_DO_ERR=true
 HEADLINE_DO_CLOCK=true # whether to show the clock
 HEADLINE_STYLE_CLOCK=$faint
 HEADLINE_CLOCK_FORMAT='%l:%M:%S %p' # consider "%+" for full date (see man strftime)
