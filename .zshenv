@@ -32,7 +32,7 @@ export GCM_CREDENTIAL_STORE=gpg
 
 # Sudo prompt
 # $(tput setaf <colour>)<text>$(tput sgr0)
-export SUDO_PROMPT=" $(tput setaf 6)[sudo] $(tput setaf sgr0)- $(tput setaf 1)%h$(tput setaf 8)@$(tput setaf 3)%p$(tput setaf 8): $(tput sgr0)"
+export SUDO_PROMPT=" $(tput setaf 6)[sudo] $(tput setaf sgr0)- $(tput setaf 1)%p$(tput setaf 8)@$(tput setaf 3)%h$(tput setaf 8): $(tput sgr0)"
 export SUDO_ASKPASS=/usr/bin/ksshaskpass
 
 # Firefox on wayland
