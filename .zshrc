@@ -37,7 +37,6 @@ FZF_TAB_GROUP_COLORS=(
 )
 zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 # Change keybinds
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle'
 zstyle ':fzf-tab:*' fzf-bindings 'alt-q:toggle'
 #Show dotfiles
 setopt globdots
@@ -137,7 +136,6 @@ HEADLINE_PATH_PREFIX=' ' # consider " "
 HEADLINE_BRANCH_PREFIX=' ' # consider " "
 
 # Separator options
-HEADLINE_LINE_MODE=auto # on|auto|off (whether to print the line above the prompt)
 HEADLINE_LINE_MODE=on # on|auto|off (whether to print the line above the prompt)
 
 # Prompt
