@@ -1,0 +1,11 @@
+@define-color background 			rgba(24,26,27,1); /* #181a1b */
+@define-color backgroundLight 	rgba(54,56,57,1); /* #222425 */
+@define-color backgroundActive 	rgba(144,238,144,1); /* #90ee90 */
+@define-color foreground 			rgba(169,169,169,1); /* #a9a9a9 */
+@define-color backgroundUrgent 	rgba(235,77,77,1); /* #eb4d4d */
+
+@define-color green 					rgba(144,238,144,1); /* #90ee90 */
+@define-color yellow 				rgba(255,221,0,1); /* #ffdd00 */
+@define-color red 					rgba(235,77,77,1); /* #eb4d4d */
+@define-color orange 				rgba(255,158,100,1); /* #ff9e64 */
+@define-color blue 					rgba(0,119,182,1); /* #0077b6 */

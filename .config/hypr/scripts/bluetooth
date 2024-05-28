@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+if [[ ! $(bluetoothctl power on | grep hci0) ]]; then
+	bluetoothctl power off
+else
+	bluetoothctl power on
+fi

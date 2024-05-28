@@ -1,0 +1,289 @@
+/* ------------
+	  Defaults
+   ------------ */ 
+* {
+	border: none;
+	font-family: FiraCode Nerd Font;
+	font-size: 13px;
+}
+
+button {
+	border: none;
+	border-radius: 0;
+	box-shadow: inset 0 -3px transparent;
+}
+
+@import 'colors.css';
+
+/* ----------
+     Waybar
+   ---------- */
+window#waybar {
+	color: #ffffff;
+	background: transparent;
+	border-radius: 8px;
+	transition-property: background-color;
+	transition-duration: .5s;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+/* ------------------
+	  Custom/Appmenu
+	------------------ */
+
+
+/* --------------------
+	  Group/Quicklinks
+	-------------------- */
+
+
+/* ---------------
+	  wlr/taskbar
+   --------------- */
+#taskbar {
+	background: @background;
+	margin: 8px;
+	padding: 2px;
+	border-radius: 12px;
+}
+
+#taskbar button {
+	margin: 0px 5px;
+	border-radius: 15px;
+	padding: 5px;
+	transition: all 0.3s ease-in-out;
+}
+
+#taskbar button.active {
+	background: @backgroundLight;
+	padding: 5px 15px;
+}
+
+/* ----------
+	  Window
+   ---------- */
+#window {
+	color: @green;
+	font-weight: bold;
+}
+
+/* -------------------
+	  Hyprland/Submap
+	------------------- */ 
+#submap {
+	color: @orange;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+/* -----------------------
+     Hyprland/workspaces
+   ----------------------- */
+#workspaces {
+	background: @background;
+	margin: 5px;
+	padding: 1px 4px;
+	border-radius: 12px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+#workspaces button {
+	color: @foreground;
+	background: @background;
+	margin: 5px;
+	padding: 4px 1px;
+	border-radius: 12px;
+	font-size: 13px;
+	transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.visible {
+	color: @foreground;
+	background: @background;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#workspaces button:hover {
+	background: @backgroundLight;
+}
+
+#workspaces button.active {
+	color: @background;
+	background: @backgroundActive;
+}
+
+#workspaces button.urgent {
+	color: @background;
+	background: @backgroundUrgent;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* -------
+     MPD
+   ------- */
+#mpd {
+	color: white;
+	background: @background;
+	border-radius: 20px;
+	padding: 5px 20px;
+	margin: 8px 70px 8px 8px;
+}
+
+#mpd.playing {
+	color: @background;
+	background: linear-gradient(-45deg, #90ee90 52%, #2BD2FF 90%);
+}
+
+/* ------------------
+	  Custom/Updates
+   ------------------ */
+#custom-updates {
+	color: white;
+	background: @background;
+	border-radius: 12px;
+	padding: 2px 10px 0px 10px;
+	margin: 8px 2px 8px 15px;
+}
+
+#custom-updates.green {
+	color: @background;
+	background: @green;
+}
+
+#custom-updates.yellow {
+	color: @background;
+	background: @yellow;
+}
+
+#custom-updates.red {
+	color: @background;
+	background: @red;
+}
+
+/* --------------
+	  Group/Tray
+	-------------- */
+/* --------------------
+	  Custom/Clipboard
+   -------------------- */
+#custom-clipboard {
+	color: white;
+	background: rgba(24,26,27,1); /* #181a1b */
+	border-radius: 20px;
+	padding-left: 8px;
+	margin: 6px;
+}
+
+/* ---------------
+     Wireplumber
+   --------------- */
+#wireplumber {
+	color: white;
+	background: @background;
+	border-radius: 20px;
+	margin: 6px;
+}
+
+#wireplumber.muted {
+	color: white;
+	background: @backgroundUrgent;
+	margin: 6px;
+}
+
+/* -------------
+	  Bluetooth
+	------------- */
+#bluetooth {
+	border-radius: 20px;
+	padding: 0px 0px;
+	margin: 6px;
+}
+
+#bluetooth.on {
+	color: @background;
+	background: @green;
+	padding: 0px 8px;
+	margin: 6px;
+}
+
+#bluetooth.connected {
+	background: @blue;
+	padding: 0px 8px;
+	margin: 6px;
+}
+
+/* -----------
+	  Privacy
+	----------- */
+#privacy {
+	background: @red;
+	border-radius: 20px;
+	padding: 0px 8px;
+	margin: 8px;
+}
+
+/* --------
+     Tray
+   -------- */
+#tray {
+	color: white;
+	background: @background;
+	border-radius: 20px;
+	margin: 8px;
+}
+
+#tray menu {
+	color: white;
+	background: @background;
+	border-radius: 15px;
+	padding: 8px 16px;
+}
+
+#tray > .needs-attention {
+	background: @backgroundUrgent;
+	margin: 8px;
+}
+
+/* ---------
+	  Clock
+	--------- */
+#clock {
+
+	border-radius: 20px;
+	margin: 8px;
+}
+
+/* ---------------
+	  Group/Exit
+	--------------- */
+#custom-power {
+	color: @red;
+	margin-left: 4px;
+	margin-right: 18px;
+}
+
+#custom-reboot {
+	color: @yellow;
+	margin: 0px 14px;
+	font-size: 15px;
+}
+
+#custom-lock {
+	color: @green;
+	margin: 0px 14px;
+	font-size: 15px;
+}
+
+#custom-quit {
+	color: @blue;
+	margin: 0px 14px;
+	font-size: 15px;
+}
