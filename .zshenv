@@ -27,7 +27,7 @@ fi
 export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Bat as manpager
 
-# Git creddentials
+# Git credential store
 export GCM_CREDENTIAL_STORE=gpg
 
 # Sudo prompt
@@ -39,9 +39,6 @@ export SUDO_ASKPASS=/usr/bin/ksshaskpass
 if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
 	export MOZ_ENABLE_WAYLAND=1
 fi
-
-# Git Credentail Manager (GCM)
-export GCM_CREDENTIAL_STORE=secretservice
 
 # zoxide
 export _ZO_ECHO=0
