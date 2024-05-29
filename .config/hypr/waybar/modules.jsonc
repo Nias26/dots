@@ -21,9 +21,7 @@
 		"format": " {title}",
 		"icon": false,
 	},
-
 	"custom/spacer": {},
-
 	"hyprland/submap":{
 		"format": "󰌌 {}",
 		"tooltip": false,
@@ -66,12 +64,13 @@
 		"on-scroll-up": "mpc --host=$HOME/.mpd/socket next",
 		"on-scroll-down": "mpc --host=$HOME/.mpd/socket prev",
 	},
+	"custom/spacer": {},
 	"custom/updates": {
 		"format": "󱧘 {}",
 		"tooltip-format": "{}",
 		"escape": true,
 		"return-type": "json",
-		"exec": "$HOME/.config/hypr/scripts/updates.sh",
+		"exec": "$HOME/.config/hypr/scripts/updates",
 		"restart-interval": 60,
 		"on-click": "kitty paru -Syu",
 		"tooltip": false,

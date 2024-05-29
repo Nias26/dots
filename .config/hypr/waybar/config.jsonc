@@ -21,6 +21,7 @@
 	],
 	"modules-right": [
 		"mpd",
+		"custom/spacer",
 		"custom/updates",
 		"group/tray",
 		"group/exit",
