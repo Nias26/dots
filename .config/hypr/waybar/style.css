@@ -87,6 +87,7 @@ window#waybar.hidden {
 	margin: 5px;
 	padding: 1px 4px;
 	border-radius: 12px;
+	font-size: 20px;
 	font-weight: normal;
 	font-style: normal;
 }
@@ -97,7 +98,7 @@ window#waybar.hidden {
 	margin: 5px;
 	padding: 4px 1px;
 	border-radius: 12px;
-	font-size: 13px;
+	font-size: 20px;
 	transition: all 0.3s ease-in-out;
 }
 
@@ -134,7 +135,7 @@ window#waybar.hidden {
 	background: @background;
 	border-radius: 20px;
 	padding: 5px 20px;
-	margin: 8px 70px 8px 8px;
+	margin: 8px 20px;
 }
 
 #mpd.playing {
@@ -218,16 +219,6 @@ window#waybar.hidden {
 	background: @blue;
 	padding: 0px 8px;
 	margin: 6px;
-}
-
-/* -----------
-	  Privacy
-	----------- */
-#privacy {
-	background: @red;
-	border-radius: 20px;
-	padding: 0px 8px;
-	margin: 8px;
 }
 
 /* --------

@@ -113,20 +113,6 @@
 		"tooltip": false,
 
 	},
-	"privacy": {
-		"icon-size": 15,
-		"modules": [
-			{
-				"type": "screenshare",
-			},
-			{
-				"type": "audio-in",
-			},
-			{
-				"type": "audio-out",
-			},
-		]
-	},
 	"tray": {
 		"spacing": 12,
 	},
