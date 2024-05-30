@@ -162,12 +162,3 @@ tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached
 if [[ -z $TMUX ]]; then
 	exit
 fi
-
-# ssh-agent
-# check if not running
-if [[ $(ps -ef | grep ssh-agent | grep -v grep | wc -l ) != 1 ]]; then
-	eval "$(ssh-agent -s &>/dev/null)"
-fi
-
-# Startup ascii art script
-shell-color
