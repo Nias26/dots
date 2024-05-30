@@ -8,11 +8,13 @@ msgTag="audio-volume"
 volume=$(amixer get Master | tail -1 | awk '{print $5}' | sed 's/[^0-9]*//g')
 mute=$(amixer get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')
 
+# Icons
+papirus="/usr/share/icons/Papirus-Dark/16x16/panel/"
 
 if [[ $volume == 0 || $mute == "off" ]]; then
 	dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$msgTag "Volume muted" \
-		-t 1500
+		-t 1500 -i $papirus/audio-off.svg
 else
 	dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$msgTag \
-		-h int:value:"$volume" "  Volume: ${volume}%" -t 1500
+		-h int:value:"$volume" "Volume: ${volume}%" -t 1500 -i $papirus/audio-on.svg
 fi
