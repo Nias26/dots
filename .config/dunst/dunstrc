@@ -214,7 +214,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Adwaita
+    icon_theme = Papirus-Dark
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -230,7 +230,8 @@
     max_icon_size = 128
 
     # Paths to default icons (only necessary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/panel/
+
 
     ### History ###
 
