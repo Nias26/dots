@@ -84,7 +84,7 @@
 			"bluetooth",
 			"privacy",
 			"tray",
-			"clock",
+			"custom/clock",
 		],
 	},
 	"custom/clipboard": {
@@ -116,11 +116,13 @@
 	"tray": {
 		"spacing": 12,
 	},
-	"clock": {
-		"interval": 1,
-		"timezone": "Europe/Rome",
-		"format": "{:%H:%M}",
-		"tooltip-format": "{:%H:%M:%S (%Z)}",
+	"custom/clock": {
+		"return-type": "json",
+		"tooltip": true,
+		"exec": "$HOME/.config/hypr/scripts/weather",
+		"restart-interval": 1,
+		"on-click": "xdg-open https://wttr.in/Genzano_di_Roma",
+
 	},
 	"group/exit": {
 		"orientation": "horizontal",

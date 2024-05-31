@@ -243,11 +243,10 @@ window#waybar.hidden {
 	margin: 8px;
 }
 
-/* ---------
-	  Clock
-	--------- */
-#clock {
-
+/* ----------------
+	  Custom/Clock
+	---------------- */
+#custom-clock {
 	border-radius: 20px;
 	margin: 8px;
 }
