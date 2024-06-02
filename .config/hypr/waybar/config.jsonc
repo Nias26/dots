@@ -9,12 +9,8 @@
 	"include": ["~/.config/hypr/waybar/modules.jsonc"],
 
 	"modules-left": [
-		"custom/appmenu",
-		"group/quicklinks",
 		"wlr/taskbar",
 		"hyprland/window",
-		"custom/spacer", // just an empy module to space things out
-		"hyprland/submap",
 	],
 	"modules-center": [
 		"hyprland/workspaces",

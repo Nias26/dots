@@ -1,14 +1,5 @@
 {
 	// Modules-Left
-	"custom/appmenu":{},
-	"group/quicklinks": {
-		"orientation": "horizontal",
-		"modules": [
-			"custom/notion",
-			"custom/discord",
-			"custom/office",
-		]
-	},
 	"wlr/taskbar": {
 		"all-outputs": false,
 		"format": "{icon}",
@@ -20,11 +11,6 @@
 	"hyprland/window": {
 		"format": " {title}",
 		"icon": false,
-	},
-	"custom/spacer": {},
-	"hyprland/submap":{
-		"format": "󰌌 {}",
-		"tooltip": false,
 	},
 
 	// Modules-Center
@@ -91,7 +77,7 @@
 		"format": "󰅍",
 		"interval": "once",
 		"return-type": "json",
-		"on-click": "cliphist list | wofi -S dmenu | cliphist decode | wl-copy",
+		"on-click": "cliphist list | rofi -dmenu -theme ~/.config/rofi/launchers/type-4/style-2.rasi | cliphist decode | wl-copy",
 		"on-click-middle": "cliphist wipe",
 		"exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
 		"signal": 9

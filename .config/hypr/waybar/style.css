@@ -70,15 +70,6 @@ window#waybar.hidden {
 	font-weight: bold;
 }
 
-/* -------------------
-	  Hyprland/Submap
-	------------------- */ 
-#submap {
-	color: @orange;
-	margin-left: 250px;
-	margin-right: 250px;
-}
-
 /* -----------------------
      Hyprland/workspaces
    ----------------------- */
