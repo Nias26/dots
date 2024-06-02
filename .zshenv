@@ -9,7 +9,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.config/nvim/bin/:$HOME/go/bin:$HOME/
 export XDG_DOWNLOAD_DIR=$HOME/Scaricati/
 export XDG_DOCUMENTS_DIR=$HOME/Documenti/
 export XDG_MUSIC_DIR=$HOME/Musica/
-export XDG_PICTURES_DIR=$HOME/Foto/
+export XDG_PICTURES_DIR=$HOME/Immagini
 export XDG_VIDEOS_DIR=$HOME/Video/
 
 # You may need to manually set your language environment
