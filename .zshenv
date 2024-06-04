@@ -45,6 +45,3 @@ export _ZO_ECHO=0
 export _ZO_FZF_OPTS="--ansi --preview='exa -1 --color=always $realpath'"
 export _ZO_RESOLVE_SYMLINKS=1
 # export _ZO_EXCLUDE_DIRS=$HOME:$HOME/private/*:/path/to/dir
-
-# SSH-Agent
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
