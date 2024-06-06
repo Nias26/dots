@@ -162,3 +162,6 @@ tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached
 if [[ -z $TMUX ]]; then
 	exit
 fi
+
+# Keychain (ssh)
+eval $(keychain --eval --quiet Github)
