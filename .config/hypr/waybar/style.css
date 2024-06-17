@@ -41,7 +41,12 @@ window#waybar.hidden {
 
 
 /* ---------------
+     Custom/User
    --------------- */
+#custom-user {
+  color: @red;
+  margin: 8px;
+  font-weight: bold;
 }
 
 /* ----------
