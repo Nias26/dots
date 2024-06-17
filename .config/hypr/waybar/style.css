@@ -41,25 +41,7 @@ window#waybar.hidden {
 
 
 /* ---------------
-	  wlr/taskbar
    --------------- */
-#taskbar {
-	background: @background;
-	margin: 8px;
-	padding: 2px;
-	border-radius: 12px;
-}
-
-#taskbar button {
-	margin: 0px 5px;
-	border-radius: 15px;
-	padding: 5px;
-	transition: all 0.3s ease-in-out;
-}
-
-#taskbar button.active {
-	background: @backgroundLight;
-	padding: 5px 15px;
 }
 
 /* ----------

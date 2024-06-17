@@ -9,7 +9,7 @@
 	"include": ["~/.config/hypr/waybar/modules.jsonc"],
 
 	"modules-left": [
-		"wlr/taskbar",
+    "custom/user",
 		"hyprland/window",
 	],
 	"modules-center": [

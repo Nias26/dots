@@ -1,14 +1,10 @@
 {
 	// Modules-Left
-	"wlr/taskbar": {
-		"all-outputs": false,
-    "sort-by-app-id": true,
-		"format": "{icon}",
-		"tooltip": false,
-		"on-click": "activate",
-		"on-click-middle": "close",
-		"on-click-right": "fullscreen",
-	},
+  "custom/user": {
+    "interval": 1,
+    "return-type": "json",
+    "exec": "~/.config/hypr/scripts/user",
+  },
 	"hyprland/window": {
 		"format": " {title}",
 		"icon": false,
