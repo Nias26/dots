@@ -30,16 +30,6 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
-/* ------------------
-	  Custom/Appmenu
-	------------------ */
-
-
-/* --------------------
-	  Group/Quicklinks
-	-------------------- */
-
-
 /* ---------------
      Custom/User
    --------------- */
@@ -50,10 +40,11 @@ window#waybar.hidden {
 }
 
 /* ----------
-	  Window
+	   Window
    ---------- */
 #window {
 	color: @green;
+  margin: 8px;
 	font-weight: bold;
 }
 
