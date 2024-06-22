@@ -173,3 +173,37 @@ fi
 
 # Keychain (ssh)
 eval $(keychain --eval --quiet Github)
+
+# TODO:Transient Prompt
+zle-line-init() {
+  emulate -L zsh
+
+  [[ $CONTEXT == start ]] || return 0
+
+  while true; do
+    zle .recursive-edit
+    local -i ret=$?
+    [[ $ret == 0 && $KEYS == $'\4' ]] || break
+    [[ -o ignore_eof ]] || exit 0
+  done
+
+  S_PROMPT=$PROMPT
+  S_RPROMPT=$RPROMPT
+
+  PROMPT='%F{blue}  '
+  RPROMPT=''
+
+  zle .reset-prompt
+
+  PROMPT=$S_PROMPT
+  RPORMPT=$S_RPROMPT
+
+  if (( ret )); then
+    zle .send-break
+  else
+    zle .accept-line
+  fi
+  return ret
+}
+
+zle -N zle-line-init
