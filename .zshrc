@@ -129,23 +129,31 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
 # Theme Settings
-# Info symbols (optional)
-HEADLINE_USER_PREFIX=' ' # consider " "
-HEADLINE_HOST_PREFIX='󰇅 ' # consider "󰇅 "
-HEADLINE_PATH_PREFIX=' ' # consider " "
+# HEADLINE_USER_PREFIX=' ' # consider " "
+# HEADLINE_HOST_PREFIX='󰇅 ' # consider "󰇅 "
+# HEADLINE_PATH_PREFIX=' ' # consider " "
 HEADLINE_BRANCH_PREFIX=' ' # consider " "
+HEADLINE_USER_BEGIN='--'
+HEADLINE_USER_TO_HOST='-'
+HEADLINE_HOST_TO_PATH='-'
+HEADLINE_PATH_TO_BRANCH='-'
+HEADLINE_PAD_TO_BRANCH='-'
+HEADLINE_BRANCH_TO_STATUS='-'
+HEADLINE_STATUS_END='--'
+HEADLINE_PAD_CHAR='-'
+HEADLINE_TRUNC_PREFIX='…'
+
+HEADLINE_DO_GIT_STATUS_COUNTS=true
 
 # Separator options
-HEADLINE_LINE_MODE=on # on|auto|off (whether to print the line above the prompt)
+HEADLINE_LINE_MODE=off # on|auto|off (whether to print the line above the prompt)
 
 # Prompt
 HEADLINE_PROMPT='%F{blue}:: %F{yellow}' #'%(#.#.%(!.!.$)) ' # consider "%#"
 HEADLINE_RPROMPT=''
 
 # Clock (prepends to RPROMPT)
-HEADLINE_DO_CLOCK=true # whether to show the clock
-HEADLINE_STYLE_CLOCK=$faint
-HEADLINE_CLOCK_FORMAT='%l:%M:%S %p' # consider "%+" for full date (see man strftime)
+HEADLINE_DO_CLOCK=true
 
 # zoxide
 eval "$(zoxide init zsh)"
