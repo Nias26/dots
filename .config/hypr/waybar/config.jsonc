@@ -8,6 +8,7 @@
 
 	"include": ["~/.config/hypr/waybar/modules.jsonc"],
 
+  // TODO: Group Left modules into one and set dark rounded bg
 	"modules-left": [
     "custom/user",
 		"hyprland/window",
