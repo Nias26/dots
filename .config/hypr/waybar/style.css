@@ -35,6 +35,7 @@ window#waybar.hidden {
    --------------- */
 #custom-user {
   color: @red;
+	background: transparent;
   margin: 8px;
   font-weight: bold;
 }
@@ -44,7 +45,8 @@ window#waybar.hidden {
    ---------- */
 #window {
 	color: @green;
-  margin: 8px;
+	background: transparent;
+  margin: 8px 0px;
 	font-weight: bold;
 }
 
@@ -53,7 +55,7 @@ window#waybar.hidden {
    ----------------------- */
 #workspaces {
 	background: @background;
-	margin: 5px;
+	margin: 5px 0px;
 	padding: 1px 4px;
 	border-radius: 12px;
 	font-size: 20px;
@@ -104,7 +106,7 @@ window#waybar.hidden {
 	background: @background;
 	border-radius: 20px;
 	padding: 5px 20px;
-	margin: 8px 20px;
+	margin: 10px 20px;
 }
 
 #mpd.playing {
