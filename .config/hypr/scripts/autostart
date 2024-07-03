@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+declare -a PROGS=("swww-daemon" "dunst" "mpd" "nm-applet" "udiskie -At" "/usr/lib/polkit-kde-authentication-agent-1" "kdeconnectd", "vorta --daemonize")
+
+for v in "${PROGS[@]}"; do
+	if ! pgrep -x "$v" > /dev/null; then
+		$v &
+	fi
+done
