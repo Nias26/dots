@@ -55,7 +55,7 @@ window#waybar.hidden {
    ----------------------- */
 #workspaces {
 	background: @background;
-	margin: 5px 0px;
+	margin: 4px;
 	padding: 1px 4px;
 	border-radius: 12px;
 	font-size: 20px;
