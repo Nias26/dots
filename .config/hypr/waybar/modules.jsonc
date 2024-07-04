@@ -29,6 +29,9 @@
       "sfx": " 󰝚 ",
       "magic": "  ",
     },
+    "persistent-workspaces": {
+      "*": 3,
+    }
   },
 
   // Modules-Right
