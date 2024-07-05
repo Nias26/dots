@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 if ! pgrep -x "waybar" > /dev/null; then
-	waybar -c ~/.config/hypr/waybar/HYPR-style/config.jsonc -s ~/.config/hypr/waybar/HYPR-style/style.css &
+	waybar -c ~/.config/hypr/waybar/GNOME-style/config.jsonc -s ~/.config/hypr/waybar/GNOME-style/style.css &
 else
 	killall -SIGUSR2 waybar
 fi
