@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+style=$(echo -e "HYPR\nGNOME" | rofi -dmenu) # GNOME or HYPR
+if [ $style == "GNOME" ]; then
+  styleAlt="HYPR"
+else 
+  styleAlt="GNOME"
+fi
+
+sed -i "s/$styleAlt/$style/g" launch-waybar
+./launch-waybar
