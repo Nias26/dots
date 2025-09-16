@@ -1,0 +1,171 @@
+$font: 'JetBrainsMono NerdFont';
+$fallback-font: 'Adwaita Sans';
+
+*{
+  font-family: $font, $fallback-font;
+  font-size: 10px;
+}
+
+menu{
+  margin: 2px;
+  padding: 4px 2px;
+  border-radius: 10px;
+  background: #101010;
+
+  menuitem:hover{
+    border-radius: inherit;
+    background: #202020;
+  }
+}
+
+tooltip{
+  background: #101010;
+  padding: 0.5rem 4px;
+  font-size: 14px;
+}
+
+#waybar {
+  background: transparent;
+  color: #c6d0f5;
+  margin: 2px 2px;
+  min-height: 0;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
+}
+
+#workspaces {
+  border-radius: 5px;
+  margin: 5px;
+  background: #101010;
+  margin-left: 0px;
+
+  button {
+    color: #babbf1;
+    border-radius: 5px;
+    padding: 0.4rem;
+  }
+
+  button.active {
+    color: #99d1db;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background: #1e1e1e;
+    border: 0px solid transparent;
+  }
+}
+
+button {
+  background: transparent;
+}
+
+#custom-rofi,
+#custom-music,
+#tray,
+#clock,
+#battery,
+#wireplumber,
+#network,
+#cpu,
+#memory,
+#custom-power,
+#custom-weather,
+#custom-docker {
+  background-color: #101010;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#custom-rofi{
+  color: #42be65;
+  border-radius: 5px;
+  padding-right: 0.8rem;
+  margin-left: 12px;
+}
+
+#clock {
+  color: #8caaee;
+  border-radius: 5px;
+}
+
+#custom-weather {
+  color: #8caaee;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+
+  .clear {
+    color: #e5c890; /* Sunny yellow */
+  }
+
+  .cloud {
+    color: #99d1db; /* Light blue */
+  }
+
+  .rain {
+    color: #8caaee; /* Blue */
+  }
+
+  .snow {
+    color: #c6d0f5; /* White-ish */
+  }
+
+  .thunder {
+    color: #ca9ee6; /* Purple */
+  }
+
+  .fog {
+    color: #b0b4bc; /* Gray */
+  }
+
+  .error {
+    color: #e78284; /* Red */
+  }
+}
+
+#battery {
+  color: #a6d189;
+  border-radius: 0;
+
+  .charging {
+    color: #a6d189;
+  }
+
+  .warning:not(.charging) {
+    color: #e78284;
+  }
+}
+
+#wireplumber {
+  color: #ea999c;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#custom-docker {
+  color: #85c1dc;
+
+  .docker {
+    color: #85c1dc;
+  }
+
+  .docker-none {
+    color: #737994;
+  }
+
+  .docker-error {
+    color: #e78284;
+  }
+}
+
+#custom-music {
+  color: #ca9ee6;
+  border-radius: 5px;
+  margin-right: 4px;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 5px 5px 0px;
+  color: #e78284;
+}

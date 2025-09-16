@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+pkill waybar
+
+src="$(pwd)/config.jsonc"
+style="$(pwd)/style.css"
+
+sass style.scss style.css
+
+waybar --config $src --style $style

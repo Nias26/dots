@@ -1,0 +1,2 @@
+rofi -show drun -case-smart -cycle -scroll-method 1 -no-lazy-grab -show-icons -markup -matching fuzzy -location 8 -fixed-num-lines -eh 2 -m -1 -dpi 1
+
