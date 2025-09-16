@@ -27,7 +27,7 @@ tooltip{
 #waybar {
   background: transparent;
   color: #c6d0f5;
-  margin: 2px 2px;
+  margin: 2px 2px 0px 2px;
   min-height: 0;
   padding-right: 2px;
   padding-left: 2px;
@@ -38,7 +38,7 @@ tooltip{
   border-radius: 5px;
   margin: 5px;
   background: #101010;
-  margin-left: 0px;
+  margin-left: 3px;
 
   button {
     color: #babbf1;

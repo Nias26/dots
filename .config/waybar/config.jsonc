@@ -5,7 +5,7 @@
   // Choose the order of the modules
   "modules-left": [
     "custom/rofi",
-    "hyprland/workspaces" // TODO: Develop this once in environment
+    "hyprland/workspaces"
   ],
 
   "modules-center": [
@@ -77,6 +77,16 @@
     "interval": 1
   },
 
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+  },
+
   "network": {
     "format-wifi": "󰤢 {bandwidthDownBits}",
     "format-ethernet": "󰈀 {bandwidthDownBits}",
@@ -119,7 +129,7 @@
     "format": "{}",
     "return-type": "json",
     "interval": 10,
-    "exec": "$(pwd)/scripts/docker-stats",
+    "exec": "$HOME/.config/waybar/scripts/docker-stats",
     "tooltip": true
   },
 
@@ -127,8 +137,7 @@
     "format": "{}",
     "tooltip": true,
     "interval": 1800,
-    "exec": "$(pwd)/scripts/weather-stats",
+    "exec": "$HOME/.config/waybar/scripts/weather-stats",
     "return-type": "json"
   }
-
 }
