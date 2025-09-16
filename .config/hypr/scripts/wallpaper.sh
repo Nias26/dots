@@ -9,7 +9,8 @@ for ((;;)); do
   # Check for current wallpaper
   CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
   # Get random wallpaper
-  WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$CURRENT_WALL" | shuf -n 1)
+  WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
+  echo $WALLPAPER
   swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
   sleep $WALLPAPER_SLEEP_TIME
 done
