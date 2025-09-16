@@ -1,0 +1,20 @@
+lastupdatecheck: 1722895549
+recentrepos:
+    - /home/Nias/.config/nvim
+    - /home/Nias/.config/mini
+    - /home/Nias/Documenti/c++/tcp
+    - /home/Nias/Documenti/c++/Vect
+    - /home/Nias/.mozilla/firefox/j2mpm6zw.default-release-1751453536506/chrome
+    - /home/Nias/Documenti/c++/test_linked_list
+    - /home/Nias/Documenti/c++/battleship
+    - /home/Nias/Documenti/NeovimPlugins/neoutils
+    - /home/Nias/Documenti/c++/snake
+    - /home/Nias/.tmux/plugins/RP-tmux-bar-fix
+startuppopupversion: 5
+didshowhunkstaginghint: true
+lastversion: 0.54.2
+customcommandshistory:
+    - q
+    - 'git commit -S '
+    - git push -u soft main
+hidecommandlog: false
