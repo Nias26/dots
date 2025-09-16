@@ -3,7 +3,7 @@
 export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 
 # PATH
-export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin/:$HOME/.local/bin/:$HOME/node_modules/.bin/:$NVIM_BIN:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin/:$HOME/.local/bin/:$HOME/node_modules/.bin/:$NVIM_BIN:$HOME/.scripts/bin/:$PATH
 
 # Dirs
 export XDG_DOWNLOAD_DIR=$HOME/Scaricati/
