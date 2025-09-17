@@ -25,7 +25,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 ## Socket Connection (Default MPD)
 # mpd_host = ~/.mpd/socket
 #
-## Network Connection (Mopidy)
+## Network Connection
 mpd_host = localhost
 #
 mpd_port = 6600
