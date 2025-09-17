@@ -8,6 +8,7 @@ menu {
   padding: 4px 2px;
   border-radius: 10px;
   background: #101010;
+  color: #fefefe;
 }
 menu menuitem:hover {
   border-radius: inherit;
@@ -35,6 +36,7 @@ tooltip {
   margin: 5px;
   background: #101010;
   margin-left: 3px;
+  font-weight: bold;
 }
 #workspaces button {
   color: #babbf1;
@@ -44,10 +46,6 @@ tooltip {
 #workspaces button.active {
   color: #99d1db;
   border-radius: 5px;
-}
-#workspaces button:hover {
-  background: #1e1e1e;
-  border: 0px solid transparent;
 }
 
 button {

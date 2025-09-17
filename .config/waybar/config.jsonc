@@ -5,7 +5,8 @@
   // Choose the order of the modules
   "modules-left": [
     "custom/rofi",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/music"
   ],
 
   "modules-center": [
@@ -14,7 +15,6 @@
   ],
 
   "modules-right": [
-    "custom/music",
     "wireplumber",
     "battery",
     "network",
@@ -22,7 +22,7 @@
     "memory",
     "custom/docker",
     "tray",
-    "custom/power",
+    "custom/power"
   ],
 
   "custom/rofi": {
