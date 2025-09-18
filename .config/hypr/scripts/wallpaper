@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+CURRENT_WALLPAPER=
+WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
+SLEEP_TIME=$((60*5)) # Seconds
+WALLPAPER=
+START=false
+
+help(){
+  less << EOF
+  Utilizzo: wallpaper [OPZIONE]
+
+  -reload       Riavvia il daemon swww
+  -next         Passa alla prossima immagine
+  -h -help      Mostra opzioni d'utilizzo
+
+  EOF
+}
+
+reload(){
+
+
+}
+
+next(){
+  CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+  WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
+  if [[ $(echo ${WALLPAPER} | sed -e 's/.*\.//') == "gif" ]] then
+    swww img --fill-color=161616 "${WALLPAPER}"
+  else
+    swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+  fi
+}
+
+loop(){
+  for ((;;)); do
+    # Check for current wallpaper
+    CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+    # Get random wallpaper
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
+    if [[ $(echo ${WALLPAPER} | sed -e 's/.*\.//') == "gif" ]] then
+      swww img --fill-color=161616 "${WALLPAPER}"
+    else
+      swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+    fi
+    sleep $WALLPAPER_SLEEP_TIME
+  done
+}
+
+main(){
+  while getopts ":reload:next:h:help:" opt; do
+    case $opt in
+      "reload" reload() ;;
+      "next") next() ;;
+      h|"help") help() ;;
+      *) echo "Invalid option: -$OPTARG" >&2; exit 1;;
+    esac
+  done
+}
+
+main()
