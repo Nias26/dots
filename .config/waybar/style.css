@@ -47,6 +47,9 @@ tooltip {
   color: #99d1db;
   border-radius: 5px;
 }
+#workspaces :hover {
+  border-color: transparent;
+}
 
 button {
   background: transparent;
