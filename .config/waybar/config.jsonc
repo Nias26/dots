@@ -118,7 +118,7 @@
     "format-icons": {
       "default": ["", "", ""]
     },
-    "on-click": "qpwgraph",
+    "on-click": "kitty -e wiremix",
   },
 
   "custom/power": {
