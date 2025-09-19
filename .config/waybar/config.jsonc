@@ -72,8 +72,9 @@
 
   "clock": {
     "timezone": "Europe/Rome",
-    "tooltip": false,
+    "tooltip": true,
     "format": "{:%H:%M}",
+    "tooltip-format": "{:%d/%m/%y - %A}",
     "interval": 1
   },
 
@@ -92,7 +93,8 @@
     "format-ethernet": "󰈀 {bandwidthDownBits}",
     "format-disconnected": "󰤠 No Network",
     "interval": 5,
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e btop"
   },
 
