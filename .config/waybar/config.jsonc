@@ -137,7 +137,7 @@
 
   "custom/power": {
     "tooltip": false,
-    "on-click": "wlogout &",
+    "on-click": "loginctl terminate-user $USER",
     "format": "⏻"
   },
 
