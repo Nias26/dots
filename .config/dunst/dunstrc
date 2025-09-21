@@ -3,7 +3,7 @@
     width = (0, 1500)
     height = (0, 950)
     origin = top-right
-    offset = (48, 60)
+    offset = (58, 70)
     scale = 0
     notification_limit = 10
     progress_bar = true
@@ -28,7 +28,7 @@
     font = JetBrainsMono Nerd Font 13
     line_height = 10
     markup = full
-    format = "<b><u>%s</u></b>\n%b\n"
+    format = "<b>%s</b>\n%b\n"
     alignment = left
     vertical_alignment = top
     show_age_threshold = 60
@@ -51,7 +51,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 9
+    corner_radius = 20
     ignore_dbusclose = false
     force_xwayland = true
     force_xinerama = false
@@ -63,20 +63,20 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#f2f4f8"
-    foreground = "#393939"
-    frame_color = "#393939"
+    background = "#161616"
+    foreground = "#f2f4f8"
+    frame_color = "#161616"
     timeout = 10
 
 [urgency_normal]
-    background = "#393939"
-    foreground = "#be95ff"
-    frame_color = "#be95ff"
-    highlight = "#be95ff"
+    background = "#161616"
+    foreground = "#42be65"
+    frame_color = "#42be65"
+    highlight = "#42be65"
     timeout = 10
 
 [urgency_critical]
-    background = "#f2f4f8"
+    background = "#161616"
     foreground = "#ee5396"
     frame_color = "#ee5396"
-    timeout = 0
+    timeout = 10
