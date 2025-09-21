@@ -121,7 +121,7 @@ alias checkpkg="pacman -Qkk"
 alias downgrade="sudo downgrade"
 alias neofetch="fastfetch"
 alias open="xdg-open"
-alias cmake_gen="cmake -B./build -S./"
+alias btui="bluetui"
 
 # Set Personal Bindkeys
 bindkey "^[[1~" beginning-of-line # HOME
