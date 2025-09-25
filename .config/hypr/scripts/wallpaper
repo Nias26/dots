@@ -1,61 +1,81 @@
 #!/usr/bin/env bash
 
-CURRENT_WALLPAPER=
 WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
 SLEEP_TIME=$((60*5)) # Seconds
-WALLPAPER=
-START=false
+WALLPAPER_FILE=/tmp/wallpaper_file
+SLEEP_FILE=/tmp/wallpaper_sleep
+TIMER_FILE=/tmp/wallpaper_timer
+LOCK_FILE=/tmp/wallpaper_lock
 
-help(){
-  less << EOF
-  Utilizzo: wallpaper [OPZIONE]
+help() {
+  cat << EOF
+  Utilizzo: wallpaper {OPZIONE}
 
-  -reload       Riavvia il daemon swww
-  -next         Passa alla prossima immagine
-  -h -help      Mostra opzioni d'utilizzo
-
-  EOF
+  Opzioni:
+  next             Passa al prossimo wallpaper
+  reload           Riavvia il daemon
+  stop             Ferma il timer
+  start            Avvia il ciclo (per primo avvio usa reload)
+  sleep-time       Imposta il tempo di attesa per ogni wallpaper (usare "next" per aggiornare)
+  wallpaper-dir    Imposta la cartella dei wallpaper (usare "next" per aggiornare)
+  help             Mostra questo menù
+EOF
 }
 
-reload(){
-
-
-}
-
-next(){
+next() {
+  # Get the wallpaper directory
   CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+  # Check for current wallpaper ang get a random one
   WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
-  if [[ $(echo ${WALLPAPER} | sed -e 's/.*\.//') == "gif" ]] then
+  # Handle gifs
+  if [[ ${WALLPAPER##*.} == "gif" ]]; then
     swww img --fill-color=161616 "${WALLPAPER}"
   else
     swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
   fi
+  echo -n $SLEEP_TIME > $TIMER_FILE
 }
 
-loop(){
-  for ((;;)); do
-    # Check for current wallpaper
-    CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
-    # Get random wallpaper
-    WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
-    if [[ $(echo ${WALLPAPER} | sed -e 's/.*\.//') == "gif" ]] then
-      swww img --fill-color=161616 "${WALLPAPER}"
-    else
-      swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
-    fi
-    sleep $WALLPAPER_SLEEP_TIME
-  done
+stop(){
+  echo -n "false" > $LOCK_FILE
 }
 
-main(){
-  while getopts ":reload:next:h:help:" opt; do
-    case $opt in
-      "reload" reload() ;;
-      "next") next() ;;
-      h|"help") help() ;;
-      *) echo "Invalid option: -$OPTARG" >&2; exit 1;;
-    esac
-  done
+start(){
+  echo -n "true" > $LOCK_FILE
 }
 
-main()
+reload() {
+  echo -n "false" > $LOCK_FILE
+  if [[ $(pgrep swww-daemon) ]]; then
+    pkill swww-daemon
+  fi
+  wallpaper-dir $WALLPAPER_DIR
+  sleep-time $SLEEP_TIME
+
+  swww-daemon &>/dev/null &
+  echo -n "true" > $LOCK_FILE
+}
+
+sleep-time(){
+  echo -n $1 > $SLEEP_FILE
+}
+
+wallpaper-dir(){
+  echo -n $1 > $WALLPAPER_FILE
+}
+
+main() {
+  case $1 in
+    "reload") reload ;;
+    "next") next ;;
+    "stop") stop ;;
+    "start") start ;;
+    "sleep-time") sleep-time $2 ;;
+    "wallpaper-dir") wallpaper-dir $2 ;;
+    "help") help ;;
+    "") help ;;
+    *) echo "Invalid option: $1" >&2; exit 1 ;;
+  esac
+}
+
+main "$@"
