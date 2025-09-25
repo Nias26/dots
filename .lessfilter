@@ -4,7 +4,7 @@ mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
 if [ -d "$1" ]; then
-	eza --git -hl --color=always --icons "$1"
+	eza --git -hla --color=always --icons "$1"
 elif [ "$category" = image ]; then
 	viu "$1"
 elif [ "$category" = text ]; then
