@@ -80,6 +80,7 @@
     },
     "format": "{icon} {capacity}%",
     "tooltip-format": "{power}w - {timeTo}",
+    "format-charging": "󰚥 {capacity}%",
     "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
   },
 
