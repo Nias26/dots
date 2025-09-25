@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $(pgrep -f wallpaper-daemon | wc -l) -gt 0 ]]; then
+  exit 1
+fi
+
 # Runtime shared variables
 WALLPAPER_FILE=/tmp/wallpaper_file
 SLEEP_FILE=/tmp/wallpaper_sleep
@@ -58,7 +62,6 @@ timer_wait(){
         sleep 1
         timer=$((timer - 1))
         echo -n $timer > $TIMER_FILE
-        echo "Timer: $timer"
       else
         break
       fi
@@ -69,7 +72,6 @@ timer_wait(){
 daemon() {
   while :; do
     start=$(cat $LOCK_FILE) 
-    echo "Status : $start"
     while [[ $start == "true" ]]; do
       get_wallpaper
       timer_wait
