@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $(pgrep -f wallpaper-daemon | wc -l) -gt 0 ]]; then
+if pgrep -fx "$(realpath '$0')" > /dev/null; then
   exit 1
 fi
 
@@ -73,13 +73,15 @@ daemon() {
   while :; do
     start=$(cat $LOCK_FILE) 
     while [[ $start == "true" ]]; do
+      echo "get the wallpaper"
       get_wallpaper
+      echo "sleeping"
       timer_wait
       start=$(cat $LOCK_FILE) 
     done
   done
 
-  rm -f $LOCK_FILE $TIMER_FILE
+  rm -f $LOCK_FILE $TIMER_FILE $WALLPAPER_FILE $SLEEP_FILE
 }
 
 daemon
