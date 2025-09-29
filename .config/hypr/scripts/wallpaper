@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
-CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
 WALLPAPER_SLEEP_TIME=$((60*5))
+
+next(){
+  CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+  WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
+  if [[ ${WALLPAPER##*.} == "gif" ]]; then
+    swww img --fill-color=161616 "${WALLPAPER}"
+  else
+    swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+  fi
+}
 
 loop(){
   # Infinite loop
@@ -10,10 +19,25 @@ loop(){
     # Check for current wallpaper
     CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
     # Get random wallpaper
-    WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$CURRENT_WALL" | shuf -n 1)
-    swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
+    if [[ ${WALLPAPER##*.} == "gif" ]]; then
+      swww img --fill-color=161616 "${WALLPAPER}"
+    else
+      swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+    fi
     sleep $WALLPAPER_SLEEP_TIME
   done
 }
 
-loop &
+main(){
+  case $1 in
+    "next") next
+      ;;
+    "") if ! pgrep -f "${0}" | grep -v "${$}" 1>/dev/null; then loop & fi
+      ;;
+    *) exit 1
+      ;;
+  esac
+}
+
+main $@
