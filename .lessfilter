@@ -9,4 +9,6 @@ elif [ "$category" = image ]; then
 	viu "$1"
 elif [ "$category" = text ]; then
   highlight -O ansi --force "$1"
+else
+  echo "No Preview"
 fi
