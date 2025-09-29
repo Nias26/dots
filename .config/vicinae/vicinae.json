@@ -5,6 +5,7 @@
         "normal": "JetBrainsMono Nerd Font",
         "size": 10
     },
+    "keybinding": "default",
     "popToRootOnClose": false,
     "rootSearch": {
         "searchFiles": false
@@ -15,7 +16,7 @@
     },
     "window": {
         "csd": true,
-        "opacity": 0.95,
+        "opacity": 0.85,
         "rounding": 10
     }
 }
