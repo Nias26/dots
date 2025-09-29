@@ -1,6 +1,6 @@
-export XCURSOR_SIZE=24
+export XCURSOR_SIZE=12
 export QT_QPA_PLATFORMTHEME=qt6ct
 export GDK_SCALE=2
-export XCURSOR_SIZE=32
+export XCURSOR_SIZE=24
 
 
