@@ -1,81 +1,19 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
-SLEEP_TIME=$((60*5)) # Seconds
-WALLPAPER_FILE=/tmp/wallpaper_file
-SLEEP_FILE=/tmp/wallpaper_sleep
-TIMER_FILE=/tmp/wallpaper_timer
-LOCK_FILE=/tmp/wallpaper_lock
+CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+WALLPAPER_SLEEP_TIME=$((60*5))
 
-help() {
-  cat << EOF
-  Utilizzo: wallpaper {OPZIONE}
-
-  Opzioni:
-  next             Passa al prossimo wallpaper
-  reload           Riavvia il daemon
-  stop             Ferma il timer
-  start            Avvia il ciclo (per primo avvio usa reload)
-  sleep-time       Imposta il tempo di attesa per ogni wallpaper (usare "next" per aggiornare)
-  wallpaper-dir    Imposta la cartella dei wallpaper (usare "next" per aggiornare)
-  help             Mostra questo menù
-EOF
-}
-
-next() {
-  # Get the wallpaper directory
-  CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
-  # Check for current wallpaper ang get a random one
-  WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
-  # Handle gifs
-  if [[ ${WALLPAPER##*.} == "gif" ]]; then
-    swww img --fill-color=161616 "${WALLPAPER}"
-  else
+loop(){
+  # Infinite loop
+  for ((;;)); do
+    # Check for current wallpaper
+    CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
+    # Get random wallpaper
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$CURRENT_WALL" | shuf -n 1)
     swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
-  fi
-  echo -n $SLEEP_TIME > $TIMER_FILE
+    sleep $WALLPAPER_SLEEP_TIME
+  done
 }
 
-stop(){
-  echo -n "false" > $LOCK_FILE
-}
-
-start(){
-  echo -n "true" > $LOCK_FILE
-}
-
-reload() {
-  echo -n "false" > $LOCK_FILE
-  if [[ $(pgrep swww-daemon) ]]; then
-    pkill swww-daemon
-  fi
-  wallpaper-dir $WALLPAPER_DIR
-  sleep-time $SLEEP_TIME
-
-  swww-daemon &>/dev/null &
-  echo -n "true" > $LOCK_FILE
-}
-
-sleep-time(){
-  echo -n $1 > $SLEEP_FILE
-}
-
-wallpaper-dir(){
-  echo -n $1 > $WALLPAPER_FILE
-}
-
-main() {
-  case $1 in
-    "reload") reload ;;
-    "next") next ;;
-    "stop") stop ;;
-    "start") start ;;
-    "sleep-time") sleep-time $2 ;;
-    "wallpaper-dir") wallpaper-dir $2 ;;
-    "help") help ;;
-    "") help ;;
-    *) echo "Invalid option: $1" >&2; exit 1 ;;
-  esac
-}
-
-main "$@"
+loop &
