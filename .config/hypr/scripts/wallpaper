@@ -2,6 +2,7 @@
 
 WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
 WALLPAPER_SLEEP_TIME=$((60*5))
+TIMER_FILE="/tmp/wallpaper_timer"
 
 next(){
   CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
@@ -13,9 +14,13 @@ next(){
   fi
 }
 
+get_time(){
+  echo $(cat "${TIMER_FILE}")
+}
+
 loop(){
   # Infinite loop
-  for ((;;)); do
+  while true; do
     # Check for current wallpaper
     CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
     # Get random wallpaper
@@ -25,7 +30,19 @@ loop(){
     else
       swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
     fi
-    sleep $WALLPAPER_SLEEP_TIME
+
+    # Inizialize timer
+    echo -n "${WALLPAPER_SLEEP_TIME}" > "${TIMER_FILE}"
+    while true; do
+      timer=$(cat "${TIMER_FILE}")
+      if [[ $timer -gt 0 ]]; then
+        timer=$(($timer - 1))
+        echo -n "$timer" > "${TIMER_FILE}"
+        sleep 1;
+      else
+        break 
+      fi
+    done
   done
 }
 
@@ -33,7 +50,20 @@ main(){
   case $1 in
     "next") next
       ;;
-    "") if ! pgrep -f "${0}" | grep -v "${$}" 1>/dev/null; then loop & fi
+    "time") get_time
+      ;;
+    "")
+      if ! pgrep -f "${0}" | grep -v "${$}" 1>/dev/null; then 
+        if [[  -e $TIMER_FILE ]]; then
+          rm "$TIMER_FILE"
+        fi
+        touch "$TIMER_FILE"
+        trap "rm -f ${TIMER_FILE}" EXIT
+        loop &
+      else
+        echo "Already in execution"
+        exit 1
+      fi
       ;;
     *) exit 1
       ;;
