@@ -55,7 +55,7 @@ button {
   background: transparent;
 }
 
-#custom-rofi,
+#custom-menu,
 #custom-music,
 #tray,
 #clock,
@@ -73,7 +73,7 @@ button {
   margin: 5px 0;
 }
 
-#custom-rofi {
+#custom-menu {
   color: #42be65;
   border-radius: 5px;
   padding-right: 0.8rem;

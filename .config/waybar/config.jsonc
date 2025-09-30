@@ -3,7 +3,7 @@
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   // Choose the order of the modules
-  "modules-left": ["custom/rofi", "hyprland/workspaces", "custom/music"],
+  "modules-left": ["custom/menu", "hyprland/workspaces", "custom/music"],
 
   "modules-center": ["clock", "custom/weather"],
 
@@ -19,11 +19,11 @@
     "custom/power",
   ],
 
-  "custom/rofi": {
+  "custom/menu": {
     "format": "{icon}",
     "format-icons": " ",
     "tooltip": false,
-    "on-click": "/usr/bin/rofi",
+    "on-click": "vicinae",
   },
 
   "hyprland/workspaces": {
