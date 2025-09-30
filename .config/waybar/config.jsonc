@@ -28,6 +28,7 @@
 
   "hyprland/workspaces": {
     "active-only": true,
+    "show-special": true,
     "format": "{icon}",
     "format-icons": {
       "1": "󰏿",
@@ -40,7 +41,8 @@
       "8": "󰊕",
       "9": "󰡱",
       "10": " ",
-      "special": "󰘫",
+      "magic": "󰘫",
+      "urgent": "󰽬",
     },
     "persistent-workspaces": {
       "1": [],
