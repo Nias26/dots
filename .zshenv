@@ -11,6 +11,7 @@ export XDG_DOCUMENTS_DIR=$HOME/Documenti
 export XDG_MUSIC_DIR=$HOME/Musica
 export XDG_PICTURES_DIR=$HOME/Immagini
 export XDG_VIDEOS_DIR=$HOME/Video
+export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/Screenshots
 
 # You may need to manually set your language environment
 export LANG=it_IT.UTF-8
