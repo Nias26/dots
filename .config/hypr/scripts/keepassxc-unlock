@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo $(whoami) | keepassxc -platform offscreen "$HOME/.keepassxc/Password.kdbx" --keyfile "$HOME/.keepassxc/db.key" --pw-stdin
+
