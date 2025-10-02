@@ -70,7 +70,7 @@ button {
 #custom-docker {
   background-color: #101010;
   padding: 0.5rem 1rem;
-  margin: 5px 0;
+  margin: 5px 0px;
 }
 
 #custom-menu {
@@ -88,6 +88,7 @@ button {
 #custom-weather {
   color: #8caaee;
   margin-left: 0.5rem;
+  margin-right: 0.5rem;
   border-radius: 5px;
 }
 #custom-weather .clear {
