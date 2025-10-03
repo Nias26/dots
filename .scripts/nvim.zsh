@@ -20,5 +20,5 @@ function chad(){
   NVIM_APPNAME=NvChad $NVIM_BIN $@
 }
 
-alias nvim='NVIM_APPNAME=default $NVIM_BIN'
+alias nvim="${NVIM_BIN}"
 alias vi='/usr/bin/vim'
