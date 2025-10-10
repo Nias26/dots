@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
 mode=${1,,}
-if [[ $mode -ne "horizzontal" && $mode -ne "vertical" ]]; then
-  exit 1
-fi
-
-waybar -c ~/.config/waybar/config_${mode}.jsonc -s ~/.config/waybar/style_${mode}.css &
+waybar -c ~/.config/waybar/configs/config_${mode}.jsonc -s ~/.config/waybar/styles/style_${mode}.css &
 
