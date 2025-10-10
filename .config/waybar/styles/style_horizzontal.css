@@ -7,23 +7,23 @@ menu {
   margin: 2px;
   padding: 4px 2px;
   border-radius: 10px;
-  background: #101010;
-  color: #fefefe;
+  background: #161616;
+  color: #f2f4f8;
 }
 menu menuitem:hover {
   border-radius: inherit;
-  background: #202020;
+  background: #262626;
 }
 
 tooltip {
-  background: #101010;
+  background: #161616;
   padding: 0.5rem 4px;
   font-size: 14px;
 }
 
 #waybar {
   background: transparent;
-  color: #c6d0f5;
+  color: #dde1e6;
   margin: 2px 2px 0px 2px;
   min-height: 0;
   padding-right: 2px;
@@ -34,17 +34,17 @@ tooltip {
 #workspaces {
   border-radius: 5px;
   margin: 5px;
-  background: #101010;
+  background: #161616;
   margin-left: 3px;
   font-weight: bold;
 }
 #workspaces button {
-  color: #babbf1;
+  color: #be95ff;
   border-radius: 5px;
   padding: 0.4rem;
 }
 #workspaces button.active {
-  color: #99d1db;
+  color: #82cfff;
   border-radius: 5px;
 }
 #workspaces :hover {
@@ -68,7 +68,7 @@ button {
 #custom-power,
 #custom-weather,
 #custom-docker {
-  background-color: #101010;
+  background-color: #161616;
   padding: 0.5rem 1rem;
   margin: 5px 0px;
 }
@@ -81,51 +81,51 @@ button {
 }
 
 #clock {
-  color: #8caaee;
+  color: #33b1ff;
   border-radius: 5px;
 }
 
 #custom-weather {
-  color: #8caaee;
+  color: #33b1ff;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 5px;
 }
 #custom-weather .clear {
-  color: #e5c890; /* Sunny yellow */
+  color: #ffab91; /* Sunny yellow */
 }
 #custom-weather .cloud {
-  color: #99d1db; /* Light blue */
+  color: #82cfff; /* Light blue */
 }
 #custom-weather .rain {
-  color: #8caaee; /* Blue */
+  color: #33b1ff; /* Blue */
 }
 #custom-weather .snow {
-  color: #c6d0f5; /* White-ish */
+  color: #525252; /* White-ish */
 }
 #custom-weather .thunder {
-  color: #ca9ee6; /* Purple */
+  color: #be95ff; /* Purple */
 }
 #custom-weather .fog {
-  color: #b0b4bc; /* Gray */
+  color: #393939; /* Gray */
 }
 #custom-weather .error {
-  color: #e78284; /* Red */
+  color: #ff7eb6; /* Red */
 }
 
 #battery {
-  color: #a6d189;
+  color: #42be65;
   border-radius: 0;
 }
 #battery .charging {
-  color: #a6d189;
+  color: #42be65;
 }
 #battery .warning:not(.charging) {
-  color: #e78284;
+  color: #ff7eb6;
 }
 
 #wireplumber {
-  color: #ea999c;
+  color: #ff7eb6;
   border-radius: 5px 0px 0px 5px;
 }
 
@@ -135,20 +135,20 @@ button {
 }
 
 #custom-docker {
-  color: #85c1dc;
+  color: #82cfff;
 }
 #custom-docker .docker {
-  color: #85c1dc;
+  color: #82cfff;
 }
 #custom-docker .docker-none {
-  color: #737994;
+  color: #525252;
 }
 #custom-docker .docker-error {
-  color: #e78284;
+  color: #ff7eb6;
 }
 
 #custom-music {
-  color: #ca9ee6;
+  color: #be95ff;
   border-radius: 5px;
   margin-right: 4px;
 }
@@ -156,7 +156,7 @@ button {
 #custom-power {
   margin-right: 1rem;
   border-radius: 0px 5px 5px 0px;
-  color: #e78284;
+  color: #ff7eb6;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style_horizzontal.css.map */

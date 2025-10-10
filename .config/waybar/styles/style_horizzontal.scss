@@ -1,6 +1,19 @@
 $font: 'JetBrainsMono NerdFont';
 $fallback-font: 'Adwaita Sans';
 
+$black: #161616;
+$light-black: #262626;
+$white: #f2f4f8;
+$darker-white: #dde1e6;
+$gray: #393939;
+$light-gray: #525252;
+$green: #42be65;
+$cyan: #82cfff;
+$blue: #33b1ff;
+$red: #ff7eb6;
+$purple: #be95ff;
+$yellow: #ffab91;
+
 *{
   font-family: $font, $fallback-font;
   font-size: 10px;
@@ -10,24 +23,24 @@ menu {
   margin: 2px;
   padding: 4px 2px;
   border-radius: 10px;
-  background: #101010;
-  color: #fefefe;
+  background: $black;
+  color: $white;
 
   menuitem:hover {
     border-radius: inherit;
-    background: #202020;
+    background: $light-black;
   }
 }
 
 tooltip {
-  background: #101010;
+  background: $black;
   padding: 0.5rem 4px;
   font-size: 14px;
 }
 
 #waybar {
   background: transparent;
-  color: #c6d0f5;
+  color: $darker-white;
   margin: 2px 2px 0px 2px;
   min-height: 0;
   padding-right: 2px;
@@ -38,18 +51,18 @@ tooltip {
 #workspaces {
   border-radius: 5px;
   margin: 5px;
-  background: #101010;
+  background: $black;
   margin-left: 3px;
   font-weight: bold;
 
   button {
-    color: #babbf1;
+    color: $purple;
     border-radius: 5px;
     padding: 0.4rem;
   }
 
   button.active {
-    color: #99d1db;
+    color: $cyan;
     border-radius: 5px;
   }
 
@@ -75,73 +88,73 @@ button {
 #custom-power,
 #custom-weather,
 #custom-docker {
-  background-color: #101010;
+  background-color: $black;
   padding: 0.5rem 1rem;
   margin: 5px 0px;
 }
 
 #custom-menu{
-  color: #42be65;
+  color: $green;
   border-radius: 5px;
   padding-right: 0.8rem;
   margin-left: 12px;
 }
 
 #clock {
-  color: #8caaee;
+  color: $blue;
   border-radius: 5px;
 }
 
 #custom-weather {
-  color: #8caaee;
+  color: $blue;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 5px;
 
   .clear {
-    color: #e5c890; /* Sunny yellow */
+    color: $yellow; /* Sunny yellow */
   }
 
   .cloud {
-    color: #99d1db; /* Light blue */
+    color: $cyan; /* Light blue */
   }
 
   .rain {
-    color: #8caaee; /* Blue */
+    color: $blue; /* Blue */
   }
 
   .snow {
-    color: #c6d0f5; /* White-ish */
+    color: $light-gray; /* White-ish */
   }
 
   .thunder {
-    color: #ca9ee6; /* Purple */
+    color: $purple; /* Purple */
   }
 
   .fog {
-    color: #b0b4bc; /* Gray */
+    color: $gray; /* Gray */
   }
 
   .error {
-    color: #e78284; /* Red */
+    color: $red; /* Red */
   }
 }
 
 #battery {
-  color: #a6d189;
+  color: $green;
   border-radius: 0;
 
   .charging {
-    color: #a6d189;
+    color: $green;
   }
 
   .warning:not(.charging) {
-    color: #e78284;
+    color: $red;
   }
 }
 
 #wireplumber {
-  color: #ea999c;
+  color: $red;
   border-radius: 5px 0px 0px 5px;
 }
 
@@ -151,23 +164,23 @@ button {
 }
 
 #custom-docker {
-  color: #85c1dc;
+  color: $cyan;
 
   .docker {
-    color: #85c1dc;
+    color: $cyan;
   }
 
   .docker-none {
-    color: #737994;
+    color: $light-gray;
   }
 
   .docker-error {
-    color: #e78284;
+    color: $red;
   }
 }
 
 #custom-music {
-  color: #ca9ee6;
+  color: $purple;
   border-radius: 5px;
   margin-right: 4px;
 }
@@ -175,5 +188,5 @@ button {
 #custom-power {
   margin-right: 1rem;
   border-radius: 0px 5px 5px 0px;
-  color: #e78284;
+  color: $red;
 }
