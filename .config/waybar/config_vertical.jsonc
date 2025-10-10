@@ -1,0 +1,141 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top", // Waybar at top layer
+  "position": "left", // Waybar position (top|bottom|left|right)
+  // Choose the order of the modules
+  "modules-left": ["custom/menu", "hyprland/workspaces", "custom/music"],
+
+  "modules-center": ["clock", "custom/weather"],
+
+  "modules-right": [
+    "wireplumber",
+    "battery",
+    "network",
+    "bluetooth",
+    "custom/docker",
+    "tray",
+    "custom/power",
+  ],
+
+  "custom/menu": {
+    "format": "{icon}",
+    "format-icons": "",
+    "tooltip": false,
+    "on-click": "vicinae",
+  },
+
+  "hyprland/workspaces": {
+    "active-only": true,
+    "show-special": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰏿",
+      "2": "󰒠",
+      "3": "󰘧",
+      "4": "󰀫",
+      "5": "󰂡",
+      "6": "󱃮",
+      "7": "󰏉",
+      "8": "󰊕",
+      "9": "󰡱",
+      "10": "",
+      "magic": "󰘫",
+      "urgent": "󰽬",
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+    },
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+  },
+
+  "custom/music": {
+    "format": "\n{}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50,
+  },
+
+  "clock": {
+    "timezone": "Europe/Rome",
+    "tooltip": true,
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%d/%m/%y - %A}",
+    "interval": 1,
+  },
+
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": " {icon}\n{capacity}%",
+    "tooltip-format": "{power}w - {timeTo}",
+    "format-charging": " 󰚥\n{capacity}%",
+    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+  },
+
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤠",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "on-click": "kitty -e iwctl",
+  },
+
+  "bluetooth": {
+    "format-disabled": "",
+    "format-off": "󰂲",
+    "format-on": "󰂯",
+    "format-connected": "󰂱",
+    "tooltip-format": "Connections: {num_connections}\nDevices: {device_enumerate}",
+    "tooltip-format-enumerate-connected": " - {device_alias} ({device_address})",
+    "tooltip-format-enumerate-connected-battery": " - {device_alias} ({device_address})  󰁹 {device_battery_percentage}%",
+    "on-click": "kitty -e bluetui",
+    "on-click-right": "bluetoothctl power $(bluetoothctl show | rg Powered | awk '{ print $2 }' | if [[ $(xargs) == 'yes' ]]; then echo off; else echo on; fi)",
+  },
+
+  "wireplumber": {
+    "format": " {icon}\n{volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "on-click": "kitty -e wiremix",
+  },
+
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "loginctl terminate-user $USER",
+    "format": "⏻",
+  },
+
+  "custom/docker": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 10,
+    "exec": "$HOME/.config/waybar/scripts/docker-stats",
+    "tooltip": true,
+    "on-click": "kitty -e lazydocker",
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "$HOME/.config/waybar/scripts/weather-stats",
+    "return-type": "json",
+    "on-click": "xdg-open https://wttr.in",
+  },
+}
