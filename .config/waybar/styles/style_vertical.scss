@@ -49,12 +49,13 @@ tooltip {
 
 #workspaces {
   margin-top: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
   background: $black;
   font-weight: bold;
 
   button {
     color: $purple;
-    padding: 0.4rem;
   }
 
   button.active {

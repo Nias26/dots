@@ -32,12 +32,13 @@ tooltip {
 
 #workspaces {
   margin-top: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
   background: #161616;
   font-weight: bold;
 }
 #workspaces button {
   color: #be95ff;
-  padding: 0.4rem;
 }
 #workspaces button.active {
   color: #82cfff;
