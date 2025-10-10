@@ -1,9 +1,22 @@
 $font: 'JetBrainsMono NerdFont';
 $fallback-font: 'Adwaita Sans';
 
+$black: #161616;
+$light-black: #262626;
+$white: #f2f4f8;
+$darker-white: #dde1e6;
+$gray: #393939;
+$light-gray: #525252;
+$green: #42be65;
+$cyan: #82cfff;
+$blue: #33b1ff;
+$red: #ff7eb6;
+$purple: #be95ff;
+$yellow: #ffab91;
+
 *{
   font-family: $font, $fallback-font;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 menu {
@@ -11,43 +24,44 @@ menu {
   padding: 4px 2px;
   border-radius: 10px;
   background: #101010;
-  color: #fefefe;
+  color: $white;
 
   menuitem:hover {
     border-radius: inherit;
-    background: #202020;
+    background: $light-black;
   }
 }
 
 tooltip {
-  background: #101010;
+  background: $black;
   padding: 0.5rem 4px;
   font-size: 14px;
 }
 
 #waybar {
-  background: #101010;
-  color: #c6d0f5;
+  background: $black;
+  color: $white;
   margin: 0px;
   min-height: 0;
+  border: 2px solid;
+  border-color: $light-black;
 }
 
 #workspaces {
   margin-top: 5px;
-  background: #101010;
+  background: $black;
   font-weight: bold;
 
   button {
-    color: #babbf1;
+    color: $purple;
     padding: 0.4rem;
   }
 
   button.active {
-    color: #99d1db;
-    border-radius: 5px;
+    color: $cyan;
   }
 
-  :hover {
+  button:hover{
     border-color: transparent;
   }
 }
@@ -64,90 +78,47 @@ button {
 #wireplumber,
 #network,
 #bluetooth,
-#custom-power,
-#custom-weather,
-#custom-docker {
-  background-color: #101010;
-  padding: 0.3rem 5px;
+#custom-power {
+  background-color: $black;
+  padding: 0.3rem 2px;
   margin: 5px 2px;
 }
 
+#network {
+  padding-right: 3px;
+}
+
 #custom-menu{
-  color: #42be65;
+  color: $green;
+  padding-right: 4px;
 }
 
 #clock {
-  color: #8caaee;
-}
-
-#custom-weather {
-  color: #8caaee;
-
-  .clear {
-    color: #e5c890; /* Sunny yellow */
-  }
-
-  .cloud {
-    color: #99d1db; /* Light blue */
-  }
-
-  .rain {
-    color: #8caaee; /* Blue */
-  }
-
-  .snow {
-    color: #c6d0f5; /* White-ish */
-  }
-
-  .thunder {
-    color: #ca9ee6; /* Purple */
-  }
-
-  .fog {
-    color: #b0b4bc; /* Gray */
-  }
-
-  .error {
-    color: #e78284; /* Red */
-  }
+  color: $blue;
 }
 
 #battery {
-  color: #a6d189;
+  color: $green;
+  padding-left: 3px;
 
   .charging {
-    color: #a6d189;
+    color: $green;
   }
 
   .warning:not(.charging) {
-    color: #e78284;
+    color: $red;
   }
 }
 
 #wireplumber {
-  color: #ea999c;
-}
-
-#custom-docker {
-  color: #85c1dc;
-
-  .docker {
-    color: #85c1dc;
-  }
-
-  .docker-none {
-    color: #737994;
-  }
-
-  .docker-error {
-    color: #e78284;
-  }
+  color: $red;
+  padding-right: 4px;
 }
 
 #custom-music {
-  color: #ca9ee6;
+  color: $purple;
 }
 
 #custom-power {
-  color: #e78284;
+  color: $red;
 }

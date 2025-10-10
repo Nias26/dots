@@ -1,6 +1,6 @@
 * {
   font-family: "JetBrainsMono NerdFont", "Adwaita Sans";
-  font-size: 10px;
+  font-size: 11px;
 }
 
 menu {
@@ -8,40 +8,41 @@ menu {
   padding: 4px 2px;
   border-radius: 10px;
   background: #101010;
-  color: #fefefe;
+  color: #f2f4f8;
 }
 menu menuitem:hover {
   border-radius: inherit;
-  background: #202020;
+  background: #262626;
 }
 
 tooltip {
-  background: #101010;
+  background: #161616;
   padding: 0.5rem 4px;
   font-size: 14px;
 }
 
 #waybar {
-  background: #101010;
-  color: #c6d0f5;
+  background: #161616;
+  color: #f2f4f8;
   margin: 0px;
   min-height: 0;
+  border: 2px solid;
+  border-color: #262626;
 }
 
 #workspaces {
   margin-top: 5px;
-  background: #101010;
+  background: #161616;
   font-weight: bold;
 }
 #workspaces button {
-  color: #babbf1;
+  color: #be95ff;
   padding: 0.4rem;
 }
 #workspaces button.active {
-  color: #99d1db;
-  border-radius: 5px;
+  color: #82cfff;
 }
-#workspaces :hover {
+#workspaces button:hover {
   border-color: transparent;
 }
 
@@ -57,80 +58,47 @@ button {
 #wireplumber,
 #network,
 #bluetooth,
-#custom-power,
-#custom-weather,
-#custom-docker {
-  background-color: #101010;
-  padding: 0.3rem 5px;
+#custom-power {
+  background-color: #161616;
+  padding: 0.3rem 2px;
   margin: 5px 2px;
+}
+
+#network {
+  padding-right: 3px;
 }
 
 #custom-menu {
   color: #42be65;
+  padding-right: 4px;
 }
 
 #clock {
-  color: #8caaee;
-}
-
-#custom-weather {
-  color: #8caaee;
-}
-#custom-weather .clear {
-  color: #e5c890; /* Sunny yellow */
-}
-#custom-weather .cloud {
-  color: #99d1db; /* Light blue */
-}
-#custom-weather .rain {
-  color: #8caaee; /* Blue */
-}
-#custom-weather .snow {
-  color: #c6d0f5; /* White-ish */
-}
-#custom-weather .thunder {
-  color: #ca9ee6; /* Purple */
-}
-#custom-weather .fog {
-  color: #b0b4bc; /* Gray */
-}
-#custom-weather .error {
-  color: #e78284; /* Red */
+  color: #33b1ff;
 }
 
 #battery {
-  color: #a6d189;
+  color: #42be65;
+  padding-left: 3px;
 }
 #battery .charging {
-  color: #a6d189;
+  color: #42be65;
 }
 #battery .warning:not(.charging) {
-  color: #e78284;
+  color: #ff7eb6;
 }
 
 #wireplumber {
-  color: #ea999c;
-}
-
-#custom-docker {
-  color: #85c1dc;
-}
-#custom-docker .docker {
-  color: #85c1dc;
-}
-#custom-docker .docker-none {
-  color: #737994;
-}
-#custom-docker .docker-error {
-  color: #e78284;
+  color: #ff7eb6;
+  padding-right: 4px;
 }
 
 #custom-music {
-  color: #ca9ee6;
+  color: #be95ff;
 }
 
 #custom-power {
-  color: #e78284;
+  color: #ff7eb6;
 }
 
 /*# sourceMappingURL=style_vertical.css.map */

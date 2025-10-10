@@ -1,19 +1,16 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top", // Waybar at top layer
-  "position": "left", // Waybar position (top|bottom|left|right)
-  // Choose the order of the modules
-  "modules-left": ["custom/menu", "hyprland/workspaces", "custom/music"],
-
-  "modules-center": ["clock", "custom/weather"],
-
+  "layer": "top",
+  "position": "left",
+  "modules-left": ["custom/menu", "hyprland/workspaces"],
+  "modules-center": ["custom/music"],
   "modules-right": [
-    "wireplumber",
+    "tray", 
+    "bluetooth",
     "battery",
     "network",
-    "bluetooth",
-    "custom/docker",
-    "tray",
+    "wireplumber",
+    "clock",
     "custom/power",
   ],
 
@@ -49,13 +46,9 @@
     },
   },
 
-  "tray": {
-    "icon-size": 16,
-    "spacing": 10,
-  },
-
   "custom/music": {
-    "format": "\n{}",
+    "rotate": 270,
+    "format": "<span gravity='east'></span>{}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
@@ -64,34 +57,9 @@
     "max-length": 50,
   },
 
-  "clock": {
-    "timezone": "Europe/Rome",
-    "tooltip": true,
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%d/%m/%y - %A}",
-    "interval": 1,
-  },
-
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 20,
-      "critical": 10,
-    },
-    "format": " {icon}\n{capacity}%",
-    "tooltip-format": "{power}w - {timeTo}",
-    "format-charging": " 󰚥\n{capacity}%",
-    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
-  },
-
-  "network": {
-    "format-wifi": "󰤢",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤠",
-    "interval": 5,
-    "tooltip": true,
-    "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
-    "on-click": "kitty -e iwctl",
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
   },
 
   "bluetooth": {
@@ -106,36 +74,50 @@
     "on-click-right": "bluetoothctl power $(bluetoothctl show | rg Powered | awk '{ print $2 }' | if [[ $(xargs) == 'yes' ]]; then echo off; else echo on; fi)",
   },
 
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{icon}",
+    "tooltip-format": "{capacity}%\n{timeTo}",
+    "format-charging": "󰚥",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+,
+  },
+
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤠",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "on-click": "kitty -e iwctl",
+  },
+
   "wireplumber": {
-    "format": " {icon}\n{volume}%",
-    "format-muted": " ",
+    "format": "{icon}",
+    "tooltip-format": "{volume}%",
+    "format-muted": "",
     "format-icons": {
       "default": ["", "", ""],
     },
     "on-click": "kitty -e wiremix",
   },
 
+  "clock": {
+    "timezone": "Europe/Rome",
+    "tooltip": true,
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%d/%m/%y - %A}",
+    "interval": 1,
+  },
+
   "custom/power": {
     "tooltip": false,
     "on-click": "loginctl terminate-user $USER",
     "format": "⏻",
-  },
-
-  "custom/docker": {
-    "format": "{}",
-    "return-type": "json",
-    "interval": 10,
-    "exec": "$HOME/.config/waybar/scripts/docker-stats",
-    "tooltip": true,
-    "on-click": "kitty -e lazydocker",
-  },
-
-  "custom/weather": {
-    "format": "{}",
-    "tooltip": true,
-    "interval": 1800,
-    "exec": "$HOME/.config/waybar/scripts/weather-stats",
-    "return-type": "json",
-    "on-click": "xdg-open https://wttr.in",
-  },
+  }
 }
