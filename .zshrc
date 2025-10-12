@@ -21,11 +21,11 @@ eval "$(starship init zsh)"
 # Plugins
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   fzf
   fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
+  fzf-marks
 )
 
 # Plugins Configs
