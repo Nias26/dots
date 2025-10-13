@@ -48,7 +48,7 @@
 
   "custom/music": {
     "rotate": 270,
-    "format": "<span gravity='east'></span>{}",
+    "format": "<span gravity='east'> </span>{}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
