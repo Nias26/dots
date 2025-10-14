@@ -1,4 +1,4 @@
-# .zshrc File
+#Aliases .zshrc File
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 13
 
@@ -122,6 +122,7 @@ alias downgrade="sudo downgrade"
 alias neofetch="fastfetch"
 alias open="xdg-open"
 alias btui="bluetui"
+alias venv="source .venv/bin/activate"
 
 # Set Personal Bindkeys
 bindkey "^[[1~" beginning-of-line # HOME
