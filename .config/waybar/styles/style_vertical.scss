@@ -62,6 +62,10 @@ tooltip {
     color: $cyan;
   }
 
+  button.urgent {
+    color: $green
+  }
+
   button:hover{
     border-color: transparent;
   }
