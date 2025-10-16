@@ -1,0 +1,6 @@
+music_dir: "~/Musica"
+playlists:
+  - name: "Nias"
+    id: "PL0vf6a3KXh7ki37JotvHx1wiTYYKH8EOd"
+  - name: "Altro"
+    id: "PL0vf6a3KXh7l9EX9U3tpf10Ohcl8z7xSw"
