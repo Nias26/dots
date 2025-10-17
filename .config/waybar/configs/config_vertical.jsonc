@@ -90,7 +90,7 @@
   "network": {
     "format-wifi": "󰤢",
     "format-ethernet": "󰈀",
-    "format-disconnected": "󰤠",
+    "format-disconnected": "󰤣",
     "interval": 5,
     "tooltip": true,
     "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
