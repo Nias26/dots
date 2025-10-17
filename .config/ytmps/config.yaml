@@ -1,6 +1,16 @@
 music_dir: "~/Musica"
 playlists:
+  - name: "[[ LoFi ]]"
+    id: "PL0vf6a3KXh7lpQA1PUOghUbqSIA24veI4"
+
   - name: "Nias"
     id: "PL0vf6a3KXh7ki37JotvHx1wiTYYKH8EOd"
-  - name: "Altro"
+
+  - name: "Deus Lapsus"
     id: "PL0vf6a3KXh7l9EX9U3tpf10Ohcl8z7xSw"
+
+  - name: "Imperium Goni et Instrumentorum"
+    id: "PL0vf6a3KXh7lTIcw2htLlb0KxMH8rrP3k"
+
+  - name: "Wayback Machine"
+    id: "PL0vf6a3KXh7nEEEGrVOOIBBT1rL-6crss"
