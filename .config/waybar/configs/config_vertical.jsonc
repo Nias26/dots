@@ -48,7 +48,7 @@
 
   "custom/music": {
     "rotate": 270,
-    "format": "<span gravity='east'>󰝚</span>{}",
+    "format": "<span gravity='east'> </span>{}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
@@ -94,7 +94,7 @@
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "interval": 5,
     "tooltip": true,
-    "tooltip-format": "SSID: {essid} {icon}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "tooltip-format": "SSID: {essid}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e iwctl",
   },
 
