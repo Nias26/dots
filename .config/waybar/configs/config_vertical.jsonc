@@ -66,6 +66,7 @@
     "format-disabled": "",
     "format-off": "󰂲",
     "format-on": "󰂯",
+    "format-no-controller": "󰂲",
     "format-connected": "󰂱",
     "tooltip-format": "Connections: {num_connections}\nDevices: {device_enumerate}",
     "tooltip-format-enumerate-connected": " - {device_alias} ({device_address})",

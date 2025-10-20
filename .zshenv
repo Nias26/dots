@@ -52,3 +52,4 @@ export _ZO_RESOLVE_SYMLINKS=1
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-runtime"
+export _JAVA_AWT_WM_NONREPARENTING=1
