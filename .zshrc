@@ -26,7 +26,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   fzf-marks
-	zsh-vi-mode
+	# zsh-vi-mode
 )
 
 # Plugins Configs
