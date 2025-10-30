@@ -18,7 +18,7 @@
     "format": "{icon}",
     "format-icons": "",
     "tooltip": false,
-    "on-click": "vicinae",
+    "on-click": "vicinae toggle",
   },
 
   "hyprland/workspaces": {
