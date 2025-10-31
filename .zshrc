@@ -116,7 +116,6 @@ alias s='sudo'
 alias lg='lazygit'
 alias xcopy='xclip -selection clipboard'
 alias wcopy='wl-copy'
-alias t='touch'
 # alias dmesg='sudo dmesg -wH --color=always'
 alias checkpkg="pacman -Qkk"
 alias downgrade="sudo downgrade"
@@ -129,7 +128,6 @@ alias venv="source .venv/bin/activate"
 bindkey "^[[1~" beginning-of-line # HOME
 bindkey "^[[4~" end-of-line       # END
 bindkey "^[[3~" delete-char       # DEL
-bindkey -s "^[l" "clear\n"  # Clear screen (really useful)
 
 # Theme Settings
 HEADLINE_TRUNC_PREFIX='…'
@@ -162,6 +160,7 @@ tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached
 	grep 'not attached$' | \
 	tail -n 1 | \
 	cut -d '|' -f1) 2> /dev/null;	echo ${sess}) 2>/dev/null || tmux new-session &>/dev/null
+
 # INFO:If not in tmux session, exit
 if [[ -z $TMUX ]]; then
 	exit
