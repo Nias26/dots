@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 get_album_art() {
-    url=$(playerctl -f "{{mpris:arturl}}" metadata)
+    url=$(playerctl metadata mpris:artUrl)
     if [[ $url == "file://"* ]]; then
         echo "${url/file:\/\//}"
     elif [[ $url == "http://"* ]] || [[ $url == "https://"* ]]; then
