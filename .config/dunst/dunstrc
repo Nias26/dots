@@ -3,7 +3,7 @@
     width = (0, 1500)
     height = (0, 950)
     origin = top-right
-    offset = (58, 70)
+    # offset = (58, 70)
     scale = 0
     notification_limit = 10
     progress_bar = true
