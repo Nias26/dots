@@ -11,6 +11,7 @@ next(){
     swww img --fill-color=161616 "${WALLPAPER}"
   else
     swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
+    cp ${WALLPAPER} /tmp/lockscreen-img
   fi
 }
 
@@ -21,15 +22,7 @@ get_time(){
 loop(){
   # Infinite loop
   while true; do
-    # Check for current wallpaper
-    CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
-    # Get random wallpaper
-    WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
-    if [[ ${WALLPAPER##*.} == "gif" ]]; then
-      swww img --fill-color=161616 "${WALLPAPER}"
-    else
-      swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
-    fi
+    next
 
     # Inizialize timer
     echo -n "${WALLPAPER_SLEEP_TIME}" > "${TIMER_FILE}"
