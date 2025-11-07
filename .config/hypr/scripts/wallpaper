@@ -11,7 +11,7 @@ next(){
     swww img --fill-color=161616 "${WALLPAPER}"
   else
     swww img --resize=fit --fill-color=161616 "${WALLPAPER}"
-    cp ${WALLPAPER} /tmp/lockscreen-img
+    cp "${WALLPAPER}" /tmp/current-wallpaper
   fi
 }
 
