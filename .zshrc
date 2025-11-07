@@ -123,6 +123,7 @@ alias neofetch="fastfetch"
 alias open="xdg-open"
 alias btui="bluetui"
 alias venv="source .venv/bin/activate"
+alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"
 
 # Set Personal Bindkeys
 bindkey "^[[1~" beginning-of-line # HOME
