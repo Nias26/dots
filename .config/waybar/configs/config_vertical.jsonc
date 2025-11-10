@@ -55,6 +55,9 @@
     "tooltip": false,
     "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
     "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "on-scroll-down": "playerctl next",
+    "on-scroll-up": "playerctl previous",
     "max-length": 50,
   },
 
