@@ -2,6 +2,7 @@
 {
   "layer": "top",
   "position": "left",
+  "fixed-center": false,
   "modules-left": ["custom/menu", "hyprland/workspaces"],
   "modules-center": ["custom/music"],
   "modules-right": [
