@@ -169,3 +169,6 @@ fi
 
 # Keychain (ssh)
 eval $(keychain --eval --quiet Github)
+
+# Luarocks
+eval $(luarocks path)
