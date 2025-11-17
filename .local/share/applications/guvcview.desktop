@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Guvcview
+Comment=Graphical application for webcam
+Exec=guvcview
+Icon=/usr/share/icons/Papirus-Dark/16x16/devices/camera.svg
+Terminal=false
+Categories=Photo;Camera;
+Keywords=camera;photo;

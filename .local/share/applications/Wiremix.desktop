@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wiremix
+Comment=Manage pipewire audio values
+Exec=wiremix
+Icon=pipewire
+Terminal=true
+Categories=Audio;AudioVideo;System;ConsoleOnly;

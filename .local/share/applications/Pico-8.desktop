@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Pico-8
+Comment=PICO-8 Fantasy Console
+Icon=/home/Nias/Windows/Standalone/pico-8/lexaloffle-pico8.png
+Exec=/home/Nias/Windows/Standalone/pico-8/pico8
+Terminal=false
+Categories=Game;GameEngine;
+Keywords=pico;lezaloffle;

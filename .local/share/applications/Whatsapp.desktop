@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Whatsapp
+Comment=Simple, reliable, private messaging and calling for free*, available all over the world.
+Exec=xdg-open https://web.whatsapp.com
+Icon=/usr/share/icons/Papirus-Dark/16x16/apps/whatsapp.svg
+Terminal=false
+Categories=Chat;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ncmpcpp
+Comment=Featureful ncurses based MPD client inspired by ncmpc
+Icon=/usr/share/icons/Papirus-Dark/16x16/devices/audio-card.svg
+Exec=ncmpcpp
+Terminal=true
+Categories=Music;Player;ConsoleOnly;
+Keywords=music;player;mpd;
