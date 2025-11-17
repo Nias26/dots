@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# DONE: give choice to freeze timer for static wallpaper
 # TODO: implement usage with vicinae
 # TODO: implement use of notification daemon
 
@@ -21,7 +20,7 @@ next(){
     cp "$WALLPAPER" /tmp/current-wallpaper
   fi
 
-  # BUG:Timer will continue. Now write detected
+  # BUG:Timer will continue. No write detected
   while true; do
     {
       flock -n 200 && break
