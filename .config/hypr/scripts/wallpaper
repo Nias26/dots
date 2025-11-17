@@ -9,6 +9,7 @@ TIMER_FILE="/tmp/wallpaper_timer"
 TIMER_STOP="/tmp/wallpaper_stop"
 
 TIMER_FILE_LOCK="/tmp/wallpaper_timer.lock"
+WALLPAPER_CURRENT="/tmp/wallpaper_current"
 
 next(){
   CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
@@ -19,6 +20,8 @@ next(){
     swww img --resize=fit --fill-color=161616 "$WALLPAPER"
     cp "$WALLPAPER" /tmp/current-wallpaper
   fi
+
+  cp "$WALLPAPER" "$WALLPAPER_CURRENT"
 
   # BUG:Timer will continue. No write detected
   while true; do
