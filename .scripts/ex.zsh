@@ -30,9 +30,8 @@ ex ()
       *.tar.gz|*.tgz)    tar xzf "$file" -C "$base" ;;
       *.tar.xz)          tar xJf "$file" -C "$base" ;;
       *.tar)             tar xf "$file" -C "$base" ;;
-      *.zip)             unzip -d "$base" "$file" ;;
       *.rar)             unrar x "$file" "$base" ;;
-      *.7z)              7z x "$file" "-o$base" ;;
+      *.7z|*.zip)        7z x "$file" -o "$base" ;;
       *.bz2)             bunzip2 -c "$file" > "$base/$(basename "$base")" ;;
       *.gz)              gunzip -c "$file" > "$base/$(basename "$base")" ;;
       *.Z)               uncompress -c "$file" > "$base/$(basename "$base")" ;;
