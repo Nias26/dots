@@ -14,24 +14,24 @@ WALLPAPER_CURRENT="/tmp/wallpaper_current"
 next(){
   CURRENT_WALL=$(swww query | awk '{ print $8 }' | xargs basename)
   WALLPAPER=$(find "$WALLPAPER_DIR" -type d -name ".git" -prune -o -type f ! -name "$CURRENT_WALL" -print | shuf -n 1)
-  if [[ ${WALLPAPER##*.} == "gif" ]]; then
-    swww img --fill-color=161616 "$WALLPAPER"
-  else
-    swww img --resize=fit --fill-color=161616 "$WALLPAPER"
-    cp "$WALLPAPER" /tmp/current-wallpaper
-  fi
+  # if [[ ${WALLPAPER##*.} == "gif" ]]; then
+  #   swww img --fill-color=161616 "$WALLPAPER"
+  # else
+  #   swww img --resize=fit --fill-color=161616 "$WALLPAPER"
+  # fi
+
+  swww img --fill-color=161616 "$WALLPAPER"
 
   cp "$WALLPAPER" "$WALLPAPER_CURRENT"
 
   # BUG:Timer will continue. No write detected
-  while true; do
-    {
-      flock -n 200 && break
-      echo "writing to timer file"
-      echo -n "$WALLPAPER_SLEEP_TIME" | tee "$TIMER_FILE"
-
-    } 200>"$TIMER_FILE_LOCK"
-  done
+  # while true; do
+  #   {
+  #     flock -n 200 && break
+  #     echo "writing to timer file"
+  #     echo -n "$WALLPAPER_SLEEP_TIME" | tee "$TIMER_FILE"
+  #   } 200>"$TIMER_FILE_LOCK"
+  # done
 }
 
 stop(){
@@ -69,7 +69,7 @@ loop(){
         echo -n "$timer" > "$TIMER_FILE"
         sleep 1
       else
-        break 
+        break
       fi
     done
   done
@@ -86,7 +86,7 @@ main(){
     "resume") resume
       ;;
     "")
-      if ! pgrep -f "${0}" | grep -v "${$}" 1>/dev/null; then 
+      if ! pgrep -f "${0}" | grep -v "${$}" 1>/dev/null; then
         if [[  -e $TIMER_FILE ]]; then
           rm "$TIMER_FILE"
         fi
