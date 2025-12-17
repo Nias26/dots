@@ -56,7 +56,7 @@ cx() {
   v() { ((verbose)) && echo "$@"; }
 
   case "$alg" in
-    zip)     zip "$out" "$@" ;;
+    zip)     zip -r "$out" "$@" ;;
     rar)     rar a "$out" "$@" ;;
     7z)      7z a "$out" "$@" ;;
 
