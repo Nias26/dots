@@ -3,13 +3,13 @@
 # AUR Helper
 # Install packages
 function in() {
-    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S --needed
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S --needed
 }
 bindkey -s "^[i" "in\n"
 
 # Remove installed packages
 function re() {
-    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 bindkey -s "^[r" "re\n"
 
@@ -43,7 +43,7 @@ function fzf-tmux-sessions(){
   --preview-window=up:70% \
   --preview 'tmux list-windows -t $(echo {} | sed "s/ .*//" ) -F "  Window: #I - #W - active pane: #{pane_current_command}"' |
   sed 's/ .*//' |
-  xargs tmux switchc -t 
+  xargs tmux switchc -t
 }
 bindkey -s "^[s" "fzf-tmux-sessions\n"
 
