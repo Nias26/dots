@@ -26,6 +26,16 @@
       "opacity": 0.8
    },
    "providers": {
+      "files": {
+         "entrypoints": {
+            "rebuild-index": {
+               "alias": ">!"
+            },
+            "search": {
+               "alias": ">"
+            }
+         }
+      },
       "power": {
          "entrypoints": {
             "hibernate": {
