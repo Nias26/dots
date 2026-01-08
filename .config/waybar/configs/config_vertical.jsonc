@@ -3,10 +3,12 @@
   "layer": "top",
   "position": "left",
   "fixed-center": false,
+  "on-sigusr1": "hide",
+  "on-sigusr2": "show",
   "modules-left": ["custom/menu", "hyprland/workspaces"],
   "modules-center": ["custom/music"],
   "modules-right": [
-    "tray", 
+    "tray",
     "bluetooth",
     "battery",
     "network",
