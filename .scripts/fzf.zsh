@@ -37,13 +37,13 @@ function ytd(){
 }
 
 # tmux
-function fzf-tmux-sessions(){
-  tmux ls -F'#{session_name} [#{window_name}] | #{?session_attached,󰁦 attached,󱫃 not attached}' |
-  fzf --tmux center \
-  --preview-window=up:70% \
-  --preview 'tmux list-windows -t $(echo {} | sed "s/ .*//" ) -F "  Window: #I - #W - active pane: #{pane_current_command}"' |
-  sed 's/ .*//' |
-  xargs tmux switchc -t
+function fzf-tmux-sessions () {
+    tmux ls -F '#{session_name} [#{window_name}] | #{?session_attached,󰁦 attached,󱫃 not attached}' | \
+    fzf --tmux center \
+    --preview-window=up:70% \
+    --preview 'tmux capture-pane -ept $(echo {} | cut -d" " -f1)' | \
+    sed 's/ .*//' |
+    xargs tmux switchc -t
 }
 bindkey -s "^[s" "fzf-tmux-sessions\n"
 
