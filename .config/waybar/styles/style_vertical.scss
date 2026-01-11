@@ -21,7 +21,7 @@ $yellow: #ffab91;
 
 menu {
   margin: 2px;
-  padding: 4px 2px;
+  padding: 4px 1px;
   border-radius: 10px;
   background: #101010;
   color: $white;
@@ -38,21 +38,23 @@ tooltip {
   font-size: 14px;
 }
 
-#waybar {
-  background: $black;
+#waybar{
+  background: transparent;
   color: $white;
   margin: 0px;
   min-height: 0;
-  border: 2px solid;
-  border-color: $light-black;
 }
 
 #workspaces {
-  margin-top: 5px;
+  // margin-top: 5px;
   margin-left: 2px;
   margin-right: 2px;
   background: $black;
   font-weight: bold;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid $black;
 
   button {
     color: $purple;
@@ -85,17 +87,21 @@ button {
 #bluetooth,
 #custom-power {
   background-color: $black;
-  padding: 0.3rem 2px;
-  margin: 5px 2px;
+  padding: 0.5rem 1px;
+  margin: 0px 2px;
 }
 
 #network {
-  padding-left: 2px;
+  padding-left: 1px;
 }
 
 #custom-menu{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid $black;
   color: $green;
   padding-right: 4px;
+  margin-top: 4px;
 }
 
 #clock {
@@ -116,7 +122,10 @@ button {
 }
 
 #bluetooth {
-  color: $blue
+  color: $blue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid $black;
 }
 
 #wireplumber {
@@ -126,8 +135,20 @@ button {
 
 #custom-music {
   color: $purple;
+  border-radius: 10px;
+  border: 1px solid $black;
 }
 
 #custom-power {
   color: $red;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid $black;
+  margin-bottom: 4px;
+}
+
+#tray {
+  margin-bottom: 6px;
+  border-radius: 10px;
+  border: 1px solid $black;
 }

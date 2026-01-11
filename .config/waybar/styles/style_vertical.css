@@ -5,7 +5,7 @@
 
 menu {
   margin: 2px;
-  padding: 4px 2px;
+  padding: 4px 1px;
   border-radius: 10px;
   background: #101010;
   color: #f2f4f8;
@@ -22,20 +22,20 @@ tooltip {
 }
 
 #waybar {
-  background: #161616;
+  background: transparent;
   color: #f2f4f8;
   margin: 0px;
   min-height: 0;
-  border: 2px solid;
-  border-color: #262626;
 }
 
 #workspaces {
-  margin-top: 5px;
   margin-left: 2px;
   margin-right: 2px;
   background: #161616;
   font-weight: bold;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid #161616;
 }
 #workspaces button {
   color: #be95ff;
@@ -64,17 +64,21 @@ button {
 #bluetooth,
 #custom-power {
   background-color: #161616;
-  padding: 0.3rem 2px;
-  margin: 5px 2px;
+  padding: 0.5rem 1px;
+  margin: 0px 2px;
 }
 
 #network {
-  padding-left: 2px;
+  padding-left: 1px;
 }
 
 #custom-menu {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid #161616;
   color: #42be65;
   padding-right: 4px;
+  margin-top: 4px;
 }
 
 #clock {
@@ -94,6 +98,9 @@ button {
 
 #bluetooth {
   color: #33b1ff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid #161616;
 }
 
 #wireplumber {
@@ -103,10 +110,22 @@ button {
 
 #custom-music {
   color: #be95ff;
+  border-radius: 10px;
+  border: 1px solid #161616;
 }
 
 #custom-power {
   color: #ff7eb6;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid #161616;
+  margin-bottom: 4px;
+}
+
+#tray {
+  margin-bottom: 6px;
+  border-radius: 10px;
+  border: 1px solid #161616;
 }
 
 /*# sourceMappingURL=style_vertical.css.map */
