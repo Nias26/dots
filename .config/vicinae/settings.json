@@ -9,9 +9,12 @@
 // Learn more about configuration at https://docs.vicinae.com/config
 
 {
+   "$schema": "https://vicinae.com/schemas/config.json",
    "close_on_focus_loss": true,
+   "consider_preedit": false,
    "pop_to_root_on_close": true,
    "favicon_service": "twenty",
+   "search_files_in_root": false,
    "font": {
       "normal": {
          "family": "JetBrainsMono NF"
@@ -26,10 +29,735 @@
       "opacity": 0.8
    },
    "providers": {
+      "@HelloImSteven/store.raycast.sips": {
+         "enabled": false
+      },
+      "@HenriChabrand/store.raycast.notion": {
+         "enabled": false
+      },
+      "applications": {
+         "preferences": {
+            "paths": [
+               "/home/Nias/.local/share/applications",
+               "/var/lib/flatpak/exports/share/applications",
+               "/usr/share/applications"
+            ]
+         },
+         "entrypoints": {
+            "CiscoPacketTracerPtsa-9.0.0": {
+               "enabled": false
+            },
+            "assistant": {
+               "enabled": false
+            },
+            "avahi-discover": {
+               "enabled": false
+            },
+            "bssh": {
+               "enabled": false
+            },
+            "bvnc": {
+               "enabled": false
+            },
+            "com.zamaudio.zamautosat": {
+               "enabled": false
+            },
+            "com.zamaudio.zamaximx2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamcomp": {
+               "enabled": false
+            },
+            "com.zamaudio.zamcompx2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamdelay": {
+               "enabled": false
+            },
+            "com.zamaudio.zamdynamiceq": {
+               "enabled": false
+            },
+            "com.zamaudio.zameq2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamgate": {
+               "enabled": false
+            },
+            "com.zamaudio.zamgatex2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamgeq31": {
+               "enabled": false
+            },
+            "com.zamaudio.zamgrains": {
+               "enabled": false
+            },
+            "com.zamaudio.zamheadx2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamphono": {
+               "enabled": false
+            },
+            "com.zamaudio.zamtube": {
+               "enabled": false
+            },
+            "com.zamaudio.zamulticomp": {
+               "enabled": false
+            },
+            "com.zamaudio.zamulticompx2": {
+               "enabled": false
+            },
+            "com.zamaudio.zamverb": {
+               "enabled": false
+            },
+            "designer": {
+               "enabled": false
+            },
+            "electron34": {
+               "enabled": false
+            },
+            "groovy": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x2_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x2_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x4_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x4_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x8_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ab_tester_x8_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_art_delay_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_art_delay_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_autogain_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_autogain_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_beat_breather_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_beat_breather_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_chorus_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_chorus_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_clipper_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_clipper_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_comp_delay_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_comp_delay_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_comp_delay_x2_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_crossover_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_crossover_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_crossover_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_crossover_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_dyna_processor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_dyna_processor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_dyna_processor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_dyna_processor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_expander_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_expander_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_expander_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_expander_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_filter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_filter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_flanger_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_flanger_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gate_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gate_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gate_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gate_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gott_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gott_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gott_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_gott_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x16_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x16_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x16_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x16_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x32_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x32_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x32_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_graph_equalizer_x32_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_impulse_responses_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_impulse_responses_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_impulse_reverb_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_impulse_reverb_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_latency_meter": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_limiter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_limiter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_loud_comp_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_loud_comp_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_matcher_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_matcher_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_clipper_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_clipper_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_dyna_processor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_dyna_processor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_dyna_processor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_dyna_processor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_expander_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_expander_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_expander_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_expander_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_gate_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_gate_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_gate_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_gate_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_limiter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_limiter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_ringmod_sc_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mb_ringmod_sc_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x16_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x16_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x4_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x4_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x8_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_mixer_x8_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x12": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x12_do": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x24": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x24_do": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x48": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_multisampler_x48_do": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_noise_generator_x1": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_noise_generator_x2": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_noise_generator_x4": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_oscillator_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_oscilloscope_x1": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_oscilloscope_x2": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_oscilloscope_x4": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x16_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x16_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x16_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x16_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x32_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x32_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x32_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_para_equalizer_x32_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_phase_detector": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_phaser_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_phaser_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_profiler_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_profiler_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_referencer_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_referencer_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_return_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_return_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ringmod_sc_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_ringmod_sc_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_room_builder_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_room_builder_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sampler_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sampler_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_autogain_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_autogain_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_dyna_processor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_dyna_processor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_dyna_processor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_dyna_processor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_expander_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_expander_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_expander_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_expander_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gate_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gate_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gate_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gate_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gott_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gott_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gott_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_gott_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_limiter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_limiter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_matcher_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_matcher_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_compressor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_compressor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_compressor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_compressor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_dyna_processor_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_dyna_processor_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_dyna_processor_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_dyna_processor_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_expander_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_expander_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_expander_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_expander_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_gate_lr": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_gate_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_gate_ms": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_gate_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_limiter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_sc_mb_limiter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_send_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_send_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_slap_delay_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_slap_delay_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x1": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x12": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x16": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x2": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x4": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_spectrum_analyzer_x8": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_surge_filter_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_surge_filter_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_trigger_midi_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_trigger_midi_stereo": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_trigger_mono": {
+               "enabled": false
+            },
+            "in.lsp_plug.lsp_plugins_trigger_stereo": {
+               "enabled": false
+            },
+            "linguist": {
+               "enabled": false
+            },
+            "lstopo": {
+               "enabled": false
+            },
+            "mopidy": {
+               "enabled": false
+            },
+            "neovide": {
+               "enabled": false
+            },
+            "packettracer": {
+               "enabled": false
+            },
+            "qdbusviewer": {
+               "enabled": false
+            },
+            "qv4l2": {
+               "enabled": false
+            },
+            "qvidcap": {
+               "enabled": false
+            },
+            "rofi": {
+               "enabled": false
+            },
+            "rofi-theme-selector": {
+               "enabled": false
+            },
+            "scrcpy-console": {
+               "enabled": false
+            },
+            "tageditor-renamingutility": {
+               "enabled": false
+            },
+            "uuctl": {
+               "enabled": false
+            },
+            "xgps": {
+               "enabled": false
+            },
+            "xgpsspeed": {
+               "enabled": false
+            }
+         }
+      },
+      "calculator": {
+         "enabled": false,
+         "entrypoints": {
+            "history": {
+               "enabled": false
+            },
+            "refresh-rates": {
+               "enabled": false
+            }
+         }
+      },
+      "core": {
+         "entrypoints": {
+            "inspect-local-storage": {
+               "enabled": true
+            }
+         }
+      },
       "files": {
          "entrypoints": {
             "rebuild-index": {
-               "alias": ">!"
+               "enabled": true
             },
             "search": {
                "alias": ">"
@@ -45,13 +773,29 @@
                "preferences": {
                   "customProgram": "hyprlock"
                }
+            },
+            "sleep": {
+               "enabled": false
+            },
+            "soft-reboot": {
+               "enabled": false
             }
          }
       },
       "system": {
          "entrypoints": {
             "run": {
-               "alias": "!"
+               "preferences": {
+                  "default-action": "run"
+               }
+            }
+         }
+      },
+      "theme": {
+         "enabled": false,
+         "entrypoints": {
+            "set": {
+               "enabled": false
             }
          }
       }
