@@ -101,7 +101,7 @@
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "interval": 5,
     "tooltip": true,
-    "tooltip-format": "SSID: {essid}\nIp: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "tooltip-format": "SSID: {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e impala",
     "on-click-right": "iwctl station wlan0 scan"
   },
