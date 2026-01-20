@@ -53,8 +53,6 @@ cx() {
   [[ -z "$alg" ]] && alg=$(auto_alg_from_ext "$out")
   [[ -z "$alg" ]] && { echo "Cannot detect algorithm; use -a."; return 1; }
 
-  v() { ((verbose)) && echo "$@"; }
-
   case "$alg" in
     rar)     rar a "$out" "$@" ;;
     7z|zip)  7z a "$out" "$@" ;;
@@ -67,6 +65,6 @@ cx() {
     *) echo "Unsupported algorithm: $alg"; return 1 ;;
   esac
 
-  v "Created Archive -> $out"
+  echo "Created Archive -> $out"
 }
 
