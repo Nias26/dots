@@ -1,3 +1,6 @@
+[EffectsPipelines]
+useCubicVolumes=true
+
 [Presets]
 lastLoadedOutputPreset=Equalizzatore
 
@@ -13,15 +16,17 @@ visiblePlugin=maximizer#0
 blocklist=WEBRTC VoiceEngine
 mostUsedPresets=Equalizzatore
 outputDevice=alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink
-plugins=equalizer#0,bass_enhancer#0
-usedPresets=Equalizzatore:101
+plugins=equalizer#0,bass_enhancer#0,exciter#0
+usedPresets=Equalizzatore:132
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
+
+[Style]
+forceBreezeTheme=false
 
 [Window]
 autostartOnLogin=true
 height=790
 lastLoadedInputPreset=Amplificatore Microfono
 lastLoadedOutputPreset=Equalizzatore
-visiblePresetSheetPage=autoloadingPage
-width=632
+width=1270
