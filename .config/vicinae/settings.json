@@ -749,10 +749,46 @@
       },
       "core": {
          "entrypoints": {
+            "documentation": {
+               "enabled": false
+            },
             "inspect-local-storage": {
+               "enabled": false
+            },
+            "keybind-settings": {
+               "enabled": false
+            },
+            "list-extensions": {
+               "enabled": true
+            },
+            "manage-fallback": {
+               "enabled": false
+            },
+            "oauth-token-store": {
+               "enabled": false
+            },
+            "open-config-file": {
+               "enabled": false
+            },
+            "open-default-config": {
+               "enabled": false
+            },
+            "reload-scripts": {
+               "enabled": false
+            },
+            "report-bug": {
+               "enabled": false
+            },
+            "sponsor": {
+               "enabled": false
+            },
+            "store": {
                "enabled": true
             }
          }
+      },
+      "developer": {
+         "enabled": false
       },
       "files": {
          "entrypoints": {
@@ -763,6 +799,9 @@
                "alias": ">"
             }
          }
+      },
+      "manage-shortcuts": {
+         "enabled": false
       },
       "power": {
          "entrypoints": {
@@ -786,7 +825,7 @@
          "entrypoints": {
             "run": {
                "preferences": {
-                  "default-action": "run"
+                  "default-action": "run-in-terminal"
                }
             }
          }
@@ -798,6 +837,9 @@
                "enabled": false
             }
          }
+      },
+      "wm": {
+         "enabled": false
       }
    }
 }
