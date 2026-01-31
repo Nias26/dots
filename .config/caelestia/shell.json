@@ -433,7 +433,7 @@
   "session": {
     "enabled": true,
     "dragThreshold": 30,
-    "vimKeybinds": false,
+    "vimKeybinds": true,
     "commands": {
       "logout": [
         "loginctl",
@@ -517,7 +517,7 @@
     "audioIncrement": 0.1,
     "maxVolume": 1,
     "smartScheme": true,
-    "defaultPlayer": "Youtube Music",
+    "defaultPlayer": "YouTube Music",
     "playerAliases": [
       {
         "from": "com.github.th_ch.youtube_music",
