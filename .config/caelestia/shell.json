@@ -63,7 +63,7 @@
         {
           "idleAction": [
             "systemctl",
-            "suspend-then-hibernate"
+            "suspend"
           ],
           "timeout": 600
         }
@@ -73,7 +73,7 @@
   "background": {
     "enabled": true,
     "desktopClock": {
-      "enabled": true,
+      "enabled": false,
       "scale": 1,
       "position": "bottom-right",
       "invertColors": false,
@@ -89,7 +89,7 @@
       }
     },
     "visualiser": {
-      "enabled": true,
+      "enabled": false,
       "autoHide": true,
       "blur": false,
       "rounding": 1,
@@ -312,7 +312,8 @@
         "command": [
           "caelestia",
           "wallpaper",
-          "-r"
+          "-r",
+          "-N"
         ],
         "dangerous": false,
         "description": "Switch to a random wallpaper",
@@ -450,9 +451,11 @@
         "systemctl",
         "poweroff"
       ],
-      "hibernate": [
-        "systemctl",
-        "hibernate"
+      "lock": [
+        "caelestia",
+        "shell",
+        "lock",
+        "lock"
       ],
       "reboot": [
         "systemctl",
@@ -522,7 +525,7 @@
     "audioIncrement": 0.1,
     "maxVolume": 1,
     "smartScheme": true,
-    "defaultPlayer": "Spotify",
+    "defaultPlayer": "Youtube Music",
     "playerAliases": [
       {
         "from": "com.github.th_ch.youtube_music",
