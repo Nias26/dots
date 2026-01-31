@@ -451,7 +451,7 @@
         "systemctl",
         "poweroff"
       ],
-      "lock": [
+      "hibernate": [
         "caelestia",
         "shell",
         "lock",
