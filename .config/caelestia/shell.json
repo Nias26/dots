@@ -59,13 +59,6 @@
           "idleAction": "dpms off",
           "returnAction": "dpms on",
           "timeout": 300
-        },
-        {
-          "idleAction": [
-            "systemctl",
-            "suspend"
-          ],
-          "timeout": 600
         }
       ]
     }
@@ -444,8 +437,7 @@
     "commands": {
       "logout": [
         "loginctl",
-        "terminate-user",
-        ""
+        "terminate-user"
       ],
       "shutdown": [
         "systemctl",
@@ -500,7 +492,7 @@
       "numLockChanged": true,
       "kbLayoutChanged": true,
       "vpnChanged": true,
-      "nowPlaying": false
+      "nowPlaying": true
     },
     "vpn": {
       "enabled": false,
