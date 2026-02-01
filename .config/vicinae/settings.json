@@ -116,6 +116,9 @@
             "electron34": {
                "enabled": false
             },
+            "electron37": {
+               "enabled": false
+            },
             "groovy": {
                "enabled": false
             },
