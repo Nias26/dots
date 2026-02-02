@@ -32,7 +32,7 @@ export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Bat as manpager
 
 # Git credential store
-export GCM_CREDENTIAL_STORE=gpg
+export GCM_CREDENTIAL_STORE=secretservice
 
 # Sudo prompt
 # $(tput setaf <colour>)<text>$(tput sgr0)
