@@ -782,6 +782,9 @@
             "report-bug": {
                "enabled": false
             },
+            "settings": {
+               "enabled": true
+            },
             "sponsor": {
                "enabled": false
             },
@@ -842,7 +845,7 @@
          }
       },
       "wm": {
-         "enabled": false
+         "enabled": true
       }
    }
 }
