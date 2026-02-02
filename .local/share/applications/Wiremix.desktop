@@ -1,8 +1,12 @@
 [Desktop Entry]
-Type=Application
 Name=Wiremix
-Comment=Manage pipewire audio values
+GenericName=Audio Mixer
+Comment=Configure audio device settings
 Exec=wiremix
-Icon=pipewire
 Terminal=true
-Categories=Audio;AudioVideo;System;ConsoleOnly;
+Icon=pipewire
+Type=Application
+Keywords=pipewire;sound;audio
+Categories=Utility;Settings;ConsoleOnly
+StartupNotify=false
+
