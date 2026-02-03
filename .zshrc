@@ -105,7 +105,7 @@ alias lt='eza --tree --group-directories-first --icons=always'
 alias pacman='sudo pacman'
 alias pipes='pipes -p 3 -r 10000 -R'
 alias :q='tmux detach'
-alias exi='if [[ $(tmux list-windows | wc -l) > 1 ]]; then tmux kill-window; else tmux detach; fi'
+alias exi='tmux detach'
 alias clear='clear && shell-color'
 alias 'pacman -R'='pacman -Rns'
 alias rmf='rm -rf'
@@ -161,10 +161,12 @@ alias cdi='zi'
 # Attach to an detached session and if not create one
 
 if [ -z $TMUX ]; then
-  tmux attach -t $(sess=$(tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2> /dev/null | \
-    grep 'not attached$' | \
-    tail -n 1 | \
-    cut -d '|' -f1) 2> /dev/null;	echo ${sess}) 2>/dev/null || tmux new-session &>/dev/null
+  freesex=$(tmux ls -F '#{session_name} #{session_attached}' 2>/dev/null | grep ' 0$' | tail -n 1 | cut -d' ' -f1)
+  if [ -n "$freesex" ]; then
+    exec tmux attach-session -t "$freesex"
+  else
+    exec tmux new-session
+  fi
 fi
 
 # Keychain (ssh)
