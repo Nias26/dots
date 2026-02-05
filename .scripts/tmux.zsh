@@ -10,4 +10,3 @@ function fzf-tmux-sessions () {
 }
 bindkey -s "^[s" "fzf-tmux-sessions\n"
 
-

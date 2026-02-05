@@ -159,7 +159,6 @@ alias cdi='zi'
 
 # Tmux
 # Attach to an detached session and if not create one
-
 if [ -z $TMUX ]; then
   freesex=$(tmux ls -F '#{session_name} #{session_attached}' 2>/dev/null | grep ' 0$' | tail -n 1 | cut -d' ' -f1)
   if [ -n "$freesex" ]; then
