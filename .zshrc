@@ -169,7 +169,7 @@ if [ -z $TMUX ]; then
 fi
 
 # Keychain (ssh)
-eval $(keychain --eval --quiet Github)
+eval $(keychain --eval --quiet Github-Nias26 Github-Hlv-Std)
 
 # Luarocks
 eval $(luarocks path)
