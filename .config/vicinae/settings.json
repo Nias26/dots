@@ -750,6 +750,11 @@
             }
          }
       },
+      "clipboard": {
+         "preferences": {
+            "eraseOnStartup": true
+         }
+      },
       "core": {
          "entrypoints": {
             "documentation": {
@@ -812,7 +817,7 @@
       "power": {
          "entrypoints": {
             "hibernate": {
-               "enabled": true
+               "enabled": false
             },
             "lock": {
                "preferences": {
@@ -820,7 +825,7 @@
                }
             },
             "sleep": {
-               "enabled": false
+               "enabled": true
             },
             "soft-reboot": {
                "enabled": false
