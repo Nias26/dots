@@ -1,14 +1,18 @@
 #! /usr/bin/env sh
-# this is a example of .lessfilter, you can change it
+
 mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
-kind=${mime##*/}
+
+calc_height=$(( ${FZF_PREVIEW_LINES:-24} - 1 ))
+calc_width=${FZF_PREVIEW_COLUMNS:-80}
+
 if [ -d "$1" ]; then
-	eza --git -hla --color=always --icons "$1"
-elif [ "$category" = image ]; then
-	viu "$1"
-elif [ "$category" = text ]; then
+  eza --git -hla --color=always --icons "$1"
+elif [ "$category" = "image" ]; then
+  # chafa --format kitty --clear --size "${calc_width}x${calc_height}" "$1"
+  viu --width $calc_width --height $calc_height -t -b "$1"
+elif [ "$category" = "text" ] || [ "$mime" = "application/json" ]; then
   highlight -O ansi --force "$1"
 else
-  echo "No Preview"
+  file -b "$1"
 fi
