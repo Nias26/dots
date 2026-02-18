@@ -60,6 +60,7 @@ FZF_TAB_GROUP_COLORS=(
   zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
   zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
   export LESSOPEN='|~/.lessfilter %s'
+  export LESS="-R"
   zstyle ':fzf-tab:complete:*:options' fzf-preview
   zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
   zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
