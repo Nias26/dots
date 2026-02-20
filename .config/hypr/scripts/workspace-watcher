@@ -1,35 +1,76 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-HYPR_ADDR="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
-skip=0
+# NOTE: Vibe coded
 
-if [ ! -S "$HYPR_ADDR" ]; then
-  echo "Could not find Hyprland socket. Ensure you are running this inside Hyprland."
-  exit 1
-fi
+import socket
+import os
+import subprocess
+import json
+import time
 
-echo "Listening for Urgency signals..."
+# Setup paths
+runtime_dir = os.environ.get("XDG_RUNTIME_DIR")
+signature = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE")
+socket_path = f"{runtime_dir}/hypr/{signature}/.socket2.sock"
 
-socat -U - "UNIX-CONNECT:$HYPR_ADDR" | while read -r line; do
-if [[ "$line" == urgent* ]]; then
-  if [[ $skip -eq 0 ]]; then
-    skip=1
-    continue
-  else
-    skip=0
-    addr="0x${line#*>>}"
+# Tracking notification timestamps { "address": float_timestamp }
+last_notified = {}
+# Seconds to wait before allowing another notification for the same window
+COOLDOWN = 2.0
 
-    win_info=$(hyprctl clients -j | jq -r ".[] | select(.address == \"$addr\")")
 
-    title=$(echo "$win_info" | jq -r '.title')
-    class=$(echo "$win_info" | jq -r '.class')
-    workspace=$(echo "$win_info" | jq -r '.workspace.id')
+def notify(addr):
+    current_time = time.time()
 
-    notify-send -u critical -t 2500 -a "Hyprland" -i "dialog-warning" \
-      "🚨 Urgent: $class" \
-      "Window: $title\nWorkspace $workspace"
+    # Check if we've notified for this specific window address recently
+    if addr in last_notified:
+        if current_time - last_notified[addr] < COOLDOWN:
+            return  # This is a duplicate signal, ignore it
 
-    hyprctl dispatch focuswindow address:"$addr"
-  fi
-fi
-done
+    try:
+        # Get window info only when we know we need to notify
+        out = subprocess.check_output(["hyprctl", "clients", "-j"])
+        clients = json.loads(out)
+    except Exception:
+        return
+
+    for c in clients:
+        if c["address"] == addr:
+            # Update the timestamp immediately before notifying
+            last_notified[addr] = current_time
+
+            subprocess.run(
+                [
+                    "notify-send",
+                    "-t",
+                    "2000",
+                    "-u",
+                    "critical",
+                    "-a",
+                    "Hyprland",
+                    f"🚨 Urgent: {c['class']}",
+                    c[f"title"],
+                ]
+            )
+            break
+
+
+# Connect to Hyprland socket
+client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+client.connect(socket_path)
+
+while True:
+    data = client.recv(1024).decode("utf-8")
+    if not data:
+        break
+
+    for line in data.splitlines():
+        # Event format: urgent>>[address]
+        if line.startswith("urgent>>"):
+            addr = "0x" + line.split(">>")[1]
+            notify(addr)
+
+        # Cleanup tracking when a window is closed
+        elif line.startswith("closewindow>>"):
+            addr = "0x" + line.split(">>")[1]
+            last_notified.pop(addr, None)
