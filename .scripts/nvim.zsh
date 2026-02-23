@@ -16,5 +16,9 @@ function lazy(){
   NVIM_APPNAME=lazy $NVIM_BIN $@
 }
 
+function vdiff(){
+  NVIM_APPNAME=vdiff $NVIM_BIN $@
+}
+
 alias nvim="${NVIM_BIN}"
 alias vi='/usr/bin/vim'
