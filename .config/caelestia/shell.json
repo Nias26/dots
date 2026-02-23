@@ -437,7 +437,8 @@
     "commands": {
       "logout": [
         "loginctl",
-        "terminate-user"
+        "terminate-user",
+        "1000"
       ],
       "shutdown": [
         "systemctl",
