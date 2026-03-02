@@ -3,17 +3,19 @@
   "layer": "top",
   "position": "left",
   "fixed-center": false,
-  "on-sigusr1": "hide",
+  "reload_style_on_change": true,
+  // "on-sigusr1": "hide",
+  "on-sigusr1": "reload",
   "on-sigusr2": "show",
   "modules-left": ["custom/menu", "hyprland/workspaces"],
   "modules-center": ["custom/music"],
   "modules-right": [
     "tray",
+    "clock",
+    "wireplumber",
+    "network",
     "bluetooth",
     "battery",
-    "network",
-    "wireplumber",
-    "clock",
     "custom/power",
   ],
 
@@ -41,6 +43,7 @@
       "10": "",
       "magic": "󰘫",
       "urgent": "󰽬",
+      "default": "",
     },
     "persistent-workspaces": {
       "1": [],
@@ -51,7 +54,7 @@
 
   "custom/music": {
     "rotate": 270,
-    "format": "<span gravity='east'> </span>{}",
+    "format": "  {}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
@@ -65,7 +68,37 @@
 
   "tray": {
     "icon-size": 16,
-    "spacing": 10,
+    "spacing": 8,
+  },
+
+  "clock": {
+    "timezone": "Europe/Rome",
+    "tooltip": true,
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%d/%m/%y - %A}",
+    "interval": 1,
+  },
+
+  "wireplumber": {
+    "format": "{icon}",
+    "tooltip-format": "{volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "on-click": "kitty -e wiremix",
+  },
+
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "SSID: {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "on-click": "kitty -e impala",
+    "on-click-right": "iwctl station wlan0 scan"
   },
 
   "bluetooth": {
@@ -92,36 +125,6 @@
     "format-charging": "󰚥",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 ,
-  },
-
-  "network": {
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤮",
-    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
-    "interval": 5,
-    "tooltip": true,
-    "tooltip-format": "SSID: {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
-    "on-click": "kitty -e impala",
-    "on-click-right": "iwctl station wlan0 scan"
-  },
-
-  "wireplumber": {
-    "format": "{icon}",
-    "tooltip-format": "{volume}%",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""],
-    },
-    "on-click": "kitty -e wiremix",
-  },
-
-  "clock": {
-    "timezone": "Europe/Rome",
-    "tooltip": true,
-    "format": "{:%H\n%M}",
-    "tooltip-format": "{:%d/%m/%y - %A}",
-    "interval": 1,
   },
 
   "custom/power": {

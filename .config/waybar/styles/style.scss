@@ -1,27 +1,30 @@
 /* TODO: Make the bar like caelestia shell
- * Use single color for the bar (green)
+ * Use single color for the bar (active)
  * And most importantly, no internal border
  * Order: Power, Battery (with proper icons), Bluetooth, Wifi, Keyboard Layout, calendar, tray, now playing, workspaces (show trailing for inactive), icon
  */
 $font: 'JetBrainsMono NerdFont';
 $fallback-font: 'Adwaita Sans';
 
-$black: #161616; // #050505
+$black: #050505;
+$inactive: #393939;
+$active: #42be65;
+$active-dim: #0b170f;
+$active-dim-light: #2f8648;
 $light-black: #262626;
+$urgent: #ff7eb6;
+
 $white: #f2f4f8;
 $darker-white: #dde1e6;
-$gray: #393939;
 $light-gray: #525252;
-$green: #42be65;
 $cyan: #82cfff;
 $blue: #33b1ff;
-$red: #ff7eb6;
 $purple: #be95ff;
 $yellow: #ffab91;
 
 *{
   font-family: $font, $fallback-font;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 menu {
@@ -44,42 +47,34 @@ tooltip {
 }
 
 #waybar{
-  background: transparent;
+  background: $black;
   color: $white;
-  margin: 0px;
-  min-height: 0;
 }
 
 #workspaces {
-  // margin-top: 5px;
-  margin-left: 2px;
-  margin-right: 2px;
-  background: $black;
+  margin: 2px 8px;
+  margin-left: 6px;
+  padding: 4px 2px;
   font-weight: bold;
-
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 1px solid $black;
+  background: $active-dim;
+  border: 0px solid transparent;
+  border-radius: 15px;
 
   button {
-    color: $purple;
+    all: unset;
+    margin: 2px;
+    padding: 6px;
+    // border: 1px solid red;
+    color: $inactive;
   }
 
   button.active {
-    color: $cyan;
+    color: $active;
   }
 
   button.urgent {
-    color: $green
+    color: $urgent
   }
-
-  button:hover{
-    border-color: transparent;
-  }
-}
-
-button {
-  background: transparent;
 }
 
 #custom-menu,
@@ -91,69 +86,55 @@ button {
 #network,
 #bluetooth,
 #custom-power {
-  background-color: $black;
   padding: 0.5rem 1px;
-  margin: 0px 2px;
+  // border: 1px solid red;
 }
 
 #network {
-  padding-left: 1px;
+  padding-right: 2px;
+  color: $active;
 }
 
 #custom-menu{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border: 1px solid $black;
-  color: $green;
-  padding-right: 4px;
+  color: $active;
+  padding-right: 6px;
   margin-top: 4px;
 }
 
 #clock {
-  color: $blue;
+  color: $active-dim-light;
+  padding-left: 3px;
 }
 
 #battery {
-  color: $green;
+  color: $active;
   padding-left: 3px;
 
   .charging {
-    color: $green;
+    color: $active;
   }
 
   .warning:not(.charging) {
-    color: $red;
+    color: $urgent;
   }
 }
 
 #bluetooth {
-  color: $blue;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border: 1px solid $black;
+  color: $active;
 }
 
 #wireplumber {
-  color: $red;
-  padding-right: 4px;
+  color: $active;
 }
 
 #custom-music {
-  color: $purple;
-  border-radius: 10px;
-  border: 1px solid $black;
+  color: $active;
 }
 
 #custom-power {
-  color: $red;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 1px solid $black;
-  margin-bottom: 4px;
+  color: $active;
 }
 
 #tray {
-  margin-bottom: 6px;
-  border-radius: 10px;
-  border: 1px solid $black;
+  padding-left: 3px;
 }

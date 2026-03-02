@@ -1,0 +1,115 @@
+/* TODO: Make the bar like caelestia shell
+ * Use single color for the bar (active)
+ * And most importantly, no internal border
+ * Order: Power, Battery (with proper icons), Bluetooth, Wifi, Keyboard Layout, calendar, tray, now playing, workspaces (show trailing for inactive), icon
+ */
+* {
+  font-family: "JetBrainsMono NerdFont", "Adwaita Sans";
+  font-size: 12px;
+}
+
+menu {
+  margin: 2px;
+  padding: 4px 1px;
+  border-radius: 10px;
+  background: #101010;
+  color: #f2f4f8;
+}
+menu menuitem:hover {
+  border-radius: inherit;
+  background: #262626;
+}
+
+tooltip {
+  background: #050505;
+  padding: 0.5rem 4px;
+  font-size: 14px;
+}
+
+#waybar {
+  background: #050505;
+  color: #f2f4f8;
+}
+
+#workspaces {
+  margin: 2px 8px;
+  margin-left: 6px;
+  padding: 4px 2px;
+  font-weight: bold;
+  background: #0b170f;
+  border: 0px solid transparent;
+  border-radius: 15px;
+}
+#workspaces button {
+  all: unset;
+  margin: 2px;
+  padding: 6px;
+  color: #393939;
+}
+#workspaces button.active {
+  color: #42be65;
+}
+#workspaces button.urgent {
+  color: #ff7eb6;
+}
+
+#custom-menu,
+#custom-music,
+#tray,
+#clock,
+#battery,
+#wireplumber,
+#network,
+#bluetooth,
+#custom-power {
+  padding: 0.5rem 1px;
+}
+
+#network {
+  padding-right: 2px;
+  color: #42be65;
+}
+
+#custom-menu {
+  color: #42be65;
+  padding-right: 6px;
+  margin-top: 4px;
+}
+
+#clock {
+  color: #2f8648;
+  padding-left: 3px;
+}
+
+#battery {
+  color: #42be65;
+  padding-left: 3px;
+}
+#battery .charging {
+  color: #42be65;
+}
+#battery .warning:not(.charging) {
+  color: #ff7eb6;
+}
+
+#bluetooth {
+  color: #42be65;
+}
+
+#wireplumber {
+  color: #42be65;
+}
+
+#custom-music {
+  color: #42be65;
+}
+
+#custom-power {
+  color: #42be65;
+}
+
+#tray {
+  padding-left: 3px;
+}
+
+/*# sourceMappingURL=style.css.map */
