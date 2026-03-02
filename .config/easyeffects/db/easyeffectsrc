@@ -17,7 +17,7 @@ blocklist=WEBRTC VoiceEngine
 mostUsedPresets=Equalizzatore
 outputDevice=alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink
 plugins=equalizer#0,bass_enhancer#0,exciter#0
-usedPresets=Equalizzatore:207
+usedPresets=Equalizzatore:208
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 
