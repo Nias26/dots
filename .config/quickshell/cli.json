@@ -1,0 +1,15 @@
+{
+    "record": {
+        "extraArgs": []
+    },
+    "theme": {
+        "enableTerm": false,
+        "enableHypr": false,
+        "enableDiscord": false,
+        "enableSpicetify": false,
+        "enableFuzzel": false,
+        "enableBtop": false,
+        "enableGtk": false,
+        "enableQt": false
+    },
+}
