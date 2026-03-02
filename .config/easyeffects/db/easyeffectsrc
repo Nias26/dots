@@ -17,7 +17,7 @@ blocklist=WEBRTC VoiceEngine
 mostUsedPresets=Equalizzatore
 outputDevice=alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink
 plugins=equalizer#0,bass_enhancer#0,exciter#0
-usedPresets=Equalizzatore:208
+usedPresets=Equalizzatore:210
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 
@@ -26,7 +26,7 @@ forceBreezeTheme=false
 
 [Window]
 autostartOnLogin=true
-height=790
+height=762
 lastLoadedInputPreset=Amplificatore Microfono
 lastLoadedOutputPreset=Equalizzatore
-width=1270
+width=593

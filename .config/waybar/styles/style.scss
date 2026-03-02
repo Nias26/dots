@@ -1,7 +1,12 @@
+/* TODO: Make the bar like caelestia shell
+ * Use single color for the bar (green)
+ * And most importantly, no internal border
+ * Order: Power, Battery (with proper icons), Bluetooth, Wifi, Keyboard Layout, calendar, tray, now playing, workspaces (show trailing for inactive), icon
+ */
 $font: 'JetBrainsMono NerdFont';
 $fallback-font: 'Adwaita Sans';
 
-$black: #161616;
+$black: #161616; // #050505
 $light-black: #262626;
 $white: #f2f4f8;
 $darker-white: #dde1e6;
