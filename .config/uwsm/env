@@ -1,7 +1,7 @@
 export QT_QPA_PLATFORMTHEME=qt6ct
 export GDK_SCALE=2
 export XCURSOR_PATH=$HOME/.local/share/icons:/usr/share/icons
-export XCURSOR_THEME=
-export XCUROSR_SIZE=
+export XCURSOR_THEME=Hornet_XCursor
+export XCUROSR_SIZE=32
 
 
