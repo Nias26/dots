@@ -96,7 +96,7 @@
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "interval": 5,
     "tooltip": true,
-    "tooltip-format": "SSID: {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}\nFrequency: {frequency}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e nmtui",
     "on-click-right": "nmcli d wifi rescan ifname wlan0"
   },
