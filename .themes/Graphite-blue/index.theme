@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Graphite-blue
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Graphite-blue
+MetacityTheme=Graphite-blue
+IconTheme=Tela-circle
+CursorTheme=Graphite-cursors
+ButtonLayout=close,minimize,maximize:menu
