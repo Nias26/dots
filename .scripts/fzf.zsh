@@ -3,13 +3,13 @@
 # AUR Helper
 # Install packages
 function in() {
-    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S --needed
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S --needed
 }
 bindkey -s "^[i" "in\n"
 
 # Remove installed packages
 function re() {
-    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 bindkey -s "^[r" "re\n"
 
