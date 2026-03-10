@@ -1,19 +1,22 @@
 # .zshenv file
-# Neovim binary file
+# Neovim binary executable
 export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$NVIM_BIN:$HOME/.scripts/bin:$HOME/.config/hypr/scripts:$PATH
 
 # Dirs
-export XDG_DOWNLOAD_DIR=$HOME/Scaricati
-export XDG_DOCUMENTS_DIR=$HOME/Documenti
-export XDG_MUSIC_DIR=$HOME/Musica
-export XDG_PICTURES_DIR=$HOME/Immagini
-export XDG_VIDEOS_DIR=$HOME/Video
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOCUMENTS_DIR="$HOME/Documenti"
+export XDG_DOWNLOAD_DIR="$HOME/Scaricati"
+export XDG_MUSIC_DIR="$HOME/Musica"
+export XDG_PICTURES_DIR="$HOME/Immagini"
+export XDG_PUBLICSHARE_DIR="$HOME/Pubblica"
+export XDG_TEMPLATES_DIR="$HOME/Modelli"
+export XDG_VIDEOS_DIR="$HOME/Video"
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/Screenshots
 
-# You may need to manually set your language environment
+# Language locale
 export LANG=it_IT.UTF-8
 
 # Preferred editor for local and remote sessions
