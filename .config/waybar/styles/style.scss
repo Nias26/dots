@@ -1,17 +1,11 @@
 $font: 'JetBrainsMono NerdFont';
 $fallback-font: 'Adwaita Sans';
 
-$black: #050505;
-$inactive: #393939;
-$active: #42be65;
-$active-dim: #0b170f;
-$active-dim-light: #2f8648;
-$light-black: #262626;
-$urgent: #ff7eb6;
-
-$white: #f2f4f8;
-$darker-white: #dde1e6;
-$light-gray: #525252;
+$black: #000000;
+$light-black: #232323;
+$soft: #FFEFD3;
+$red: #ff7eb6;
+$green: #42be65;
 $cyan: #82cfff;
 $blue: #33b1ff;
 $purple: #be95ff;
@@ -20,14 +14,15 @@ $yellow: #ffab91;
 *{
   font-family: $font, $fallback-font;
   font-size: 12px;
+  margin: 0px 4px;
 }
 
 menu {
   margin: 2px;
   padding: 4px 1px;
   border-radius: 10px;
-  background: #101010;
-  color: $white;
+  background: $black;
+  color: $soft;
 
   menuitem:hover {
     border-radius: inherit;
@@ -43,92 +38,58 @@ tooltip {
 
 #waybar{
   background: $black;
-  color: $white;
+  color: $soft;
 }
 
-#workspaces {
-  margin: 2px 8px;
-  margin-left: 6px;
-  padding: 4px 2px;
+#workspaces, #window {
   font-weight: bold;
-  background: $active-dim;
-  border: 0px solid transparent;
-  border-radius: 15px;
+  margin: 0px 8px;
 
   button {
     all: unset;
-    margin: 2px;
-    padding: 6px;
-    color: $inactive;
+    color: $soft;
   }
 
   button.active {
-    color: $active;
+    background: $green;
+    color: $black;
   }
 
   button.urgent {
-    color: $urgent
+    background: $red;
+    color: $black;
   }
 }
 
-#custom-menu,
+#custom-box,
 #custom-music,
 #tray,
 #clock,
 #battery,
 #wireplumber,
 #network,
-#bluetooth,
-#custom-power {
-  padding: 0.5rem 1px;
-  // border: 1px solid red;
+#bluetooth {
+  font-weight: bold;
+  margin: 0px 4px;
+  padding: 0px 4px;
 }
 
-#network {
-  padding-right: 2px;
-  color: $active;
-}
-
-#custom-menu{
-  color: $active;
-  padding-right: 6px;
-  margin-top: 4px;
-}
-
-#clock {
-  color: $active-dim-light;
-  padding-left: 3px;
+#custom-box {
+  padding: 0px 6px;
+  background: $blue;
+  color: $black;
 }
 
 #battery {
-  color: $active;
-  padding-left: 3px;
-
-  .charging {
-    color: $active;
+  .warning {
+    color: $yellow;
   }
 
-  .warning:not(.charging) {
-    color: $urgent;
+  .critical {
+    color: $red;
   }
-}
 
-#bluetooth {
-  color: $active;
-}
-
-#wireplumber {
-  color: $active;
-}
-
-#custom-music {
-  color: $active;
-}
-
-#custom-power {
-  color: $urgent;
-}
-
-#tray {
-  padding-left: 3px;
+  .full {
+    color: $green;
+  }
 }

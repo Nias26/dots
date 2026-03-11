@@ -1,108 +1,76 @@
 * {
   font-family: "JetBrainsMono NerdFont", "Adwaita Sans";
   font-size: 12px;
+  margin: 0px 4px;
 }
 
 menu {
   margin: 2px;
   padding: 4px 1px;
   border-radius: 10px;
-  background: #101010;
-  color: #f2f4f8;
+  background: #000000;
+  color: #FFEFD3;
 }
 menu menuitem:hover {
   border-radius: inherit;
-  background: #262626;
+  background: #232323;
 }
 
 tooltip {
-  background: #050505;
+  background: #000000;
   padding: 0.5rem 4px;
   font-size: 14px;
 }
 
 #waybar {
-  background: #050505;
-  color: #f2f4f8;
+  background: #000000;
+  color: #FFEFD3;
 }
 
-#workspaces {
-  margin: 2px 8px;
-  margin-left: 6px;
-  padding: 4px 2px;
+#workspaces, #window {
   font-weight: bold;
-  background: #0b170f;
-  border: 0px solid transparent;
-  border-radius: 15px;
+  margin: 0px 8px;
 }
-#workspaces button {
+#workspaces button, #window button {
   all: unset;
-  margin: 2px;
-  padding: 6px;
-  color: #393939;
+  color: #FFEFD3;
 }
-#workspaces button.active {
-  color: #42be65;
+#workspaces button.active, #window button.active {
+  background: #42be65;
+  color: #000000;
 }
-#workspaces button.urgent {
-  color: #ff7eb6;
+#workspaces button.urgent, #window button.urgent {
+  background: #ff7eb6;
+  color: #000000;
 }
 
-#custom-menu,
+#custom-box,
 #custom-music,
 #tray,
 #clock,
 #battery,
 #wireplumber,
 #network,
-#bluetooth,
-#custom-power {
-  padding: 0.5rem 1px;
-}
-
-#network {
-  padding-right: 2px;
-  color: #42be65;
-}
-
-#custom-menu {
-  color: #42be65;
-  padding-right: 6px;
-  margin-top: 4px;
-}
-
-#clock {
-  color: #2f8648;
-  padding-left: 3px;
-}
-
-#battery {
-  color: #42be65;
-  padding-left: 3px;
-}
-#battery .charging {
-  color: #42be65;
-}
-#battery .warning:not(.charging) {
-  color: #ff7eb6;
-}
-
 #bluetooth {
-  color: #42be65;
+  font-weight: bold;
+  margin: 0px 4px;
+  padding: 0px 4px;
 }
 
-#wireplumber {
-  color: #42be65;
+#custom-box {
+  padding: 0px 6px;
+  background: #33b1ff;
+  color: #000000;
 }
 
-#custom-music {
-  color: #42be65;
+#battery .warning {
+  color: #ffab91;
 }
-
-#custom-power {
+#battery .critical {
   color: #ff7eb6;
 }
-
-#tray {
-  padding-left: 3px;
+#battery .full {
+  color: #42be65;
 }
+
+/*# sourceMappingURL=style.css.map */

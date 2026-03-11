@@ -1,29 +1,30 @@
 // -*- mode: jsonc -*-
 {
   "layer": "top",
-  "position": "left",
-  "fixed-center": false,
+  "position": "top",
+  "fixed-center": true,
   "reload_style_on_change": true,
   // "on-sigusr1": "hide",
   "on-sigusr1": "reload",
   "on-sigusr2": "show",
-  "modules-left": ["custom/menu", "hyprland/workspaces"],
+  "modules-left": ["hyprland/window", "hyprland/workspaces"],
   "modules-center": ["custom/music"],
   "modules-right": [
     "tray",
-    "clock",
+    "bluetooth",
     "wireplumber",
     "network",
-    "bluetooth",
     "battery",
-    "custom/power",
+    "clock",
+    "custom/box",
   ],
 
-  "custom/menu": {
-    "format": "{icon}",
-    "format-icons": "",
-    "tooltip": false,
-    "on-click": "vicinae toggle",
+  "hyprland/window": {
+    "format": "{title}",
+    "rewrite": {
+      "^$": "@"
+    },
+    "separate-outputs": true,
   },
 
   "hyprland/workspaces": {
@@ -40,7 +41,7 @@
       "7": "󰏉",
       "8": "󰊕",
       "9": "󰡱",
-      "10": "",
+      "10": "", // This icon if off grid. Better change it
       "magic": "󰘫",
       "urgent": "󰽬",
       "default": "",
@@ -73,9 +74,8 @@
 
   "clock": {
     "timezone": "Europe/Rome",
-    "tooltip": true,
-    "format": "{:%H\n%M}",
-    "tooltip-format": "{:%d/%m/%y - %A}",
+    "tooltip": false,
+    "format": "{:%H:%M %A %d, %m}",
     "interval": 1,
   },
 
@@ -102,7 +102,7 @@
   },
 
   "bluetooth": {
-    "format-disabled": "",
+    "format-disabled": "󰂲",
     "format-off": "󰂲",
     "format-on": "󰂯",
     "format-no-controller": "󰂲",
@@ -122,14 +122,15 @@
     },
     "format": "{icon}",
     "tooltip-format": "{capacity}%\n{timeTo}",
-    "format-charging": "󰚥",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-,
+    "format-icons": {
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    },
   },
 
-  "custom/power": {
+  "custom/box": {
     "tooltip": false,
-    "on-click": "loginctl terminate-user $USER",
-    "format": "⏻",
+    "format": "{}",
+    "exec": "whoami",
   }
 }
