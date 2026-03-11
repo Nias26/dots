@@ -44,7 +44,7 @@
       "10": "", // This icon if off grid. Better change it
       "magic": "󰘫",
       "urgent": "󰽬",
-      "default": "",
+      "default": "󰧞",
     },
     "persistent-workspaces": {
       "1": [],
