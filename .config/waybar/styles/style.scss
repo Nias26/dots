@@ -3,7 +3,7 @@ $fallback-font: 'Adwaita Sans';
 
 $black: #000000;
 $light-black: #232323;
-$soft: #FFEFD3;
+$soft: #ffefd3;
 $red: #ff7eb6;
 $green: #42be65;
 $cyan: #82cfff;
@@ -92,4 +92,8 @@ tooltip {
   .full {
     color: $green;
   }
+}
+
+#custom-music {
+  color: $purple;
 }

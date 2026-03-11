@@ -54,7 +54,6 @@
   },
 
   "custom/music": {
-    "rotate": 270,
     "format": "  {}",
     "escape": true,
     "interval": 5,

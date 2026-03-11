@@ -9,7 +9,7 @@ menu {
   padding: 4px 1px;
   border-radius: 10px;
   background: #000000;
-  color: #FFEFD3;
+  color: #ffefd3;
 }
 menu menuitem:hover {
   border-radius: inherit;
@@ -24,7 +24,7 @@ tooltip {
 
 #waybar {
   background: #000000;
-  color: #FFEFD3;
+  color: #ffefd3;
 }
 
 #workspaces, #window {
@@ -33,7 +33,7 @@ tooltip {
 }
 #workspaces button, #window button {
   all: unset;
-  color: #FFEFD3;
+  color: #ffefd3;
 }
 #workspaces button.active, #window button.active {
   background: #42be65;
@@ -71,6 +71,10 @@ tooltip {
 }
 #battery .full {
   color: #42be65;
+}
+
+#custom-music {
+  color: #be95ff;
 }
 
 /*# sourceMappingURL=style.css.map */
