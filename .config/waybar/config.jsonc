@@ -41,7 +41,7 @@
       "7": "󰏉",
       "8": "󰊕",
       "9": "󰡱",
-      "10": "", // This icon if off grid. Better change it
+      "10": "󰛄", //"󰀘",
       "magic": "󰘫",
       "urgent": "󰽬",
       "default": "󰧞",
