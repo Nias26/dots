@@ -43,7 +43,7 @@
       "9": "󰡱",
       "10": "󰛄", //"󰀘",
       "magic": "󰘫",
-      "urgent": "󰽬",
+      // "urgent": "󰽬",
       "default": "󰧞",
     },
     "persistent-workspaces": {
