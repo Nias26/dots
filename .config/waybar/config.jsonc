@@ -128,8 +128,11 @@
   },
 
   "custom/box": {
-    "tooltip": false,
     "format": "{}",
-    "exec": "whoami",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "$HOME/.config/waybar/scripts/weather-stats",
+    "return-type": "json",
+    "on-click": "xdg-open https://wttr.in",
   }
 }
