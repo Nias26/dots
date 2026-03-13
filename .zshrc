@@ -127,6 +127,7 @@ alias btui="bluetui"
 alias venv="source .venv/bin/activate"
 alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"
 alias ff="fastfetch"
+alias meteo="curl -sS v2d.wttr.in/$(curl -sS ipinfo.io/json | jq -r '.loc')"
 
 # Set Personal Bindkeys
 bindkey "^[[1~" beginning-of-line # HOME
