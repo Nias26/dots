@@ -136,8 +136,31 @@ func getIcon(condition string, code string) string {
 	return "󰖐"
 }
 
+func getLocation() (string, error) {
+	resp, err := http.Get("http://ip-api.com/json")
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	var data struct {
+		Lat float64 `json:"lat"`
+		Lon float64 `json:"lon"`
+	}
+
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%.4f,%.4f", data.Lat, data.Lon), nil}
+
 func getWeather() (WaybarOutput, error) {
-	url := fmt.Sprintf("%s/?format=j1", WTTR_API_URL)
+	coords, err := getLocation()
+	if err != nil {
+		coords = ""
+	}
+
+	url := fmt.Sprintf("%s/%s?format=j1", WTTR_API_URL, coords)
 
 	client := &http.Client{
 		Timeout: 10 * time.Second,
