@@ -86,9 +86,12 @@ esac'
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
   '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
 
-
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
+
+# zsh-autosuggestions
+bindkey -r "^Y"
+bindkey "^Y" autosuggest-accept
 
 # User configuration
 for f in ~/.scripts/*.zsh; do
@@ -133,6 +136,8 @@ alias meteo="curl -sS v2d.wttr.in/\$(curl -sS ipinfo.io/json | jq -r '.loc')"
 bindkey "^[[1~" beginning-of-line # HOME
 bindkey "^[[4~" end-of-line       # END
 bindkey "^[[3~" delete-char       # DEL
+bindkey '^P' up-line-or-beginning-search
+bindkey '^N' down-line-or-beginning-search
 
 # Theme Settings
 HEADLINE_TRUNC_PREFIX='…'
