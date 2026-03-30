@@ -99,28 +99,30 @@ for f in ~/.scripts/*.zsh; do
 done
 
 # Aliases
-alias cat='bat -p --wrap=never --color=always'
-alias ip='ip --color=auto'
-alias ls='eza --group-directories-first --icons=always'
-alias l='eza -lag --group-directories-first --icons=always'
-alias ll='eza -l --group-directories-first --icons=always'
-alias la='eza -la --group-directories-first --icons=always'
-alias lt='eza --tree --group-directories-first --icons=always'
-alias pacman='sudo pacman'
-alias pipes='pipes -p 3 -r 10000 -R'
-alias :q='tmux detach'
-alias exi='tmux detach'
-alias clear='clear && shell-color'
-alias 'pacman -R'='pacman -Rns'
-alias rmf='rm -rf'
-alias catt='/usr/bin/cat'
-alias man='mans'
-alias tree='exa -1 -L 1 --color=always -T --icons -a'
-alias s='sudo'
-alias lg='lazygit'
-alias xcopy='xclip -selection clipboard'
-alias wcopy='wl-copy'
-# alias dmesg='sudo dmesg -wH --color=always'
+alias cat="bat -p --wrap never"
+alias s_cat="/usr/bin/cat"
+alias less="bat -Pp --wrap never"
+alias s_less="/usr/bin/less"
+alias ip="ip --color=auto"
+alias ls="eza --group-directories-first --icons=always"
+alias l="eza -lag --group-directories-first --icons=always"
+alias ll="eza -l --group-directories-first --icons=always"
+alias la="eza -la --group-directories-first --icons=always"
+alias lt="eza --tree --group-directories-first --icons=always"
+alias pacman="sudo pacman"
+alias pipes="pipes -p 3 -r 10000 -R"
+alias :q="tmux detach"
+alias exi="tmux detach"
+alias clear="clear && shell-color"
+alias "pacman -R"="pacman -Rns"
+alias rmf="rm -rf"
+alias man="mans"
+alias tree="exa -1 -L 1 --color=always -T --icons -a"
+alias s="sudo"
+alias lg="lazygit"
+alias xcopy="xclip -selection clipboard"
+alias wcopy="wl-copy"
+# alias dmesg="sudo dmesg -wH --color=always"
 alias checkpkg="pacman -Qkk"
 alias downgrade="sudo downgrade"
 alias neofetch="fastfetch"
