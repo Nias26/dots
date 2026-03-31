@@ -100,9 +100,9 @@ done
 
 # Aliases
 alias cat="bat -p --wrap never"
-alias s_cat="/usr/bin/cat"
-alias less="bat -Pp --wrap never"
-alias s_less="/usr/bin/less"
+alias less="bat -p --wrap never"
+alias scat="/usr/bin/cat"
+alias sless="/usr/bin/less"
 alias ip="ip --color=auto"
 alias ls="eza --group-directories-first --icons=always"
 alias l="eza -lag --group-directories-first --icons=always"
