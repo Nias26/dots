@@ -97,7 +97,7 @@
     "tooltip": true,
     "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nFrequency: {frequency}GHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e nmtui",
-    "on-click-right": "nmcli d wifi rescan ifname wlan0"
+    "on-click-right": "nmcli device wifi rescan"
   },
 
   "bluetooth": {
