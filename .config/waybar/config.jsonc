@@ -29,6 +29,7 @@
 
   "hyprland/workspaces": {
     "show-special": true,
+    "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
       "1": "󰏿",
