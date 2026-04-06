@@ -129,6 +129,7 @@
   "custom/box": {
     "format": "{text}",
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/pkg-updates.sh",
+    "on-click": "$XDG_CONFIG_HOME/waybar/scripts/pkg-updates.sh",
     "interval": 1800,
     "return-type": "json"
   }
