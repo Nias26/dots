@@ -4,7 +4,7 @@ text="$USER"
 tooltip=""
 class="normal"
 
-updates=$(yay -Qu 2>/dev/null | wc -l)
+updates=$(yay -Sy && yay -Qu 2>/dev/null | wc -l)
 kernel=$(uname -a)
 packages="󰏗 ${updates} pending updates..."
 user=$(lslogins $USER | sed '/^$/q')
