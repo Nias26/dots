@@ -1,0 +1,7 @@
+--smart-case
+--no-heading
+--hidden
+--max-columns=150
+--max-columns-preview
+--glob
+!.git/*
