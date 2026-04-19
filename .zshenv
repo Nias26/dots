@@ -56,3 +56,6 @@ export _ZO_RESOLVE_SYMLINKS=1
 export JAVA_HOME="/usr/lib/jvm/default-runtime"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JB_LINUX_WINDOW_TRANSPARENCY=true
+
+# Ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
