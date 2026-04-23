@@ -27,7 +27,7 @@ else
 fi
 
 # Diffprog
-export DIFFPROG="$NVIM_BIN -d $@"
+export DIFFPROG="$NVIM_BIN -d"
 
 # Manpager
 #export MANPAGER='nvim +Man!'  # Nvim as manpager
