@@ -39,7 +39,7 @@ FZF_TAB_GROUP_COLORS=(
   )
   zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
   # Change keybinds
-  zstyle ':fzf-tab:*' fzf-bindings 'tab:accept+down' 'shift-tab:accept+up'
+  zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down' 'shift-tab:toggle+up'
   #Show dotfiles
   setopt globdots
   # disable sort when completing `git checkout`
