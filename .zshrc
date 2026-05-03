@@ -39,7 +39,7 @@ FZF_TAB_GROUP_COLORS=(
   )
   zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
   # Change keybinds
-  zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down' 'shift-tab:toggle+up'
+  zstyle ':fzf-tab:*' fzf-bindings 'tab:down' 'shift-tab:up' 'alt-q:toggle+down'
   #Show dotfiles
   setopt globdots
   # disable sort when completing `git checkout`
@@ -109,29 +109,20 @@ alias l="eza -lag --group-directories-first --icons=always"
 alias ll="eza -l --group-directories-first --icons=always"
 alias la="eza -la --group-directories-first --icons=always"
 alias lt="eza --tree --group-directories-first --icons=always"
-alias pacman="sudo pacman"
 alias pipes="pipes -p 3 -r 10000 -R"
 alias :q="tmux detach"
 alias exi="tmux detach"
 alias clear="clear && shell-color"
-alias "pacman -R"="pacman -Rns"
 alias rmf="rm -rf"
 alias man="mans"
 alias tree="exa -1 -L 1 --color=always -T --icons -a"
 alias s="sudo"
 alias lg="lazygit"
 alias xcopy="xclip -selection clipboard"
-alias wcopy="wl-copy"
-# alias dmesg="sudo dmesg -wH --color=always"
-alias checkpkg="pacman -Qkk"
-alias downgrade="sudo downgrade"
-alias neofetch="fastfetch"
-alias open="xdg-open"
-alias view="chafa"
-alias btui="bluetui"
+alias dmesg="sudo dmesg -wH --color=always"
+# alias checkpkg="pacman -Qkk"
 alias venv="source .venv/bin/activate"
-alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"
-alias ff="fastfetch"
+# alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"
 alias meteo="curl -sS v2d.wttr.in/\$(curl -sS ipinfo.io/json | jq -r '.loc')"
 
 # Set Personal Bindkeys
