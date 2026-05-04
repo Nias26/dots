@@ -15,6 +15,7 @@
     "wireplumber",
     "network",
     "battery",
+    "custom/tlp",
     "clock",
     "custom/box"
   ],
@@ -125,6 +126,16 @@
       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
     }
+  },
+
+  "custom/tlp": {
+    "format": "{text}",
+    "exec": "$XDG_CONFIG_HOME/waybar/scripts/tlp-status.sh",
+    "on-click": "tlpctl set performance",
+    "on-click-middle": "tlpctl set balanced",
+    "on-click-right": "tlpctl set power-saver",
+    "interval": 3,
+    "return-type": "json"
   },
 
   "custom/box": {
