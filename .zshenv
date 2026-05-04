@@ -2,8 +2,11 @@
 # Neovim binary executable
 export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 
+# opt path
+export OPT_PATH=/opt/bin
+
 # PATH
-export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$NVIM_BIN:$HOME/.scripts/bin:$HOME/.config/hypr/scripts:$PATH
+export PATH=$OPT_PATH:$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$NVIM_BIN:$HOME/.scripts/bin:$HOME/.config/hypr/scripts:$PATH
 
 # Dirs
 export XDG_DESKTOP_DIR="$HOME/Desktop"
