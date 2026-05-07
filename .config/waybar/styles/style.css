@@ -27,19 +27,23 @@ tooltip {
   color: #ffefd3;
 }
 
-#workspaces, #window {
+#workspaces,
+#window {
   font-weight: bold;
   margin: 0px 8px;
 }
-#workspaces button, #window button {
+#workspaces button,
+#window button {
   all: unset;
   color: #ffefd3;
 }
-#workspaces button.active, #window button.active {
+#workspaces button.active,
+#window button.active {
   background: #42be65;
   color: #000000;
 }
-#workspaces button.urgent, #window button.urgent {
+#workspaces button.urgent,
+#window button.urgent {
   background: #ff7eb6;
   color: #000000;
 }

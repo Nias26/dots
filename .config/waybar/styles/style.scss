@@ -1,5 +1,5 @@
-$font: 'JetBrainsMono NerdFont';
-$fallback-font: 'Adwaita Sans';
+$font: "JetBrainsMono NerdFont";
+$fallback-font: "Adwaita Sans";
 
 $black: #000000;
 $light-black: #232323;
@@ -11,7 +11,7 @@ $blue: #33b1ff;
 $purple: #be95ff;
 $yellow: #ffab91;
 
-*{
+* {
   font-family: $font, $fallback-font;
   font-size: 12px;
   margin: 0px 4px;
@@ -36,12 +36,13 @@ tooltip {
   font-size: 14px;
 }
 
-#waybar{
+#waybar {
   background: $black;
   color: $soft;
 }
 
-#workspaces, #window {
+#workspaces,
+#window {
   font-weight: bold;
   margin: 0px 8px;
 
