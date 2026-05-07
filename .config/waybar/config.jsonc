@@ -7,7 +7,7 @@
   // "on-sigusr1": "hide",
   "on-sigusr1": "reload",
   "on-sigusr2": "show",
-  "modules-left": ["hyprland/window", "hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["custom/music"],
   "modules-right": [
     "tray",
