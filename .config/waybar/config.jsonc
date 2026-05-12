@@ -98,7 +98,7 @@
     "tooltip": true,
     "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nFrequency: {frequency}GHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e impala",
-    "on-click-right": "iwctl device wlan0 scan"
+    "on-click-right": "iwctl station wlan0 scan"
   },
 
   "bluetooth": {
