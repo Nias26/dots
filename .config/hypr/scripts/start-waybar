@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if pgrep waybar; then 
-  killall waybar
-fi
-
-mode=${1,,}
-waybar -c ~/.config/waybar/configs/config_${mode}.jsonc -s ~/.config/waybar/styles/style_${mode}.css &
-

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: rewrite in python
+
 get_album_art() {
     url=$(playerctl metadata mpris:artUrl)
     if [[ $url == "file://"* ]]; then
@@ -53,6 +55,8 @@ main(){
     "vol") notify-vol
     ;;
     "brightness") notify-brightness
+    ;;
+    "screenshot") screenshot
     ;;
   esac
 }
