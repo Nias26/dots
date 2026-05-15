@@ -20,12 +20,11 @@ $yellow: #ffab91;
 menu {
   margin: 2px;
   padding: 4px 1px;
-  border-radius: 10px;
   background: $black;
+  border-radius: 12px;
   color: $soft;
 
   menuitem:hover {
-    border-radius: inherit;
     background: $light-black;
   }
 }
