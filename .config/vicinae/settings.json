@@ -22,17 +22,18 @@
    },
    "theme": {
       "dark": {
+         "name": "vicinae-dark",
          "icon_theme": "Papirus-Dark"
       }
+   },
+   "telemetry": {
+      "system_info": false
    },
    "launcher_window": {
       "opacity": 0.8
    },
    "providers": {
       "@HelloImSteven/store.raycast.sips": {
-         "enabled": false
-      },
-      "@HenriChabrand/store.raycast.notion": {
          "enabled": false
       },
       "applications": {
@@ -828,6 +829,9 @@
                "enabled": true
             },
             "soft-reboot": {
+               "enabled": false
+            },
+            "suspend": {
                "enabled": false
             }
          }
