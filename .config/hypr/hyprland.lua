@@ -1,0 +1,5 @@
+require("hyprenv")
+require("hyprstart")
+require("hyprsettings")
+require("hyprbinds")
+require("hyprrules")
