@@ -20,14 +20,6 @@
     "custom/box"
   ],
 
-  "hyprland/window": {
-    "format": "{title}",
-    "rewrite": {
-      "^$": "@"
-    },
-    "separate-outputs": true
-  },
-
   "hyprland/workspaces": {
     "show-special": true,
     "all-outputs": true,
@@ -52,6 +44,14 @@
       "2": [],
       "3": []
     }
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "rewrite": {
+      "^$": "@"
+    },
+    "separate-outputs": true
   },
 
   "custom/music": {
