@@ -6,7 +6,7 @@ export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 export OPT_PATH=/opt/bin
 
 # PATH
-export PATH=$OPT_PATH:$HOME/bin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$NVIM_BIN:$HOME/.scripts/bin:$HOME/.config/hypr/scripts:$PATH
+export PATH=$PATH:$OPT_PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.scripts/bin
 
 # Dirs
 export XDG_DESKTOP_DIR="$HOME/Desktop"
@@ -17,7 +17,7 @@ export XDG_PICTURES_DIR="$HOME/Immagini"
 export XDG_PUBLICSHARE_DIR="$HOME/Pubblica"
 export XDG_TEMPLATES_DIR="$HOME/Modelli"
 export XDG_VIDEOS_DIR="$HOME/Video"
-export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/Screenshots
+export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 
 # Language locale
 export LANG=it_IT.UTF-8
@@ -26,7 +26,7 @@ export LANG=it_IT.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
 	export EDITOR=$NVIM_BIN
 else
-	export EDITOR=vim
+	export EDITOR=/usr/bin/vim
 fi
 
 # Diffprog
@@ -43,11 +43,6 @@ export GCM_CREDENTIAL_STORE=secretservice
 # Sudo prompt
 # $(tput setaf <colour>)<text>$(tput sgr0)
 export SUDO_PROMPT=" $(tput setaf 6)[sudo] $(tput setaf sgr0)- $(tput setaf 1)%p$(tput setaf 8)@$(tput setaf 3)%h$(tput setaf 8): $(tput sgr0)"
-
-# Firefox on wayland
-if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
-	export MOZ_ENABLE_WAYLAND=1
-fi
 
 # zoxide
 export _ZO_ECHO=0
