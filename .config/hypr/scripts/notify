@@ -36,15 +36,16 @@ notify-vol() {
   current_song=$(playerctl -f "{{title}} - {{artist}}" metadata)
 
   if [[ "$muted" == "MUTED" ]]; then
-    notify-send -t 1500 -h int:value:0 -i "$album_art" "󰖁 Muted" "$current_song"
+    notify-send -t 1500 -h string:x-dunst-stack-tag:volume_notif -h int:value:0 -i "$album_art" "󰖁 Muted" "$current_song"
   else
-    notify-send -t 1500 -h int:value:$volume -i "$album_art" "󱄠 $volume%" "$current_song"
+    notify-send -t 1500 -h string:x-dunst-stack-tag:volume_notif -h int:value:$volume -i "$album_art" "󱄠 $volume%" "$current_song"
   fi
+
 }
 
 notify-brightness() {
   brightness=$(get_brightness)
-  notify-send -h int:value:$brightness "󰃠 $brightness%"
+  notify-send -h string:x-dunst-stack-tag:brightness_notif -h int:value:$brightness "󰃠 $brightness%"
 }
 
 main() {
