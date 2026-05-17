@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=impala
+Name=Wifi
 Comment=Iwd manager on a TUI Interface
 Icon=/usr/share/icons/Papirus-Dark/16x16/devices/network-wireless.svg
 Exec=impala
