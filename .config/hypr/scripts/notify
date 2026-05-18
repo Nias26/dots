@@ -51,9 +51,9 @@ notify-brightness() {
 main() {
   case "$1" in
     "vol") notify-vol
-    ;;
+      ;;
     "brightness") notify-brightness
-    ;;
+      ;;
   esac
 }
 
