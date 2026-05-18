@@ -15,11 +15,10 @@ hl.bind("SUPER + F", hl.dsp.exec_cmd(V_browser))
 hl.bind("SUPER + Z", hl.dsp.exec_cmd("env " .. V_zed))
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 hl.bind("SUPER + X", hl.dsp.exec_cmd(V_taskManager))
--- TODO: Replace with notification sender
 hl.bind(
 	"SUPER + SPACE",
 	hl.dsp.exec_cmd(
-		"hyprctl switchxkblayout all next && notify-send 'Switched Layout:' '$(hyprctl devices -j | jq -r '.keyboards[] | .active_keymap' | head -n1 | cut -c1-2 | tr 'A-Z' 'a-z')' -t 1000"
+		"hyprctl switchxkblayout all next && notify-send 'Switched Layout:' \"$(hyprctl devices -j | jq -r '.keyboards[] | .active_keymap' | head -n1 | cut -c1-2 | tr 'A-Z' 'a-z')\" -t 1000"
 	)
 )
 -- hl.bind(
@@ -56,30 +55,30 @@ hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "magic", true }))
 
 -- Cycle focus
 hl.bind("SUPER + Tab", function()
-	hl.dsp.window.cycle_next(true)
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.window.cycle_next(true))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end, { repeating = true })
 
 hl.bind("SUPER + SHIFT + Tab", function()
-	hl.dsp.window.cycle_next(false)
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.window.cycle_next(false))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end, { repeating = true })
 
 hl.bind("SUPER + CTRL + H", function()
-	hl.dsp.focus("l")
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.focus({ direction = "l" }))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 hl.bind("SUPER + CTRL + L", function()
-	hl.dsp.focus("r")
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.focus({ direction = "r" }))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 hl.bind("SUPER + CTRL + K", function()
-	hl.dsp.focus("u")
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.focus({ direction = "u" }))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 hl.bind("SUPER + CTRL + J", function()
-	hl.dsp.focus("d")
-	hl.dsp.window.alter_zorder("top")
+	hl.dispatch(hl.dsp.focus({ direction = "d" }))
+	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 -- Resizing
@@ -102,7 +101,6 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && " .. V_notify .. " vol"),
 	{ locked = true, repeating = true }
 )
--- TODO: Add notification for this
 hl.bind(
 	"XF86AudioMicMute",
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),

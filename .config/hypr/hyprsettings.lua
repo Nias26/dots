@@ -51,6 +51,14 @@ hl.config({
 	},
 })
 
+-- dwindle
+hl.config({
+	dwindle = {
+		force_split = 1,
+		preserve_split = true,
+	},
+})
+
 -- Decoration
 hl.config({
 	decoration = {
