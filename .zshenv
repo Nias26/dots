@@ -6,7 +6,7 @@ export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 export OPT_PATH=/opt/bin
 
 # PATH
-export PATH=$PATH:$OPT_PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.scripts/bin
+export PATH=$PATH:$OPT_PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.scripts/bin:$HOME/.config/hypr/scripts/bin/
 
 # Dirs
 export XDG_DESKTOP_DIR="$HOME/Desktop"
