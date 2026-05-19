@@ -1,0 +1,32 @@
+#!/bin/bash
+
+P_MAX=80
+S_MIN=30
+INTERVAL=60
+
+BAT=$(ls -d /sys/class/power_supply/BAT* | head -n 1)
+LAST=""
+
+while true; do
+    read -r PCT < "$BAT/capacity"
+    read -r STAT < "$BAT/status"
+
+    if [[ "$STAT" == "Charging" || "$STAT" == "Full" ]]; then
+        MODE="performance"
+    elif (( PCT > P_MAX )); then
+        MODE="performance"
+    elif (( PCT < S_MIN )); then
+        MODE="saving"
+    else
+        MODE="balanced"
+    fi
+
+    # Trigger only on an actual state change
+    if [[ "$MODE" != "$LAST" ]]; then
+        tlpctl "$MODE" 2>/dev/null || tlpctl balanced
+        notify-send -r 9991 "Activating Power Mode: $MODE" "Battery: ${PCT}% (${STAT})"
+        LAST="$MODE"
+    fi
+
+    sleep "$INTERVAL"
+done
