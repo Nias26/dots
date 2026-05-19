@@ -76,6 +76,7 @@
     "timezone": "Europe/Rome",
     "tooltip": false,
     "format": "{:%H:%M %A %d, %m}",
+    "on-click": "gnome-calendar",
     "interval": 1
   },
 
