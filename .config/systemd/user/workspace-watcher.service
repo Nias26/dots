@@ -1,0 +1,11 @@
+[Unit]
+Description=Notify allarming windows
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/Nias/.config/hypr/scripts/workspace-watcher
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

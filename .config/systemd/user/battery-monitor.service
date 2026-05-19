@@ -1,0 +1,11 @@
+[Unit]
+Description=Apply power-profiles based on battery status
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/Nias/.config/hypr/scripts/battery-monitor
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

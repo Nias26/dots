@@ -1,0 +1,12 @@
+[Unit]
+Description=Wallpaper Daemon
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/Nias/.config/hypr/scripts/wallpaper-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
+
