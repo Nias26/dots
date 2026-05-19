@@ -54,7 +54,7 @@ hl.config({
 -- dwindle
 hl.config({
 	dwindle = {
-		force_split = 1,
+		force_split = 0,
 		preserve_split = true,
 	},
 })
