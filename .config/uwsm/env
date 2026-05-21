@@ -1,5 +1,8 @@
 export QT_QPA_PLATFORMTHEME=qt6ct
+export GTK_THEME=adw-gtk3-dark
+export GTK_BACKEND="wayland,x11,*"
 export GDK_SCALE=2
 export XCURSOR_PATH=$HOME/.local/share/icons:/usr/share/icons
 export XCURSOR_THEME=Hornet_XCursor
 export XCURSOR_SIZE=32
+export ELECTRON_OZONE_PLATFORM_HINT=auto
