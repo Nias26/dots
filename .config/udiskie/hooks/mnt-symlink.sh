@@ -1,24 +1,112 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-ACTION="$1"
-MOUNTPOINT="$3"
-USERNAME="$(whoami)"
-TARGET_DIR="$HOME/mnt"
+DEBUG=1
 
-[[ -d "$TARGET_DIR" ]] || mkdir -p "$TARGET_DIR"
+USER_HOME="/home/Nias"
+TARGET_DIR="$USER_HOME/mnt"
+MAP_FILE="$TARGET_DIR/.udiskie_map"
 
-NAME="$(basename "$MOUNTPOINT")"
-LINK="$TARGET_DIR/$NAME"
+# logging
+if [ "$DEBUG" -eq 1 ]; then
+  exec >> /tmp/udiskie-hook.log 2>&1
+  echo "--- $(date) ---"
+fi
 
-case "$ACTION" in
-  mount)
-    if [[ ! -e "$LINK" ]]; then
-      ln -s "$MOUNTPOINT" "$LINK"
+# input args
+EVENT="$1"
+MOUNTPOINT="$2"
+LABEL_RAW="$3"
+DEV_PATH="$4"
+
+if [ "$DEBUG" -eq 1 ]; then
+  echo "Event: $EVENT"
+  echo "Mount Path: $MOUNTPOINT"
+  echo "Device Label: $LABEL_RAW"
+  echo "Device Presentation: $DEV_PATH"
+  echo "All args: $*"
+fi
+
+[ -d "$TARGET_DIR" ] || mkdir -p -- "$TARGET_DIR"
+
+if [ -n "$MOUNTPOINT" ] && [ "$MOUNTPOINT" != "None" ]; then
+  LABEL="$(basename "$MOUNTPOINT")"
+elif [ -n "$DEV_PATH" ] && [ "$DEV_PATH" != "None" ]; then
+  LABEL="$(basename "$DEV_PATH")"
+elif [ -n "$LABEL_RAW" ] && [ "$LABEL_RAW" != "None" ]; then
+  LABEL="$LABEL_RAW"
+else
+  LABEL="ext_drive"
+fi
+
+LINK="$TARGET_DIR/$LABEL"
+
+if [ "$DEBUG" -eq 1 ]; then
+  echo "Computed LABEL: '$LABEL'"
+  echo "Computed LINK: '$LINK'"
+  echo "Mountpoint raw: '$MOUNTPOINT'"
+  echo "Dev path raw: '$DEV_PATH'"
+  echo "Running as: $(id)"
+fi
+
+ls -l "$TARGET_DIR" 2>/dev/null || echo "TARGET_DIR not listable"
+
+case "$EVENT" in
+  device_mounted)
+    if [ -n "$MOUNTPOINT" ] && [ "$MOUNTPOINT" != "None" ]; then
+      # Handle existing or broken symlinks safely
+      if [ -L "$LINK" ] || [ -e "$LINK" ]; then
+        if [ "$DEBUG" -eq 1 ]; then echo "Link or file already exists at $LINK. Cleaning up."; fi
+        rm -f -- "$LINK"
+      fi
+
+      if ln -s -- "$MOUNTPOINT" "$LINK"; then
+        echo "Linked $LABEL -> $LINK"
+        notify-send "Linked $LABEL" "at $LINK" 2>/dev/null || true
+
+        if [ -n "$DEV_PATH" ] && [ "$DEV_PATH" != "None" ]; then
+          sed -i "\|^$DEV_PATH |d" "$MAP_FILE" 2>/dev/null || true
+          echo "$DEV_PATH $LINK" >> "$MAP_FILE"
+          if [ "$DEBUG" -eq 1 ]; then echo "Map saved: $DEV_PATH -> $LINK"; fi
+        fi
+      fi
+    else
+      if [ "$DEBUG" -eq 1 ]; then echo "No valid mountpoint provided for device_mounted event."; fi
     fi
     ;;
-  unmount)
-    if [[ -L "$LINK" ]] && [[ "$(readlink -f "$LINK")" == "$(readlink -f "$MOUNTPOINT")" ]]; then
-      rm "$LINK"
+
+  device_unmounted|device_ejected|device_removed)
+    FOUND_LINK=""
+    if [ -n "$DEV_PATH" ] && [ "$DEV_PATH" != "None" ] && [ -f "$MAP_FILE" ]; then
+      FOUND_LINK="$(awk -v d="$DEV_PATH" '$1==d{print $2; exit}' "$MAP_FILE" 2>/dev/null || true)"
     fi
+
+    if [ -z "$FOUND_LINK" ]; then
+      FOUND_LINK="$LINK"
+    fi
+
+    if [ "$DEBUG" -eq 1 ]; then echo "Resolved LINK for removal: '$FOUND_LINK'"; fi
+
+    if [ -n "$FOUND_LINK" ] && [ -L "$FOUND_LINK" ]; then
+      case "$FOUND_LINK" in
+        "$TARGET_DIR"/*)
+          rm -f -- "$FOUND_LINK" && echo "Removed link $FOUND_LINK"
+          notify-send "Unlinked $(basename "$FOUND_LINK")" 2>/dev/null || true
+          ;;
+        *)
+          if [ "$DEBUG" -eq 1 ]; then echo "Refusing to remove non-target link: $FOUND_LINK"; fi
+          ;;
+      esac
+    else
+      if [ "$DEBUG" -eq 1 ]; then echo "No symlink to remove at $FOUND_LINK"; fi
+    fi
+
+    if [ -n "$DEV_PATH" ] && [ -f "$MAP_FILE" ]; then
+      sed -i "\|^$DEV_PATH |d" "$MAP_FILE" 2>/dev/null || true
+      if [ "$DEBUG" -eq 1 ]; then echo "Removed map entry for $DEV_PATH"; fi
+    fi
+    ;;
+
+  *)
+    if [ "$DEBUG" -eq 1 ]; then echo "Unhandled event: $EVENT"; fi
     ;;
 esac

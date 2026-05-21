@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/udiskie -s --event-hook ~/.config/udiskie/hooks/mnt-symlink.sh
+ExecStart=/usr/bin/udiskie -s
 Restart=on-failure
 
 [Install]
