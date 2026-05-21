@@ -46,7 +46,7 @@ hl.window_rule({ match = { title = "^(superfile)$" }, opacity = "0.8 override" }
 hl.window_rule({ match = { class = "^(gimp)$" }, opacity = "1.0 override 1.0 override 1.0 override" })
 
 -- Floating
-hl.window_rule({ match = { class = "^(file-jpeg)$" }, float = true })
+hl.window_rule({ match = { class = "^(file-jpeg|com.gabm.satty)$" }, float = true })
 hl.window_rule({ match = { class = "^(X|x)dg-desktop-portal.*" }, float = true })
 hl.window_rule({ match = { class = "^(steam)$", title = "^(steam)?.*" }, float = true })
 hl.window_rule({ match = { class = "^(org.gnome.Calculator)$" }, size = { 496, 616 }, float = true })
