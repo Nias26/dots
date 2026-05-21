@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Satty
+GenericName=Image Viewer
+Exec=satty --default-hide-toolbars --filename %U
+Terminal=false
+Type=Application
+MimeType=image/jpeg;image/png;image/gif;image/webp;image/bmp;image/tiff;image/x-ms-bmp;image/vnd.microsoft.icon;image/x-icon;
+Categories=Graphics;Viewer;
+Icon=satty
