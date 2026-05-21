@@ -4,7 +4,7 @@
 -- Using uwsm! See ~/.config/uwsm/env and env-hyprland
 
 V_terminal = "kitty"
-V_fileManager = V_terminal .. " -e spf"
+V_fileManager = V_terminal .. " -e elio"
 V_taskManager = V_terminal .. " -e btop"
 V_menu = "vicinae toggle"
 V_browser = "zen-browser"
