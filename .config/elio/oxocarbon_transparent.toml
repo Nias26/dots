@@ -1,0 +1,152 @@
+# Oxocarbon-inspired theme for elio
+[palette]
+background         = "none"
+foreground         = "#dde1e6"
+muted              = "#525252"
+chrome             = "none"
+
+blue               = "#78a9ff"
+cyan               = "#3ddbd9"
+green              = "#42be65"
+yellow             = "#be95ff"
+orange             = "#ff7eb6"
+red                = "#ee5396"
+
+border             = "#262626"
+selection          = "#393939"
+
+panel              = "none"
+panel_alt          = "none"
+surface            = "none"
+elevated           = "none"
+button_bg          = "none"
+button_disabled_bg = "none"
+sidebar_active     = "none"
+accent_soft        = "none"
+
+[preview.code]
+bg             = "none"
+line_highlight = "none"
+
+keyword        = "#be95ff"
+string         = "#42be65"
+type           = "#78a9ff"
+comment        = "#525252"
+number         = "#ff7eb6"
+function       = "#3ddbd9"
+
+[classes.directory]
+icon  = ""
+color = "#78a9ff"
+
+[classes.symlink_directory]
+icon  = ""
+color = "#3ddbd9"
+
+[classes.broken_symlink]
+icon  = ""
+color = "#ee5396"
+
+[classes.code]
+icon  = "󰨞"
+color = "#3ddbd9"
+
+[classes.config]
+icon  = ""
+color = "#be95ff"
+
+[classes.document]
+icon  = "󰈙"
+color = "#dde1e6"
+
+[classes.license]
+icon  = "󰿃"
+color = "#42be65"
+
+[classes.image]
+icon  = "󰉏"
+color = "#ff7eb6"
+
+[classes.audio]
+icon  = "󰎆"
+color = "#42be65"
+
+[classes.video]
+icon  = "󰕧"
+color = "#be95ff"
+
+[classes.archive]
+icon  = "󰀼"
+color = "#ff7eb6"
+
+[classes.font]
+icon  = "󰛖"
+color = "#78a9ff"
+
+[classes.data]
+icon  = "󰆼"
+color = "#3ddbd9"
+
+[classes.file]
+icon  = "󰈔"
+color = "#dde1e6"
+
+# Extension overrides
+
+[extensions.rs]
+color = "#ff7eb6"
+
+[extensions.toml]
+color = "#be95ff"
+
+[extensions.json]
+color = "#ff7eb6"
+
+[extensions.md]
+color = "#42be65"
+
+[extensions.lock]
+color = "#525252"
+
+[extensions.yml]
+color = "#3ddbd9"
+
+[extensions.yaml]
+color = "#3ddbd9"
+
+[extensions.ts]
+color = "#78a9ff"
+
+[extensions.js]
+color = "#f2cc60"
+
+[extensions.py]
+color = "#42be65"
+
+# Exact filename overrides
+
+[files."Dockerfile"]
+color = "#78a9ff"
+
+[files."Makefile"]
+color = "#ee5396"
+
+[files.".gitignore"]
+color = "#525252"
+
+[files."Cargo.toml"]
+color = "#ff7eb6"
+
+# Directory overrides
+
+[directories."src"]
+color = "#3ddbd9"
+
+[directories."config"]
+color = "#be95ff"
+
+[directories."docs"]
+color = "#42be65"
+
+[directories.".git"]
+color = "#525252"
