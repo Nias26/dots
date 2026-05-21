@@ -3,7 +3,7 @@
 
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(V_terminal))
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(V_terminal))
-hl.bind("SUPER + Q", hl.dsp.window.kill())
+hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + E", hl.dsp.exec_cmd(V_fileManager))
 hl.bind("SUPER + V", hl.dsp.window.float())
 hl.bind("SUPER + R", hl.dsp.exec_cmd(V_menu))
