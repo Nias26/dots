@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatically mount external disks
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/udiskie -s --event-hook ~/.config/udiskie/hooks/mnt-symlink.sh
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
