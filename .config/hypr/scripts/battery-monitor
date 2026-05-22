@@ -1,32 +1,39 @@
 #!/bin/bash
 
-P_MAX=80
 S_MIN=30
-INTERVAL=60
 
-BAT=$(ls -d /sys/class/power_supply/BAT* | head -n 1)
+BAT=$(ls -d /sys/class/power_supply/BAT* | head -n1)
 LAST=""
 
-while true; do
-    read -r PCT < "$BAT/capacity"
-    read -r STAT < "$BAT/status"
+apply_mode() {
+  read -r PCT < "$BAT/capacity"
+  read -r STAT < "$BAT/status"
 
+  if [[ -f "$LOCK" ]]; then
+    MODE=$(<"$LOCK")
+  else
     if [[ "$STAT" == "Charging" || "$STAT" == "Full" ]]; then
-        MODE="performance"
-    elif (( PCT > P_MAX )); then
-        MODE="performance"
+      MODE="balanced"
     elif (( PCT < S_MIN )); then
-        MODE="saving"
+      MODE="power-saving"
     else
-        MODE="balanced"
+      MODE="balanced"
     fi
+  fi
 
-    # Trigger only on an actual state change
-    if [[ "$MODE" != "$LAST" ]]; then
-        tlpctl "$MODE" 2>/dev/null || tlpctl balanced
-        notify-send -r 9991 "Activating Power Mode: $MODE" "Battery: ${PCT}% (${STAT})"
-        LAST="$MODE"
-    fi
+  if [[ "$MODE" != "$LAST" ]]; then
+    tlpctl "$MODE" 2>/dev/null || tlpctl balanced
+    notify-send -r 9991 \
+      "Activating Power Mode: $MODE" \
+      "Battery: ${PCT}% (${STAT})"
 
-    sleep "$INTERVAL"
-done
+    LAST="$MODE"
+  fi
+}
+
+apply_mode
+
+udevadm monitor --udev --subsystem-match=power_supply |
+  while read -r line; do
+    [[ "$line" == *"change"* ]] && apply_mode
+  done

@@ -7,8 +7,13 @@
   // "on-sigusr1": "hide",
   "on-sigusr1": "reload",
   "on-sigusr2": "show",
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["custom/music"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "custom/music"
+  ],
   "modules-right": [
     "tray",
     "bluetooth",
@@ -19,7 +24,6 @@
     "clock",
     "custom/box"
   ],
-
   "hyprland/workspaces": {
     "show-special": true,
     "all-outputs": true,
@@ -45,7 +49,6 @@
       "3": []
     }
   },
-
   "hyprland/window": {
     "format": "{title}",
     "rewrite": {
@@ -53,7 +56,6 @@
     },
     "separate-outputs": true
   },
-
   "custom/music": {
     "format": "󰀘  {}", // 
     "escape": true,
@@ -66,12 +68,10 @@
     "on-scroll-up": "playerctl previous",
     "max-length": 50
   },
-
   "tray": {
     "icon-size": 16,
     "spacing": 8
   },
-
   "clock": {
     "timezone": "Europe/Rome",
     "tooltip": false,
@@ -79,29 +79,35 @@
     "on-click": "gnome-calendar",
     "interval": 1
   },
-
   "wireplumber": {
     "format": "{icon}",
     "tooltip-format": "{volume}%",
     "format-muted": "",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "kitty -e wiremix"
   },
-
   "network": {
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
-    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "interval": 5,
     "tooltip": true,
     "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nFrequency: {frequency}GHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e impala",
     "on-click-right": "iwctl station wlan0 scan"
   },
-
   "bluetooth": {
     "format-disabled": "󰂲",
     "format-off": "󰂲",
@@ -114,7 +120,6 @@
     "on-click": "kitty -e bluetui",
     "on-click-right": "bluetoothctl power $(bluetoothctl show | rg Powered | awk '{ print $2 }' | if [[ $(xargs) == 'yes' ]]; then echo off; else echo on; fi)"
   },
-
   "battery": {
     "interval": 60,
     "states": {
@@ -124,21 +129,44 @@
     "format": "{icon}",
     "tooltip-format": "{capacity}%\n{timeTo}",
     "format-icons": {
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
     }
   },
-
   "custom/tlp": {
     "format": "{text}",
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/tlp-status.sh",
-    "on-click": "tlpctl set performance",
-    "on-click-middle": "tlpctl set balanced",
-    "on-click-right": "tlpctl set power-saver",
+    "on-click": "tlpctl set performance && echo performance > $HOME/.cache/power-mode.lock",
+    "on-click-middle": "tlpctl set balanced && echo balanced > $HOME/.cache/power-mode.lock",
+    "on-click-right": "tlpctl set power-saver && echo power-saver > $HOME/.cache/power-mode.lock",
+    "on-scroll-up": "rm -f $HOME/.cache/power-mode.lock",
+    "on-scroll-down": "rm -f $HOME/.cache/power-mode.lock",
     "interval": 3,
     "return-type": "json"
   },
-
   "custom/box": {
     "format": "{text}",
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/pkg-updates.sh",
