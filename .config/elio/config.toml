@@ -31,7 +31,6 @@ entries = [
   "music",
   "videos",
   "root",
-  { title = "Projects", path = "~/workspace", icon = "󰚝" },
   "trash",
 ]
 #
