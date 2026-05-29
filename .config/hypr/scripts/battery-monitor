@@ -15,7 +15,7 @@ apply_mode() {
     if [[ "$STAT" == "Charging" || "$STAT" == "Full" ]]; then
       MODE="balanced"
     elif (( PCT < S_MIN )); then
-      MODE="power-saving"
+      MODE="power-saver"
     else
       MODE="balanced"
     fi
