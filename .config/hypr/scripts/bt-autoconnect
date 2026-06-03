@@ -1,0 +1,270 @@
+#!/usr/bin/env python3
+import sys
+import logging
+import signal
+import dbus
+import dbus.mainloop.glib
+from gi.repository import GLib
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [bt-autoconnect] %(levelname)s: %(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%S",
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
+log = logging.getLogger("bt-autoconnect")
+
+
+BLUEZ_SERVICE = "org.bluez"
+DBUS_OM_IFACE = "org.freedesktop.DBus.ObjectManager"
+DBUS_PROP_IFACE = "org.freedesktop.DBus.Properties"
+BLUEZ_ADAPTER_IFACE = "org.bluez.Adapter1"
+BLUEZ_DEVICE_IFACE = "org.bluez.Device1"
+
+
+POWERON_SETTLE_DELAY = 2
+
+
+CONNECT_RETRIES = 3
+CONNECT_RETRY_DELAY = 4
+
+
+_TERMINAL_ERRORS = frozenset(
+    {
+        "org.bluez.Error.AlreadyConnected",
+        "org.bluez.Error.NotSupported",
+    }
+)
+
+
+_devices: dict[str, dict] = {}
+
+
+def _update_device_cache(path: str, props: dict) -> None:
+    """Merge a property dict into the cache entry for `path`."""
+    entry = _devices.setdefault(path, {})
+    for key in ("Address", "Paired", "Trusted", "Connected"):
+        if key in props:
+            entry[key] = bool(props[key]) if key != "Address" else str(props[key])
+
+
+def _is_candidate(entry: dict) -> bool:
+    """True iff the cached entry should be autoconnected."""
+    return (
+        entry.get("Paired", False)
+        and entry.get("Trusted", False)
+        and not entry.get("Connected", False)
+    )
+
+
+def _do_connect(bus: dbus.SystemBus, path: str, address: str, attempt: int) -> None:
+    """
+    Attempt Connect() on one device. On transient failure, schedule a retry
+    via GLib (non-blocking). Terminal errors and final attempts just log.
+    """
+
+    entry = _devices.get(path)
+    if entry and entry.get("Connected", False):
+        log.debug("Skip connect for %s – already connected (cache)", address)
+        return
+
+    try:
+        proxy = dbus.Interface(
+            bus.get_object(BLUEZ_SERVICE, path),
+            BLUEZ_DEVICE_IFACE,
+        )
+        proxy.Connect()
+        log.info("Connected: %s", address)
+
+    except dbus.exceptions.DBusException as exc:
+        err = exc.get_dbus_name()
+        msg = exc.get_dbus_message()
+
+        if err in _TERMINAL_ERRORS:
+            log.debug("Terminal error for %s (%s): %s", address, err, msg)
+            return
+
+        if err == "org.bluez.Error.Failed":
+            log.debug("Device unreachable %s: %s", address, msg)
+            return
+
+        if attempt < CONNECT_RETRIES:
+            log.warning(
+                "Connect failed for %s [%d/%d]: %s — retry in %ds",
+                address,
+                attempt,
+                CONNECT_RETRIES,
+                msg,
+                CONNECT_RETRY_DELAY,
+            )
+
+            GLib.timeout_add_seconds(
+                CONNECT_RETRY_DELAY,
+                lambda p=path, a=address, n=attempt + 1: (
+                    _do_connect(bus, p, a, n),
+                    False,
+                )[1],
+            )
+        else:
+            log.warning("Giving up on %s after %d attempts: %s", address, attempt, msg)
+
+
+def _schedule_connect(bus: dbus.SystemBus, path: str, address: str) -> None:
+    """Queue an immediate (next GLib iteration) connect attempt."""
+    log.info("Scheduling connect: %s", address)
+    GLib.idle_add(lambda: (_do_connect(bus, path, address, 1), False)[1])
+
+
+def _sweep_and_connect(bus: dbus.SystemBus) -> bool:
+    """
+    Walk the local cache (no D-Bus call) and connect all candidates.
+    Returns False so GLib one-shot timers don't repeat.
+    """
+    for path, entry in list(_devices.items()):
+        if _is_candidate(entry):
+            address = entry.get("Address", path)
+            _schedule_connect(bus, path, address)
+    return False
+
+
+def _on_properties_changed(
+    interface: str,
+    changed: dict,
+    _invalidated,
+    path: str,
+    bus: dbus.SystemBus,
+) -> None:
+    """
+    Handles PropertiesChanged. We filter by interface and by key so that
+    high-frequency noise (RSSI, ManufacturerData, TxPower, …) is dropped
+    before touching any application logic.
+    """
+    if interface == BLUEZ_ADAPTER_IFACE:
+        if "Powered" not in changed:
+            return
+        powered = bool(changed["Powered"])
+        log.info("Adapter %s powered %s", path, "ON" if powered else "OFF")
+        if powered:
+            GLib.timeout_add_seconds(
+                POWERON_SETTLE_DELAY,
+                lambda: _sweep_and_connect(bus),
+            )
+
+    elif interface == BLUEZ_DEVICE_IFACE:
+
+        relevant = {"Paired", "Trusted", "Connected", "Address"}
+        if not (relevant & changed.keys()):
+            return
+
+        _update_device_cache(path, changed)
+
+        if "Connected" in changed and not bool(changed["Connected"]):
+            return
+
+
+def _on_interfaces_added(
+    path: str,
+    interfaces: dict,
+    bus: dbus.SystemBus,
+) -> None:
+    """New BlueZ object registered (device discovered / adapter appeared)."""
+    if BLUEZ_DEVICE_IFACE not in interfaces:
+        return
+    props = interfaces[BLUEZ_DEVICE_IFACE]
+    _update_device_cache(path, props)
+    entry = _devices[path]
+    if _is_candidate(entry):
+        address = entry.get("Address", path)
+        _schedule_connect(bus, path, address)
+
+
+def _on_interfaces_removed(path: str, interfaces: list) -> None:
+    """BlueZ object unregistered — evict from cache to avoid stale entries."""
+    if BLUEZ_DEVICE_IFACE in interfaces:
+        _devices.pop(path, None)
+        log.debug("Evicted cache entry for %s", path)
+
+
+def _bootstrap(bus: dbus.SystemBus) -> None:
+    """
+    One-time snapshot via GetManagedObjects() to seed the cache and trigger
+    connects for any already-powered adapters / already-present devices.
+    This is the ONLY full object-tree dump the daemon ever does.
+    """
+    try:
+        manager = dbus.Interface(
+            bus.get_object(BLUEZ_SERVICE, "/"),
+            DBUS_OM_IFACE,
+        )
+        objects = manager.GetManagedObjects()
+    except dbus.exceptions.DBusException as exc:
+        log.warning("Initial BlueZ snapshot failed (BlueZ not ready?): %s", exc)
+        return
+
+    adapter_powered = False
+
+    for path, interfaces in objects.items():
+        if BLUEZ_ADAPTER_IFACE in interfaces:
+            powered = bool(interfaces[BLUEZ_ADAPTER_IFACE].get("Powered", False))
+            log.info("Adapter %s (powered=%s)", path, powered)
+            if powered:
+                adapter_powered = True
+
+        if BLUEZ_DEVICE_IFACE in interfaces:
+            _update_device_cache(path, interfaces[BLUEZ_DEVICE_IFACE])
+
+    if adapter_powered:
+        GLib.timeout_add_seconds(
+            POWERON_SETTLE_DELAY,
+            lambda: _sweep_and_connect(bus),
+        )
+
+
+def main() -> None:
+    dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    bus = dbus.SystemBus()
+
+    log.info("bt-autoconnect starting")
+
+    bus.add_signal_receiver(
+        lambda iface, changed, inv, path=None: _on_properties_changed(
+            iface, changed, inv, path, bus
+        ),
+        signal_name="PropertiesChanged",
+        dbus_interface=DBUS_PROP_IFACE,
+        bus_name=BLUEZ_SERVICE,
+        path_keyword="path",
+    )
+
+    bus.add_signal_receiver(
+        lambda path, ifaces: _on_interfaces_added(path, ifaces, bus),
+        signal_name="InterfacesAdded",
+        dbus_interface=DBUS_OM_IFACE,
+        bus_name=BLUEZ_SERVICE,
+    )
+
+    bus.add_signal_receiver(
+        lambda path, ifaces: _on_interfaces_removed(path, ifaces),
+        signal_name="InterfacesRemoved",
+        dbus_interface=DBUS_OM_IFACE,
+        bus_name=BLUEZ_SERVICE,
+    )
+
+    _bootstrap(bus)
+
+    loop = GLib.MainLoop()
+
+    def _shutdown(sig: int, _frame) -> None:
+        log.info("Signal %d received — stopping", sig)
+        loop.quit()
+
+    signal.signal(signal.SIGTERM, _shutdown)
+    signal.signal(signal.SIGINT, _shutdown)
+
+    log.info("bt-autoconnect running")
+    loop.run()
+    log.info("bt-autoconnect stopped")
+
+
+if __name__ == "__main__":
+    main()
