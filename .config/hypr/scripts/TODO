@@ -1,5 +1,3 @@
-# TODO: Rewrite wallpaper daemon and client in python for easier manteinance
-# TODO: Send notification when UPower reaches low battery
-# TODO: Write omarchy-like script with vicinae dmenu for wifi, bluetooth, etc...
 # TODO: Put proper icons in waybar for bluetooth and other
 # TODO: Add waybar keyboad layout
+# TODO: Fix workspace-watcher not showing the correct window name and workspace
