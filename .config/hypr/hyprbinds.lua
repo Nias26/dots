@@ -51,7 +51,7 @@ hl.bind("SUPER + SHIFT + 7", hl.dsp.window.move({ workspace = "7", true }))
 hl.bind("SUPER + SHIFT + 8", hl.dsp.window.move({ workspace = "8", true }))
 hl.bind("SUPER + SHIFT + 9", hl.dsp.window.move({ workspace = "9", true }))
 hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = "10", true }))
-hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "magic", true }))
+hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic", true }))
 
 -- Cycle focus
 hl.bind("SUPER + Tab", function()
