@@ -16,6 +16,7 @@
   ],
   "modules-right": [
     "tray",
+    "hyprland/language",
     "bluetooth",
     "wireplumber",
     "network",
@@ -71,6 +72,12 @@
   "tray": {
     "icon-size": 16,
     "spacing": 8
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-it": "it",
+    "keyboard-name": "at-translated-set-2-keyboard",
   },
   "clock": {
     "timezone": "Europe/Rome",
