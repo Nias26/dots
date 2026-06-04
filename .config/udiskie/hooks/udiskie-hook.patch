@@ -1,0 +1,31 @@
+--- /tmp/mnt-symlink-old.sh	2026-06-04 13:13:24.777790468 +0000
++++ /tmp/mnt-symlink-new.sh	2026-06-04 13:13:24.781966386 +0000
+@@ -51,8 +51,8 @@
+         echo "Linked $LABEL -> $LINK"
+         notify-send "Linked $LABEL" "at $LINK" 2>/dev/null || true
+         if [ -n "$DEV_PATH" ] && [ "$DEV_PATH" != "None" ]; then
+-          sed -i "\|^$DEV_PATH |d" "$MAP_FILE" 2>/dev/null || true
+-          echo "$DEV_PATH $LINK" >> "$MAP_FILE"
++          sed -i "\|^$DEV_PATH\t|d" "$MAP_FILE" 2>/dev/null || true
++          printf '%s\t%s\n' "$DEV_PATH" "$LINK" >> "$MAP_FILE"
+           if [ "$DEBUG" -eq 1 ]; then echo "Map saved: $DEV_PATH -> $LINK"; fi
+         fi
+       fi
+@@ -63,7 +63,7 @@
+   device_unmounted|device_ejected|device_removed)
+     FOUND_LINK=""
+     if [ -n "$DEV_PATH" ] && [ "$DEV_PATH" != "None" ] && [ -f "$MAP_FILE" ]; then
+-      FOUND_LINK="$(awk -v d="$DEV_PATH" '$1==d{print $2; exit}' "$MAP_FILE" 2>/dev/null || true)"
++      FOUND_LINK="$(awk -F'\t' -v d="$DEV_PATH" '$1==d{print $2; exit}' "$MAP_FILE" 2>/dev/null || true)"
+     fi
+     if [ -z "$FOUND_LINK" ]; then
+       FOUND_LINK="$LINK"
+@@ -83,7 +83,7 @@
+       if [ "$DEBUG" -eq 1 ]; then echo "No symlink to remove at $FOUND_LINK"; fi
+     fi
+     if [ -n "$DEV_PATH" ] && [ -f "$MAP_FILE" ]; then
+-      sed -i "\|^$DEV_PATH |d" "$MAP_FILE" 2>/dev/null || true
++      sed -i "\|^$DEV_PATH\t|d" "$MAP_FILE" 2>/dev/null || true
+       if [ "$DEBUG" -eq 1 ]; then echo "Removed map entry for $DEV_PATH"; fi
+     fi
+     ;;

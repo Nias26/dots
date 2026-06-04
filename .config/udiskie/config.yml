@@ -1,2 +1,2 @@
 program_options:
-  event_hook: "/home/Nias/.config/udiskie/hooks/mnt-symlink.sh '{event}' '{mount_path}' '{device_label}' '{device_presentation}'"
+  event_hook: "/home/Nias/.config/udiskie/hooks/mnt-symlink.sh '{event}' '{mount_path}' '{id_label}' '{device_presentation}'"
