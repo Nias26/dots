@@ -1,10 +1,10 @@
 [Unit]
-Description=Wallpaper Daemon
+Description=Awww Manager
 After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/home/Nias/.config/hypr/scripts/wallpaper-daemon
+ExecStart=/home/Nias/.config/hypr/scripts/awww-manager
 Restart=on-failure
 
 [Install]

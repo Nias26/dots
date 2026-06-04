@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Resume Wallpaper
-Exec=wallpaper resume
+Name=Toggle Wallpaper Timer
+Exec=awww-ctl toggle
 Icon=/usr/share/icons/Papirus-Dark/16x16/categories/background.svg
 Keywords=wal;wallpaper;

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Select Wallpaper Folder
+Exec=bash -c "fd -t d --exact-depth=1 . ~/Immagini/Wallpapers | vicinae dmenu | xargs awww-ctl path"
+Icon=/usr/share/icons/Papirus-Dark/16x16/categories/background.svg
+Keywords=wal;wallpaper;

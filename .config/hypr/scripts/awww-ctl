@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+PID="/tmp/awww_managergr.pid"
+IPC="/tmp/awww_manager_ipc"
+
+if [[ ! -f "$PID" ]]; then
+  echo "Error: PID file not found. Is awww-manager running?"
+  exit 1
+fi
+
+PID=$(cat "$PID")
+
+send_ipc(){
+  echo "$1" > "$IPC"
+  kill -HUP "$PID"
+}
+
+main(){
+  case "$1" in
+    next)
+      kill -USR1 $PID
+      ;;
+    toggle)
+      kill -USR2 $PID
+      ;;
+    path)
+      if [[ -z "$2" ]]; then echo "Error: missing path" >&2; exit 1; fi
+      path=$(realpath "$2")
+      send_ipc "DIR:$path"
+      ;;
+    img)
+      if [[ -z "$2" ]]; then echo "Error: missing path" >&2; exit 1; fi
+      path=$(realpath "$2")
+      send_ipc "IMG:$path"
+      ;;
+    interval)
+      if [[ -z "$2" ]]; then echo "Error: missing interval" >&2; exit 1; fi
+      send_ipc "INT:$2"
+      ;;
+    *)
+      echo 'invalid command: available are "next", "toggle", "path <path>", img <path>'
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"
