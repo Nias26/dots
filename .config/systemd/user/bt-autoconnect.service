@@ -1,20 +1,11 @@
 [Unit]
-Description=Bluetooth Auto-Connect
-
-After=bluetooth.service
-BindsTo=bluetooth.service
-PartOf=bluetooth.service
+Description=Bluetooth Auto-Connect (paired+trusted devices)
+After=bluetooth.target
 
 [Service]
 Type=simple
-ExecStart=/home/Nias/.config/hypr/scripts/bt-autoconnect
+ExecStart=%h/.config/hypr/scripts/bt-autoconnect
 Restart=on-failure
-SupplementaryGroups=bluetooth
-ProtectSystem=strict
-PrivateDevices=yes
-ProtectKernelTunables=yes
-ProtectKernelModules=yes
-ProtectControlGroups=yes
 
 [Install]
-WantedBy=bluetooth.service
+WantedBy=default.target

@@ -41,7 +41,6 @@ _devices: dict[str, dict] = {}
 
 
 def _update_device_cache(path: str, props: dict) -> None:
-    """Merge a property dict into the cache entry for `path`."""
     entry = _devices.setdefault(path, {})
     for key in ("Address", "Paired", "Trusted", "Connected"):
         if key in props:
@@ -49,7 +48,6 @@ def _update_device_cache(path: str, props: dict) -> None:
 
 
 def _is_candidate(entry: dict) -> bool:
-    """True iff the cached entry should be autoconnected."""
     return (
         entry.get("Paired", False)
         and entry.get("Trusted", False)
@@ -58,11 +56,6 @@ def _is_candidate(entry: dict) -> bool:
 
 
 def _do_connect(bus: dbus.SystemBus, path: str, address: str, attempt: int) -> None:
-    """
-    Attempt Connect() on one device. On transient failure, schedule a retry
-    via GLib (non-blocking). Terminal errors and final attempts just log.
-    """
-
     entry = _devices.get(path)
     if entry and entry.get("Connected", False):
         log.debug("Skip connect for %s – already connected (cache)", address)
@@ -110,16 +103,11 @@ def _do_connect(bus: dbus.SystemBus, path: str, address: str, attempt: int) -> N
 
 
 def _schedule_connect(bus: dbus.SystemBus, path: str, address: str) -> None:
-    """Queue an immediate (next GLib iteration) connect attempt."""
     log.info("Scheduling connect: %s", address)
     GLib.idle_add(lambda: (_do_connect(bus, path, address, 1), False)[1])
 
 
 def _sweep_and_connect(bus: dbus.SystemBus) -> bool:
-    """
-    Walk the local cache (no D-Bus call) and connect all candidates.
-    Returns False so GLib one-shot timers don't repeat.
-    """
     for path, entry in list(_devices.items()):
         if _is_candidate(entry):
             address = entry.get("Address", path)
@@ -134,11 +122,6 @@ def _on_properties_changed(
     path: str,
     bus: dbus.SystemBus,
 ) -> None:
-    """
-    Handles PropertiesChanged. We filter by interface and by key so that
-    high-frequency noise (RSSI, ManufacturerData, TxPower, …) is dropped
-    before touching any application logic.
-    """
     if interface == BLUEZ_ADAPTER_IFACE:
         if "Powered" not in changed:
             return
@@ -179,18 +162,12 @@ def _on_interfaces_added(
 
 
 def _on_interfaces_removed(path: str, interfaces: list) -> None:
-    """BlueZ object unregistered — evict from cache to avoid stale entries."""
     if BLUEZ_DEVICE_IFACE in interfaces:
         _devices.pop(path, None)
         log.debug("Evicted cache entry for %s", path)
 
 
 def _bootstrap(bus: dbus.SystemBus) -> None:
-    """
-    One-time snapshot via GetManagedObjects() to seed the cache and trigger
-    connects for any already-powered adapters / already-present devices.
-    This is the ONLY full object-tree dump the daemon ever does.
-    """
     try:
         manager = dbus.Interface(
             bus.get_object(BLUEZ_SERVICE, "/"),
@@ -226,6 +203,29 @@ def main() -> None:
 
     log.info("bt-autoconnect starting")
 
+    loop = GLib.MainLoop()
+
+    def _on_name_owner_changed(name: str, old_owner: str, new_owner: str) -> None:
+        if name != BLUEZ_SERVICE:
+            return
+        if old_owner and not new_owner:
+            log.info("BlueZ left the bus — stopping cleanly")
+            _devices.clear()
+            loop.quit()
+
+    bus.add_signal_receiver(
+        _on_name_owner_changed,
+        signal_name="NameOwnerChanged",
+        dbus_interface="org.freedesktop.DBus",
+        bus_name="org.freedesktop.DBus",
+    )
+
+    try:
+        bus.get_object(BLUEZ_SERVICE, "/")
+    except dbus.exceptions.DBusException:
+        log.error("org.bluez is not available — is bluetooth.service running?")
+        sys.exit(1)
+
     bus.add_signal_receiver(
         lambda iface, changed, inv, path=None: _on_properties_changed(
             iface, changed, inv, path, bus
@@ -251,8 +251,6 @@ def main() -> None:
     )
 
     _bootstrap(bus)
-
-    loop = GLib.MainLoop()
 
     def _shutdown(sig: int, _frame) -> None:
         log.info("Signal %d received — stopping", sig)
