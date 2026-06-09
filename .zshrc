@@ -124,6 +124,7 @@ alias dmesg="sudo dmesg -wH --color=always"
 alias venv="source .venv/bin/activate"
 # alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"
 alias meteo="curl -sS v2d.wttr.in/\$(curl -sS ipinfo.io/json | jq -r '.loc')"
+alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINTS "
 
 # Set Personal Bindkeys
 bindkey "^[[1~" beginning-of-line # HOME
