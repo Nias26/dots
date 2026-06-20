@@ -39,7 +39,7 @@ FZF_TAB_GROUP_COLORS=(
   )
   zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
   # Change keybinds
-  zstyle ':fzf-tab:*' fzf-bindings 'tab:down' 'shift-tab:up' 'alt-q:toggle+down'
+  zstyle ':fzf-tab:*' fzf-bindings 'tab:down' 'shift-tab:up' 'alt-q:toggle+down' 'ctrl-d:preview-down' 'ctrl-u:preview-up'
   #Show dotfiles
   setopt globdots
   # disable sort when completing `git checkout`
@@ -119,7 +119,7 @@ alias tree="exa -1 -L 1 --color=always -T --icons -a"
 alias s="sudo"
 alias lg="lazygit"
 alias xcopy="xclip -selection clipboard"
-alias dmesg="sudo dmesg -wH --color=always"
+alias dmesg="sudo dmesg -H --color=always"
 # alias checkpkg="pacman -Qkk"
 alias venv="source .venv/bin/activate"
 # alias check_duplicates="find . -type f -exec md5sum {} + | sort | uniq -w32 -dD"

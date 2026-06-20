@@ -50,4 +50,5 @@ hl.window_rule({ match = { class = "^(file-jpeg|com.gabm.satty)$" }, float = tru
 hl.window_rule({ match = { class = "^(X|x)dg-desktop-portal.*" }, float = true })
 hl.window_rule({ match = { class = "^(steam)$", title = "^(steam)?.*" }, float = true })
 hl.window_rule({ match = { class = "^(org.gnome.Calculator)$" }, size = { 496, 616 }, float = true })
-hl.window_rule({ match = { float = true }, center = true })
+-- TODO: Fix float center by disabling for empty classes and titles
+-- hl.window_rule({ match = { float = true, class = "negative:^$", title = "negative:^$" }, center = true })
