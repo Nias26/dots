@@ -825,6 +825,12 @@
                   "customProgram": "hyprlock"
                }
             },
+            "logout": {
+               "preferences": {
+                  "confirm": true,
+                  "customProgram": "uwsm stop"
+               }
+            },
             "sleep": {
                "enabled": true
             },
