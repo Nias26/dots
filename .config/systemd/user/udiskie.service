@@ -4,6 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
+ExecCondition=/bin/sh -c '[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]'
 ExecStart=/usr/bin/udiskie -s
 Restart=on-failure
 

@@ -4,6 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
+ExecCondition=/bin/sh -c '[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]'
 ExecStart=/home/Nias/.config/hypr/scripts/battery-monitor
 Restart=on-failure
 

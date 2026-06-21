@@ -4,6 +4,7 @@ After=bluetooth.target
 
 [Service]
 Type=simple
+ExecCondition=/bin/sh -c '[ "$XDG_CURRENT_DESKTOP" = "hyprland" ]'
 ExecStart=%h/.config/hypr/scripts/bt-autoconnect
 Restart=on-failure
 
