@@ -166,11 +166,9 @@
   "custom/tlp": {
     "format": "{text}",
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/tlp-status.sh",
-    "on-click": "tlpctl set performance && echo performance > $HOME/.cache/power-mode.lock",
-    "on-click-middle": "tlpctl set balanced && echo balanced > $HOME/.cache/power-mode.lock",
-    "on-click-right": "tlpctl set power-saver && echo power-saver > $HOME/.cache/power-mode.lock",
-    "on-scroll-up": "rm -f $HOME/.cache/power-mode.lock",
-    "on-scroll-down": "rm -f $HOME/.cache/power-mode.lock",
+    "on-click": "tlpctl set performance",
+    "on-click-middle": "tlpctl set balanced",
+    "on-click-right": "tlpctl set power-saver",
     "interval": 3,
     "return-type": "json"
   },

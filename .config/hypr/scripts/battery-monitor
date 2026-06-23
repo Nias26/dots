@@ -1,6 +1,6 @@
 #!/bin/bash
 
-S_MIN=30
+S_MIN=20
 
 BAT=$(ls -d /sys/class/power_supply/BAT* | head -n1)
 LAST=""
@@ -9,17 +9,13 @@ apply_mode() {
   read -r PCT < "$BAT/capacity"
   read -r STAT < "$BAT/status"
 
-  if [[ -f "$LOCK" ]]; then
-    MODE=$(<"$LOCK")
-  else
     if [[ "$STAT" == "Charging" || "$STAT" == "Full" ]]; then
-      MODE="balanced"
+      MODE="performance"
     elif (( PCT < S_MIN )); then
       MODE="power-saver"
     else
       MODE="balanced"
     fi
-  fi
 
   if [[ "$MODE" != "$LAST" ]]; then
     tlpctl "$MODE" 2>/dev/null || tlpctl balanced
