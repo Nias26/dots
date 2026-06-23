@@ -79,6 +79,7 @@ hl.config({
 			render_power = 2,
 			color = "rgba(1a1a1aee)",
 		},
+		screen_shader = "~/.config/hypr/shaders/main.glsl",
 	},
 })
 
