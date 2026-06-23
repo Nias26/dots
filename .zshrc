@@ -1,4 +1,15 @@
-#Aliases .zshrc File
+# Tmux
+# Attach to an detached session and if not create one
+if [ -z "$TMUX" ]; then
+    session=$(tmux list-sessions -F '#{session_name} #{session_attached}' 2>/dev/null | awk '$2 == 0 { print $1; exit }')
+
+    if [ -n "$session" ]; then
+        exec tmux attach -t "$session"
+    else
+        exec tmux new-session
+    fi
+fi
+
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 13
 
@@ -157,17 +168,6 @@ HL_INFO_MODE=auto
 eval "$(zoxide init zsh)"
 alias cd='z'
 alias cdi='zi'
-
-# Tmux
-# Attach to an detached session and if not create one
-if [ -z $TMUX ]; then
-  freesex=$(tmux ls -F '#{session_name} #{session_attached}' 2>/dev/null | grep ' 0$' | tail -n 1 | cut -d' ' -f1)
-  if [ -n "$freesex" ]; then
-    exec tmux attach-session -t "$freesex"
-  else
-    exec tmux new-session
-  fi
-fi
 
 # Keychain (ssh)
 eval $(keychain --eval --quiet Github-Nias26 Github-Hlv-Std)
