@@ -1,6 +1,5 @@
 -- hyprland @ settings
 -- Wiki: https://wiki.hypr.land/Configuring/Basics/Variables/
-
 hl.monitor({ output = "eDP-1", mode = "highres@highrr", position = "auto", scale = "auto" })
 hl.monitor({
 	output = "desc:ASUSTek COMPUTER INC VG279 LBLMQS024615",
@@ -21,6 +20,11 @@ hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1" })
 hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1" })
 hl.workspace_rule({ workspace = "10", monitor = "eDP-1", default = true })
 hl.workspace_rule({ workspace = "special:magic", monitor = "HDMI-A-1" })
+
+hl.on("window.urgent", function(win)
+	hl.exec_cmd(string.format("notify-send -u critical '🚨 %s' '%s'", win.class or "Unknown", win.title or ""))
+	hl.dsp.focus({ urgent_or_last = true })
+end)
 
 hl.permission({ binary = "/usr/(bin|local/bin)/grim", type = "screencopy", mode = "allow" })
 hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
