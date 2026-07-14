@@ -108,12 +108,30 @@ hl.bind(
 )
 hl.bind(
 	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+ && " .. V_notify .. " brightness"),
+	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+ && " .. V_notify .. " brightness 0"),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%- && " .. V_notify .. " brightness"),
+	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%- && " .. V_notify .. " brightness 0"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"SUPER + XF86MonBrightnessUp",
+	hl.dsp.exec_cmd(
+		"ddcutil --display=1 setvcp 10 + 10 && echo $(ddcutil --display=1 get 10 2>/dev/null | awk -F'[=,]' '/current value/ {print $2+0}') > ~/.cache/mon-brightness && "
+			.. V_notify
+			.. " brightness 1"
+	),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"SUPER + XF86MonBrightnessDown",
+	hl.dsp.exec_cmd(
+		"ddcutil --display=1 setvcp 10 - 10 && echo $(ddcutil --display=1 get 10 2>/dev/null | awk -F'[=,]' '/current value/ {print $2+0}') > ~/.cache/mon-brightness && "
+			.. V_notify
+			.. " brightness 1"
+	),
 	{ locked = true, repeating = true }
 )
 hl.bind("XF86Display", hl.dsp.exec_cmd("dpms-off"))

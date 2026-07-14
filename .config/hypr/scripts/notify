@@ -1,31 +1,36 @@
 #!/usr/bin/env bash
 
 get_album_art() {
-    url=$(playerctl metadata mpris:artUrl)
-    if [[ $url == "file://"* ]]; then
-        echo "${url/file:\/\//}"
-    elif [[ $url == "http://"* ]] || [[ $url == "https://"* ]]; then
-        # Identify filename from URL
-        filename="$(echo $url | sed "s/.*\///")"
+  url=$(playerctl metadata mpris:artUrl)
+  if [[ $url == "file://"* ]]; then
+    echo "${url/file:\/\//}"
+  elif [[ $url == "http://"* ]] || [[ $url == "https://"* ]]; then
+    # Identify filename from URL
+    filename="$(echo $url | sed "s/.*\///")"
 
-        # Download file to /tmp if it doesn't exist
-        if [ ! -f "/tmp/$filename" ]; then
-            wget -O "/tmp/$filename" "$url"
-        fi
-
-        echo "/tmp/$filename"
-    else
-        echo ""
+    # Download file to /tmp if it doesn't exist
+    if [ ! -f "/tmp/$filename" ]; then
+      wget -O "/tmp/$filename" "$url"
     fi
+
+    echo "/tmp/$filename"
+  else
+    echo ""
+  fi
 }
 
 get_brightness() {
+  local mon="$1"
+  if [[ $mon == "0" ]]; then
     declare -i absb
     declare -i relb
     absb=$(brightnessctl g)
     maxb=$(brightnessctl m)
     absb=$(( absb * 100 ))
     echo $(( absb / maxb ))
+  else
+    cat ~/.cache/mon-brightness
+  fi
 }
 
 notify-vol() {
@@ -52,7 +57,7 @@ main() {
   case "$1" in
     "vol") notify-vol
       ;;
-    "brightness") notify-brightness
+    "brightness") notify-brightness $2
       ;;
   esac
 }
