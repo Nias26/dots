@@ -1,3 +1,10 @@
+" Autoload vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Options
 set clipboard=unnamedplus
   \ scrolloff=4
@@ -16,9 +23,6 @@ set clipboard=unnamedplus
   \ wrap
   \ magic
   \ laststatus=3
-  \ foldmethod=expr
-  \ foldexpr=lsp#ui#vim#folding#foldexpr()
-  \ foldtext=lsp#ui#vim#folding#foldtext()
   \ completeopt=menuone,noinsert,noselect,preview
 
 let mapleader = " "
@@ -37,10 +41,7 @@ Plug 'romainl/vim-cool'
 Plug 'menisadi/kanagawa.vim'
 Plug 'mbbill/undotree'
 Plug 'kshenoy/vim-origami'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
@@ -64,6 +65,7 @@ nnoremap <leader>0 <cmd>Ex<CR>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+nmap U <cmd>UndoTreeToggle<CR>
 
 " Autocmd
 colorscheme kanagawa
@@ -108,54 +110,3 @@ function! s:MakeCmd(...) abort
 endfunction
 
 command! -nargs=* -complete=history Make call s:MakeCmd(<f-args>)
-
-function! Qftf(info) abort
-    let l:items = a:info.quickfix
-                \ ? getqflist({'id': a:info.id, 'items': 0}).items
-                \ : getloclist(a:info.winid, {'id': a:info.id, 'items': 0}).items
-
-    let l:ret = []
-    let l:limit = 31
-    let l:fnamefmt = '%-' . l:limit . 's'
-    let l:validfmt = '%s │%5d:%-3d│%s %s'
-
-    for l:e in l:items[a:info.start_idx - 1 : a:info.end_idx - 1]
-        if l:e.valid
-            if l:e.bufnr > 0
-                let l:fname = fnamemodify(bufname(l:e.bufnr), ':~')
-
-                if empty(l:fname)
-                    let l:fname = '[No Name]'
-                endif
-
-                let l:len = strlen(l:fname)
-
-                if l:len <= l:limit
-                    let l:fname = printf(l:fnamefmt, l:fname)
-                else
-                    let l:fname = '…' . strpart(l:fname, l:len - l:limit + 1)
-                endif
-            else
-                let l:fname = ''
-            endif
-
-            let l:lnum = l:e.lnum > 99999 ? -1 : l:e.lnum
-            let l:col = l:e.col > 999 ? -1 : l:e.col
-            let l:qtype = empty(l:e.type) ? '' : ' ' . toupper(l:e.type[0])
-
-            call add(l:ret, printf(
-                        \ l:validfmt,
-                        \ l:fname,
-                        \ l:lnum,
-                        \ l:col,
-                        \ l:qtype,
-                        \ l:e.text))
-        else
-            call add(l:ret, l:e.text)
-        endif
-    endfor
-
-    return l:ret
-endfunction
-
-" set quickfixtextfunc=Qftf
