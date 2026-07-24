@@ -7,7 +7,7 @@ import signal
 import subprocess
 from pathlib import Path
 
-WALLPAPER_DIR = Path("~/Immagini/Wallpapers/all").expanduser()
+WALLPAPER_DIR = Path("~/Immagini/Wallpapers").expanduser()
 INTERVAL = 300
 SYMLINK_PATH = Path("/tmp/current_wallpaper")
 
