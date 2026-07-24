@@ -7,7 +7,7 @@ calc_height=$(( ${FZF_PREVIEW_LINES:-24} - 1 ))
 calc_width=${FZF_PREVIEW_COLUMNS:-80}
 
 if [ -d "$1" ]; then
-  eza --git -hla --color=always --icons "$1"
+  eza --git -hla --color=always "$1"
 elif [ "$category" = "image" ]; then
   # chafa --format kitty --clear --size "${calc_width}x${calc_height}" "$1"
   viu --width $calc_width --height $calc_height -t -b "$1"
