@@ -2,7 +2,7 @@
 
 S_MIN=20
 
-BAT=$(ls -d /sys/class/power_supply/BAT* | head -n1)
+BAT="/sys/class/power_supply/BAT0"
 LAST=""
 
 apply_mode() {
