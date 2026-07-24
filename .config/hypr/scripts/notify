@@ -49,7 +49,7 @@ notify-vol() {
 }
 
 notify-brightness() {
-  brightness=$(get_brightness)
+  brightness=$(get_brightness "$1")
   notify-send -h string:x-dunst-stack-tag:brightness_notif -h int:value:$brightness "󰃠 $brightness%"
 }
 
@@ -57,7 +57,7 @@ main() {
   case "$1" in
     "vol") notify-vol
       ;;
-    "brightness") notify-brightness $2
+    "brightness") notify-brightness "$2"
       ;;
   esac
 }
