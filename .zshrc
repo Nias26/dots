@@ -59,8 +59,8 @@ FZF_TAB_GROUP_COLORS=(
   zstyle ':completion:*:descriptions' format '[%d]'
   # set list-colors to enable filename colorizing
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-  # preview directory's content with exa when completing cd
-  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 $realpath -a'
+  # preview directory's content with eza when completing cd
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 $realpath -a --icons=auto'
   # switch group using `,` and `.`
   zstyle ':fzf-tab:*' switch-group ',' '.'
   # give a preview of commandline arguments when completing `kill`
@@ -115,18 +115,18 @@ alias less="bat -p --wrap never"
 alias scat="/usr/bin/cat"
 alias sless="/usr/bin/less"
 alias ip="ip --color=auto"
-alias ls="eza --group-directories-first"
-alias l="eza -lag --group-directories-first"
-alias ll="eza -l --group-directories-first"
-alias la="eza -la --group-directories-first"
-alias lt="eza --tree --group-directories-first"
+alias ls="eza --group-directories-first --icons=auto"
+alias l="eza -lag --group-directories-first --icons=auto"
+alias ll="eza -l --group-directories-first --icons=auto"
+alias la="eza -la --group-directories-first --icons=auto"
+alias lt="eza --tree --group-directories-first --icons=auto"
 alias pipes="pipes -p 3 -r 10000 -R"
 alias :q="tmux detach"
 alias exi="tmux detach"
 alias clear="clear && shell-color"
 alias rmf="rm -rf"
 alias man="mans"
-alias tree="exa -1 -L 1 --color=always -T -a"
+alias tree="eza -1 -L 1 --color=always -T -a --icons=auto"
 alias s="sudo"
 alias lg="lazygit"
 alias xcopy="xclip -selection clipboard"
