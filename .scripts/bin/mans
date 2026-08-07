@@ -3,6 +3,7 @@
 #
 # mans - friendly interface for man
 #
+
 vers=3.1
 desc=0
 SECTION=""
@@ -11,7 +12,7 @@ fzf_preview_lines=200
 fzf_desc_width=80
 
 version() {
-    echo "mancho.sh : friendly interface for man"
+    echo "mans : friendly interface for man"
     echo "version : $vers"
 }
 
@@ -20,7 +21,7 @@ quickhelp() {
     echo
     cat << EOF
 USAGE:
-   mancho.sh [-d|--desc] [-s SECTION|--section SECTION]
+   mans [-d|--desc] [-s SECTION|--section SECTION]
 
 OPTIONS:
    -d, --desc          Use description mode (search by description)
