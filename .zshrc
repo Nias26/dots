@@ -170,4 +170,4 @@ alias cd='z'
 alias cdi='zi'
 
 # Keychain (ssh)
-eval $(keychain --eval --quiet Github-Nias26 Github-Hlv-Std)
+eval "$(keychain add Github-Nias26 Github-Hlv-Std --eval --immediate --quiet)"
