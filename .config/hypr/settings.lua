@@ -7,6 +7,13 @@ hl.monitor({
 	position = "0x0",
 	scale = "auto",
 })
+hl.monitor({
+  output = "desc:Philips Consumer Electronics Company PHL 243V5 ZV02030015602",
+  mode = "highres@highrr",
+  position = "0x0",
+  scale = "auto"
+})
+
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto", mirror = "eDP-1" })
 
 hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", default = true })
