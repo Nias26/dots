@@ -1,4 +1,4 @@
-export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_QPA_PLATFORMTHEME=kde
 export GTK_THEME=adw-gtk3-dark
 export GTK_BACKEND="wayland,x11,*"
 export GDK_SCALE=2
