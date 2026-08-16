@@ -41,9 +41,12 @@ Plug 'romainl/vim-cool'
 Plug 'menisadi/kanagawa.vim'
 Plug 'mbbill/undotree'
 Plug 'kshenoy/vim-origami'
-Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'ervandew/supertab'
 
 call plug#end()
+
+" Plugins config
+let g:SuperTabDefaultCompletionType = "<Tab>"
 
 " Keymaps
 nnoremap Q <cmd>bd!<CR>
@@ -62,9 +65,6 @@ xnoremap <Esc>j :move '>+1<CR>gv=gv
 xnoremap <Esc>k :move '<-2<CR>gv=gv
 nnoremap <silent> <C-c> :if empty(filter(getwininfo(), 'v:val.quickfix')) \| copen \| else \| cclose \| endif<CR>
 nnoremap <leader>0 <cmd>Ex<CR>
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 nmap U <cmd>UndoTreeToggle<CR>
 
 " Autocmd
