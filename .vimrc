@@ -7,23 +7,23 @@ endif
 
 " Options
 set clipboard=unnamedplus
-  \ scrolloff=4
-  \ updatetime=250
-  \ timeoutlen=250
-  \ noshowmode
-  \ splitbelow
-  \ splitright
-  \ undofile
-  \ termguicolors
-  \ tabstop=2
-  \ softtabstop=2
-  \ shiftwidth=2
-  \ expandtab
-  \ noautochdir
-  \ wrap
-  \ magic
-  \ laststatus=3
-  \ completeopt=menuone,noinsert,noselect,preview
+      \ scrolloff=4
+      \ updatetime=250
+      \ timeoutlen=250
+      \ noshowmode
+      \ splitbelow
+      \ splitright
+      \ undofile
+      \ termguicolors
+      \ tabstop=2
+      \ softtabstop=2
+      \ shiftwidth=2
+      \ expandtab
+      \ noautochdir
+      \ wrap
+      \ magic
+      \ laststatus=3
+      \ grepprg=rg\ --smart-case\ --vimgrep
 
 let mapleader = " "
 let maplocalleader = ","
@@ -46,7 +46,11 @@ Plug 'ervandew/supertab'
 call plug#end()
 
 " Plugins config
-let g:SuperTabDefaultCompletionType = "<Tab>"
+let g:SuperTabDefaultCompletionType = "context"
+autocmd FileType *
+      \ if &omnifunc != '' |
+      \   call SuperTabChain(&omnifunc, "<Tab>") |
+      \ endif
 
 " Keymaps
 nnoremap Q <cmd>bd!<CR>
@@ -66,6 +70,7 @@ xnoremap <Esc>k :move '<-2<CR>gv=gv
 nnoremap <silent> <C-c> :if empty(filter(getwininfo(), 'v:val.quickfix')) \| copen \| else \| cclose \| endif<CR>
 nnoremap <leader>0 <cmd>Ex<CR>
 nmap U <cmd>UndoTreeToggle<CR>
+nnoremap == mzggVG=`zzz
 
 " Autocmd
 colorscheme kanagawa
@@ -75,38 +80,39 @@ command! W w !sudo tee % >/dev/null
 
 augroup HelpFileKeymaps
   autocmd!
-    autocmd FileType help,man nnoremap <silent> <buffer> <CR> <C-]>
-    autocmd FileType help,man nnoremap <silent> <buffer> <BS> <C-T>
-    autocmd FileType help,man nnoremap <silent> <buffer> o /'\l\{2,}'<CR>
-    autocmd FileType help,man nnoremap <silent> <buffer> O ?'\l\{2,}'<CR>
-    autocmd FileType help,man nnoremap <silent> <buffer> s /\|\zs\S\+\ze\|<CR>
-    autocmd FileType help,man nnoremap <silent> <buffer> S ?\|\zs\S\+\ze\|<CR>
-    autocmd FileType help,man setlocal colorcolumn=0
+  autocmd FileType help,man nnoremap <silent> <buffer> <CR> <C-]>
+  autocmd FileType help,man nnoremap <silent> <buffer> <BS> <C-T>
+  autocmd FileType help,man nnoremap <silent> <buffer> o /'\l\{2,}'<CR>
+  autocmd FileType help,man nnoremap <silent> <buffer> O ?'\l\{2,}'<CR>
+  autocmd FileType help,man nnoremap <silent> <buffer> s /\|\zs\S\+\ze\|<CR>
+  autocmd FileType help,man nnoremap <silent> <buffer> S ?\|\zs\S\+\ze\|<CR>
+  autocmd FileType help,man setlocal colorcolumn=0
 augroup END
 
 function! s:GrepCmd(bang, ...) abort
-    let l:match = a:1
-    let l:pattern = get(a:000, 1, '')
+  let l:match = get(a:000, 0, '')
+  let l:pattern = get(a:000, 1, '')
 
-    if a:bang
-        if empty(l:pattern)
-            let l:pattern = '%'
-        endif
-        execute 'silent vimgrep /\v' . l:match . '/gj ' . l:pattern
-    else
-        execute 'silent grep! ' . shellescape(l:match) . ' ' . l:pattern
+  if a:bang
+    if empty(l:pattern)
+      let l:pattern = '%'
     endif
+    execute 'silent vimgrep /\v' . l:match . '/gj ' . l:pattern
+  else
+    execute 'silent grep! -- ' . shellescape(l:match) . ' ' . l:pattern
+  endif
 
-    copen
+  copen
 endfunction
 
+command! -bang -nargs=+ -complete=history Grep call s:GrepCmd(<bang>0, <f-args>)
 command! -nargs=+ -bang -complete=history Grep call s:GrepCmd(<bang>0, <f-args>)
 
 function! s:MakeCmd(...) abort
-    if a:0 > 0
-        let &makeprg = join(a:000, ' ')
-    endif
-    make
+  if a:0 > 0
+    let &makeprg = join(a:000, ' ')
+  endif
+  make
 endfunction
 
 command! -nargs=* -complete=history Make call s:MakeCmd(<f-args>)
