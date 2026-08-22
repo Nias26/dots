@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# TODO: 2026-08-19 18:51 - Nias: Rewrite in C
+
 import os
 import sys
 import time
@@ -87,7 +90,7 @@ def handle_signal(signum, _):
                         set_wallpaper(path)
             except:
                 pass
-        skip_timer = True  # Force resets timer loop
+        skip_timer = True
 
 
 def main():

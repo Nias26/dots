@@ -8,10 +8,10 @@ hl.monitor({
 	scale = "auto",
 })
 hl.monitor({
-  output = "desc:Philips Consumer Electronics Company PHL 243V5 ZV02030015602",
-  mode = "highres@highrr",
-  position = "0x0",
-  scale = "auto"
+	output = "desc:Philips Consumer Electronics Company PHL 243V5 ZV02030015602",
+	mode = "highres@highrr",
+	position = "0x0",
+	scale = "auto",
 })
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto", mirror = "eDP-1" })
@@ -90,7 +90,7 @@ hl.config({
 			render_power = 2,
 			color = "rgba(1a1a1aee)",
 		},
-		screen_shader = "~/.config/hypr/shaders/main.glsl",
+		screen_shader = os.getenv("HOME") .. "/.config/hypr/shaders/main.glsl",
 	},
 })
 
