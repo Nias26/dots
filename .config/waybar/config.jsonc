@@ -4,9 +4,7 @@
   "position": "top",
   "fixed-center": true,
   "reload_style_on_change": true,
-  // "on-sigusr1": "hide",
   "on-sigusr1": "reload",
-  "on-sigusr2": "show",
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
@@ -39,9 +37,8 @@
       "7": "󰏉",
       "8": "󰊕",
       "9": "󰡱",
-      "10": "󰛄", //"󰀘",
+      "10": "󰛄",
       "magic": "󰘫",
-      // "urgent": "󰽬",
       "default": "󰧞"
     },
     "persistent-workspaces": {
@@ -58,7 +55,7 @@
     "separate-outputs": true
   },
   "custom/music": {
-    "format": "󰀘  {}", // 
+    "format": "󰀘  {}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
@@ -77,55 +74,60 @@
     "format": "{}",
     "format-en": "en",
     "format-it": "it",
-    "keyboard-name": "at-translated-set-2-keyboard",
+    "keyboard-name": "at-translated-set-2-keyboard"
   },
   "clock": {
     "timezone": "Europe/Rome",
-    "tooltip": false,
+    "tooltip": true,
     "format": "{:%H:%M %A %d, %m}",
-    "on-click": "gnome-calendar",
-    "interval": 1
+    "interval": 1,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "format": {
+        "months":     "<span color='#f2f4f8'><b>{}</b></span>",
+        "days":       "<span color='#be95ff'><b>{}</b></span>",
+        "weeks":      "<span color='#3ddbd9'><b>W{}</b></span>",
+        "weekdays":   "<span color='#42be65'><b>{}</b></span>",
+        "today":      "<span color='#ee5396'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up",
+      "on-click": "shift_reset",
+      "on-click-right": "mode"
+    }
   },
   "wireplumber": {
-    "format": "{icon}",
-    "tooltip-format": "{volume}%",
-    "format-muted": "",
-    "format-icons": {
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
+    "format": "<span color='{icon}'>{volume}% Vol</span>",
+    "format-muted": "<span color='#ee5396'>Muted</span>",
+    "format-icons": ["#393939", "#5a5a5b", "#7d7e80", "#a3a4a6", "#cacbce", "#f2f4f8"],
     "on-click": "kitty -e wiremix"
   },
   "network": {
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤮",
-    "format-icons": [
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
+    "format-ethernet": "<span color='#f2f4f8'>LAN</span>",
+    "format-disconnected": "<span color='#393939'>Offline</span>",
+    "format-wifi": "<span color='{icon}'>Online</span>",
     "interval": 5,
+    "format-icons": ["#393939", "#525252", "#dde1e6", "#f2f4f8"],
     "tooltip": true,
     "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nFrequency: {frequency}GHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e nmtui",
     "on-click-right": "nmcli device wifi rescan"
   },
   "bluetooth": {
-    "format-disabled": "󰂲",
-    "format-off": "󰂲",
-    "format-on": "󰂯",
-    "format-no-controller": "󰂲",
-    "format-connected": "󰂱",
+    "format-disabled": "<span color='#ee5396'>󰂲</span>",
+    "format-off": "<span color='#ee5396'>󰂲</span>",
+    "format-on": "<span color='#33b1ff'>󰂯</span>",
+    "format-no-controller": "<span color='#ee5396'>󰂲</span>",
+    "format-connected": "<span color='#33b1ff'>󰂱</span>",
     "tooltip-format": "Connections: {num_connections}\nDevices: {device_enumerate}",
     "tooltip-format-enumerate-connected": " - {device_alias} ({device_address})",
     "tooltip-format-enumerate-connected-battery": " - {device_alias} ({device_address})  󰁹 {device_battery_percentage}%",
     "on-click": "kitty -e bluetui",
-    "on-click-right": "bluetoothctl power $(bluetoothctl show | rg Powered | awk '{ print $2 }' | if [[ $(xargs) == 'yes' ]]; then echo off; else echo on; fi)"
+    "on-click-right": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on"
   },
   "battery": {
     "interval": 60,
@@ -133,34 +135,11 @@
       "warning": 20,
       "critical": 10
     },
-    "format": "{icon}",
-    "tooltip-format": "{capacity}%\n{timeTo}",
+    "format": "<span color='{icon}'>{capacity}% Bat</span>",
+    "tooltip-format": "Power: {power}W\nStatus: {timeTo}",
     "format-icons": {
-      "default": [
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-      ],
-      "charging": [
-        "󰢟",
-        "󰢜",
-        "󰂆",
-        "󰂇",
-        "󰂈",
-        "󰢝",
-        "󰂉",
-        "󰢞",
-        "󰂊",
-        "󰂋",
-        "󰂅"
-      ]
+      "default": ["#ee5396", "#ffab91", "#42be65"],
+      "charging": ["#42be65"]
     }
   },
   "custom/tlp": {
@@ -174,8 +153,7 @@
   },
   "custom/box": {
     "format": "{text}",
-    "exec": "$XDG_CONFIG_HOME/waybar/scripts/pkg-updates.sh",
-    "on-click": "$XDG_CONFIG_HOME/waybar/scripts/pkg-updates.sh",
+    "exec": "$XDG_CONFIG_HOME/waybar/scripts/system-status.sh",
     "interval": 1800,
     "return-type": "json"
   }
