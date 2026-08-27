@@ -107,11 +107,11 @@
     "on-click": "kitty -e wiremix"
   },
   "network": {
-    "format-ethernet": "<span color='#f2f4f8'>LAN</span>",
+    "format-ethernet": "<span color='#42be65'>LAN</span>",
     "format-disconnected": "<span color='#393939'>Offline</span>",
     "format-wifi": "<span color='{icon}'>Online</span>",
     "interval": 5,
-    "format-icons": ["#393939", "#525252", "#dde1e6", "#f2f4f8"],
+    "format-icons": ["#393939", "#415845", "#467950", "#479b5b", "#42be65"],
     "tooltip": true,
     "tooltip-format": "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nFrequency: {frequency}GHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
     "on-click": "kitty -e nmtui",
@@ -148,13 +148,13 @@
     "on-click": "tlpctl set performance",
     "on-click-middle": "tlpctl set balanced",
     "on-click-right": "tlpctl set power-saver",
-    "interval": 3,
+    "interval": 2,
     "return-type": "json"
   },
   "custom/box": {
     "format": "{text}",
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/system-status.sh",
-    "interval": 1800,
+    "interval": 60,
     "return-type": "json"
   }
 }
