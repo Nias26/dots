@@ -1,17 +1,16 @@
 #!/bin/bash
 
-S_MIN=20
-
+LOW=20
 BAT="/sys/class/power_supply/BAT0"
 LAST=""
 
 apply_mode() {
-  read -r PCT < "$BAT/capacity"
-  read -r STAT < "$BAT/status"
+  read -r CAPACITY < "$BAT/capacity"
+  read -r STATUS < "$BAT/status"
 
-    if [[ "$STAT" == "Charging" || "$STAT" == "Full" ]]; then
+    if [[ "$STATUS" == "Charging" || "$STATUS" == "Full" ]]; then
       MODE="performance"
-    elif (( PCT < S_MIN )); then
+    elif [[ $CAPACITY < $LOW ]]; then
       MODE="power-saver"
     else
       MODE="balanced"
@@ -21,7 +20,7 @@ apply_mode() {
     tlpctl "$MODE" 2>/dev/null || tlpctl balanced
     notify-send -r 9991 \
       "Activating Power Mode: $MODE" \
-      "Battery: ${PCT}% (${STAT})"
+      "Battery: ${CAPACITY}% (${STATUS})"
 
     LAST="$MODE"
   fi
@@ -31,5 +30,5 @@ apply_mode
 
 udevadm monitor --udev --subsystem-match=power_supply |
   while read -r line; do
-    [[ "$line" == *"change"* ]] && apply_mode
+    [[ "$line" == *change* ]] && apply_mode
   done
