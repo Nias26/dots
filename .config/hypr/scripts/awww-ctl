@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PID="/tmp/awww_managergr.pid"
+PID="/tmp/awww_manager.pid"
 IPC="/tmp/awww_manager_ipc"
 
 if [[ ! -f "$PID" ]]; then
