@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ssid=$(iwgetid -r)
+ssid=$(LC_ALL=C nmcli dev status | awk 'NR == 2 {print $4}')
 
 if [[ -n "$ssid" ]]; then
   echo "󰖩  $ssid"
