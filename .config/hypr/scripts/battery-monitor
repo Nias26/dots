@@ -1,34 +1,171 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -u
 
 LOW=20
 BAT="/sys/class/power_supply/BAT0"
-LAST=""
+NOTIFY_ID=9991
+LAST_MODE=""
 
-apply_mode() {
-  read -r CAPACITY < "$BAT/capacity"
-  read -r STATUS < "$BAT/status"
-
-    if [[ "$STATUS" == "Charging" || "$STATUS" == "Full" ]]; then
-      MODE="performance"
-    elif [[ $CAPACITY < $LOW ]]; then
-      MODE="power-saver"
-    else
-      MODE="balanced"
-    fi
-
-  if [[ "$MODE" != "$LAST" ]]; then
-    tlpctl "$MODE" 2>/dev/null || tlpctl balanced
-    notify-send -r 9991 \
-      "Activating Power Mode: $MODE" \
-      "Battery: ${CAPACITY}% (${STATUS})"
-
-    LAST="$MODE"
-  fi
+log() {
+  printf '[power-mode] %s\n' "$*" >&2
 }
 
-apply_mode
+die() {
+  log "ERROR: $*"
+  exit 1
+}
 
-udevadm monitor --udev --subsystem-match=power_supply |
-  while read -r line; do
-    [[ "$line" == *change* ]] && apply_mode
-  done
+cleanup() {
+  log "stopping"
+  exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
+command -v upower >/dev/null 2>&1 ||
+  die "upower not found"
+
+command -v tlpctl >/dev/null 2>&1 ||
+  die "tlpctl not found"
+
+command -v notify-send >/dev/null 2>&1 ||
+  log "warning: notify-send not found; notifications disabled"
+
+[[ -d "$BAT" ]] ||
+  die "battery device not found: $BAT"
+
+[[ -r "$BAT/capacity" ]] ||
+  die "cannot read $BAT/capacity"
+
+[[ -r "$BAT/status" ]] ||
+  die "cannot read $BAT/status"
+
+get_battery_info() {
+  if ! read -r CAPACITY < "$BAT/capacity"; then
+    log "failed to read battery capacity"
+    return 1
+  fi
+
+  if ! read -r STATUS < "$BAT/status"; then
+    log "failed to read battery status"
+    return 1
+  fi
+
+  # make sure capacity is actually numeric.
+  if ! [[ "$CAPACITY" =~ ^[0-9]+$ ]]; then
+    log "invalid battery capacity: '$CAPACITY'"
+    return 1
+  fi
+
+  return 0
+}
+
+get_mode() {
+  case "$STATUS" in
+    Charging|Full)
+      printf '%s\n' "performance"
+      ;;
+
+    Discharging)
+      if (( CAPACITY <= LOW )); then
+        printf '%s\n' "power-saver"
+      else
+        printf '%s\n' "balanced"
+      fi
+      ;;
+
+    Not\ charging)
+      printf '%s\n' "performance"
+      ;;
+
+    Unknown|*)
+      log "unknown battery status: '$STATUS'"
+      return 1
+      ;;
+  esac
+}
+
+apply_mode() {
+  get_battery_info || return 1
+
+  MODE="$(get_mode)" || return 1
+
+  if [[ "$MODE" == "$LAST_MODE" ]]; then
+    return 0
+  fi
+
+  log "battery=${CAPACITY}% status='$STATUS' -> mode=$MODE"
+
+  if ! tlpctl "$MODE"; then
+    log "tlpctl '$MODE' failed; falling back to balanced"
+
+    if ! tlpctl balanced; then
+      log "ERROR: tlpctl balanced also failed"
+      return 1
+    fi
+
+    MODE="balanced"
+  fi
+
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send \
+      -r "$NOTIFY_ID" \
+      "Activating Power Mode: $MODE" \
+      "Battery: ${CAPACITY}% (${STATUS})" \
+      2>/dev/null || true
+  fi
+
+  LAST_MODE="$MODE"
+}
+
+case "${1:-}" in
+  --once)
+    apply_mode
+    exit $?
+    ;;
+
+  --help|-h)
+    cat <<EOF
+Usage: ${0##*/} [OPTIONS]
+
+Options:
+  --once       Apply the appropriate TLP mode and exit.
+  --help       Show this help.
+
+Configuration:
+  LOW=$LOW
+  BAT=$BAT
+
+Modes:
+  Charging / Full       -> performance
+  Discharging >= $LOW%  -> balanced
+  Discharging <  $LOW%  -> power-saver
+  Not charging          -> performance
+EOF
+    exit 0
+    ;;
+
+  "")
+    ;;
+
+  *)
+    die "unknown option: $1 (try --help)"
+    ;;
+esac
+
+log "starting"
+log "battery: $BAT"
+log "low threshold: ${LOW}%"
+
+apply_mode || log "initial mode application failed"
+
+log "waiting for UPower events"
+while IFS= read -r line; do
+  if [[ "$line" == *"/battery_${BAT##*/}"* ]]; then
+    apply_mode || true
+  fi
+done < <(upower --monitor)
+
+log "UPower monitor exited"
+exit 1
