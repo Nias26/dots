@@ -1,5 +1,5 @@
 # Tmux
-# Attach to an detached session and if not create one
+# Attach to a detached session and if not create one
 if [ -z "$TMUX" ]; then
     session=$(tmux list-sessions -F '#{session_name} #{session_attached}' 2>/dev/null | awk '$2 == 0 { print $1; exit }')
 
@@ -10,7 +10,8 @@ if [ -z "$TMUX" ]; then
     fi
 fi
 
-zstyle ':omz:update' mode auto      # update automatically without asking
+# update automatically without asking
+zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 13
 
 # Oh-My-Zsh
@@ -19,15 +20,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Completion waiting dots
 COMPLETION_WAITING_DOTS=" %F{yellow}loading %F{red}.%F{green}.%F{blue}.%f"
 
-# zsh-tmux config
-# ZSH_TMUX_AUTOSTART_ONCE=true
-# ZSH_TMUX_AUTOCONNECT=false
-# ZSH_TMUX_AUTOQUIT=true
-# ZSH_TMUX_FIXTERM=true
-
 # Theme settings
-# ZSH_THEME="headline"
-eval "$(starship init zsh)"
+ZSH_THEME="headline"
+# eval "$(starship init zsh)"
 
 # Plugins
 # Add wisely, as too many plugins slow down shell startup.
@@ -36,9 +31,10 @@ plugins=(
   fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
-  fzf-marks
   # zsh-vi-mode
 )
+
+source $ZSH/oh-my-zsh.sh
 
 # Plugins Configs
 # fzf-tab
@@ -97,9 +93,6 @@ esac'
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
   '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
 
-# Source Oh-My-Zsh
-source $ZSH/oh-my-zsh.sh
-
 # zsh-autosuggestions
 bindkey -r "^Y"
 bindkey "^Y" autosuggest-accept
@@ -145,24 +138,13 @@ bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
 
 # Theme Settings
-HEADLINE_TRUNC_PREFIX='…'
-
-HEADLINE_DO_GIT_STATUS_COUNTS=true
-
-# Separator options
-HEADLINE_LINE_MODE=auto # on|auto|off (whether to print the line above the prompt)
-
-# Prompt
-HEADLINE_PROMPT='%F{blue}:: %F{yellow}' #'%(#.#.%(!.!.$)) ' # consider "%#"
-HEADLINE_RPROMPT=''
-
-# Clock (prepends to RPROMPT)
-HEADLINE_DO_CLOCK=true
+HL_GIT_COUNT_MODE='auto'
+HL_PROMPT='%{$black%}╰%{$yellow%}λ '
+HL_GIT_SEP_SYMBOL='|'
+HL_LAYOUT_TEMPLATE[_PRE]='%{$reset_color%}%{$black%}╭'
+# HL_CLOCK_MODE='on'
+# HL_ERR_MODE='detail'
 # TMOUT=1; TRAPALRM () { zle reset-prompt } # Uncomment for continous clock
-
-# Error code details
-HL_ERR_MODE=detail
-HL_INFO_MODE=auto
 
 # zoxide
 eval "$(zoxide init zsh)"
