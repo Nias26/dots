@@ -142,6 +142,7 @@ HL_GIT_COUNT_MODE='auto'
 HL_PROMPT='%{$black%}╰%{$yellow%}λ '
 HL_GIT_SEP_SYMBOL='|'
 HL_LAYOUT_TEMPLATE[_PRE]='%{$reset_color%}%{$black%}╭'
+HL_SEP_MODE='off'
 # HL_CLOCK_MODE='on'
 # HL_ERR_MODE='detail'
 # TMOUT=1; TRAPALRM () { zle reset-prompt } # Uncomment for continous clock
