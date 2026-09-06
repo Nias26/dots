@@ -37,12 +37,14 @@ hl.window_rule({
 	no_blur = true,
 })
 
+-- Persistent workspace
+hl.window_rule({ match = { class = ".*" }, persistent_size = true })
+
 -- Opacity
 hl.window_rule({
 	match = { class = "^(dev.zed.Zed|jetbrains-idea|com.github.th_ch.youtube_music)$" },
 	opacity = "0.9 override",
 })
-hl.window_rule({ match = { title = "^(superfile)$" }, opacity = "0.8 override" })
 hl.window_rule({ match = { class = "^(gimp)$" }, opacity = "1.0 override 1.0 override 1.0 override" })
 
 -- Floating
