@@ -36,6 +36,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz compinit
+compinit
+
 # Plugins Configs
 # fzf-tab
 export FZF_DEFAULT_OPTS="--ansi"
