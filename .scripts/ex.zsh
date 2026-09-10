@@ -21,7 +21,7 @@ _ex_usage() {
 }
 
 _ex_die() {
-  print -u2 "$1"
+  echo "$1" >&2
   return 1;
 }
 

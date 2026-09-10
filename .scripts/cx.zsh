@@ -46,7 +46,7 @@ _cx_usage() {
 }
 
 _cx_die() {
-  print -u2 "$1"
+  echo "$1" >&2
   return 1;
 }
 
