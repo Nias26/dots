@@ -1,47 +1,123 @@
 #!/usr/bin/env bash
 
-PID="/tmp/awww_manager.pid"
-IPC="/tmp/awww_manager_ipc"
+set -euo pipefail
 
-if [[ ! -f "$PID" ]]; then
-  echo "Error: PID file not found. Is awww-manager running?"
-  exit 1
-fi
+PID_FILE="/tmp/awww_manager.pid"
+SYMLINK="/tmp/current_wallpaper"
+WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
+INTERVAL=$((3 * 60))
 
-PID=$(cat "$PID")
+PAUSED=false
+RESET_TIMER=false
 
-send_ipc(){
-  echo "$1" > "$IPC"
-  kill -HUP "$PID"
+cleanup() {
+  local pids
+  pids=$(jobs -p)
+  if [[ -n "$pids" ]]; then
+    # shellcheck disable=SC2086
+    kill $pids 2>/dev/null || true
+  fi
+  rm -f "$PID_FILE"
 }
 
-main(){
-  case "$1" in
-    next)
-      kill -USR1 $PID
+load_next() {
+  local img
+  img=$(fd -t f '\.(jpe?g|png|webp|gif)$' "$WALLPAPER_DIR" -a | shuf -n 1)
+
+  if [[ -n "$img" ]]; then
+    awww img -a -t random "$img"
+    ln -sf "$img" "$SYMLINK"
+  else
+    echo "No wallpapers found in $WALLPAPER_DIR" >&2
+  fi
+
+  RESET_TIMER=true
+}
+
+toggle_timer() {
+  if [[ "$PAUSED" == true ]]; then
+    PAUSED=false
+    echo "Resuming"
+  else
+    PAUSED=true
+    echo "Paused"
+  fi
+}
+
+main() {
+  if [[ ${1:-} ]]; then
+    if [[ ! -f "$PID_FILE" ]]; then
+      echo "Daemon not running: missing PID file." >&2
+      exit 1
+    fi
+
+    local pid
+    pid=$(<"$PID_FILE")
+
+    if ! kill -0 "$pid" 2>/dev/null; then
+      echo "Removing stale PID file..." >&2
+      rm -f "$PID_FILE"
+      exit 1
+    fi
+
+    case "$1" in
+    "next")
+      kill -USR1 "$pid"
       ;;
-    toggle)
-      kill -USR2 $PID
+    "toggle")
+      kill -USR2 "$pid"
       ;;
-    path)
-      if [[ -z "$2" ]]; then echo "Error: missing path" >&2; exit 1; fi
-      path=$(realpath "$2")
-      send_ipc "DIR:$path"
-      ;;
-    img)
-      if [[ -z "$2" ]]; then echo "Error: missing path" >&2; exit 1; fi
-      path=$(realpath "$2")
-      send_ipc "IMG:$path"
-      ;;
-    interval)
-      if [[ -z "$2" ]]; then echo "Error: missing interval" >&2; exit 1; fi
-      send_ipc "INT:$2"
+    "status")
+      echo "Daemon running with PID: $pid"
       ;;
     *)
-      echo 'invalid command: available are "next", "toggle", "path <path>", img <path>'
+      echo "Unknown command: $1. Available: 'next', 'toggle', 'status'." >&2
       exit 1
       ;;
-  esac
+    esac
+    exit 0
+  fi
+
+  # Register traps ONLY when entering daemon mode
+  trap cleanup EXIT SIGTERM SIGINT
+  trap 'load_next' SIGUSR1
+  trap 'toggle_timer' SIGUSR2
+
+  if [[ -f "$PID_FILE" ]]; then
+    local existing_pid
+    existing_pid=$(<"$PID_FILE")
+    if kill -0 "$existing_pid" 2>/dev/null; then
+      echo "Daemon already running. PID $existing_pid." >&2
+      exit 1
+    fi
+  fi
+
+  echo $$ >"$PID_FILE"
+
+  load_next
+  RESET_TIMER=false
+
+  while true; do
+    local time_left=$INTERVAL
+
+    while ((time_left > 0)); do
+      sleep 1 &
+      wait $! || true
+
+      if [[ "$RESET_TIMER" == true ]]; then
+        time_left=$INTERVAL
+        RESET_TIMER=false
+        continue
+      fi
+
+      if [[ "$PAUSED" == false ]]; then
+        time_left=$((time_left - 1))
+      fi
+    done
+
+    load_next
+    RESET_TIMER=false
+  done
 }
 
 main "$@"
