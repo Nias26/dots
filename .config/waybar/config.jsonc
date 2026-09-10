@@ -138,7 +138,7 @@
     "format": "<span color='{icon}'>{capacity}% Bat</span>",
     "tooltip-format": "Power: {power}W\nStatus: {timeTo}",
     "format-icons": {
-      "default": ["#ee5396", "#ffab91", "#42be65"],
+      "default": ["#ee5396", "#ffab91", "#42be65", "#42be65"],
       "charging": ["#42be65"]
     }
   },
