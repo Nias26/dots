@@ -15,6 +15,7 @@ hl.monitor({
 })
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto", mirror = "eDP-1" })
+-- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto"})
 
 hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", default = true })
 hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1" })
