@@ -134,7 +134,7 @@ hl.bind(
 	),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86Display", hl.dsp.exec_cmd("dpms-off"))
+hl.bind("XF86Display", hl.dsp.dpms())
 
 -- Window Submap
 hl.bind("SUPER + W", hl.dsp.submap("window"))
