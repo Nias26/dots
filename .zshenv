@@ -3,10 +3,11 @@
 export NVIM_BIN=/home/Nias/.local/share/bob/nvim-bin/nvim
 
 # opt path
-export OPT_PATH=/opt/bin
+export OPT_BIN=/opt/bin
+export OPT_LIB=/opt/lib
 
 # PATH
-export PATH=$PATH:$OPT_PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.scripts/bin:$HOME/.config/hypr/scripts/bin/
+export PATH=$PATH:$OPT_BIN:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.scripts/bin:$HOME/.config/hypr/scripts/bin/
 
 # Dirs
 export XDG_DESKTOP_DIR="$HOME/Desktop"
