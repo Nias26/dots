@@ -11,13 +11,11 @@ PAUSED=false
 RESET_TIMER=false
 
 cleanup() {
-  local pids
-  pids=$(jobs -p)
-  if [[ -n "$pids" ]]; then
-    # shellcheck disable=SC2086
-    kill $pids 2>/dev/null || true
-  fi
+  local pid
+  pid=$(<"$PID_FILE")
+  kill "$pid" 2>/dev/null || true
   rm -f "$PID_FILE"
+  exit 0
 }
 
 load_next() {
@@ -25,7 +23,7 @@ load_next() {
   img=$(fd -t f '\.(jpe?g|png|webp|gif)$' "$WALLPAPER_DIR" -a | shuf -n 1)
 
   if [[ -n "$img" ]]; then
-    awww img -a -t random "$img"
+    awww img -a -t random "$img" || true
     ln -sf "$img" "$SYMLINK"
   else
     echo "No wallpapers found in $WALLPAPER_DIR" >&2
@@ -78,7 +76,6 @@ main() {
     exit 0
   fi
 
-  # Register traps ONLY when entering daemon mode
   trap cleanup EXIT SIGTERM SIGINT
   trap 'load_next' SIGUSR1
   trap 'toggle_timer' SIGUSR2
