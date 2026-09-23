@@ -1,6 +1,6 @@
 -- hyprland @ settings
 -- Wiki: https://wiki.hypr.land/Configuring/Basics/Variables/
-hl.monitor({ output = "eDP-1", mode = "highres@highrr", position = "auto", scale = "auto" })
+hl.monitor({ output = "eDP-1", mode = "highres@highrr", position = "auto", scale = 1.2 })
 hl.monitor({
 	output = "desc:ASUSTek COMPUTER INC VG279 LBLMQS024615",
 	mode = "highres@highrr",
