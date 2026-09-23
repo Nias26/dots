@@ -135,6 +135,7 @@ alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINTS "
 bindkey "^[[1~" beginning-of-line # HOME
 bindkey "^[[4~" end-of-line       # END
 bindkey "^[[3~" delete-char       # DEL
+bindkey '^H' backward-kill-word   # Backspace deletes word with C-Backspace
 bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
 
