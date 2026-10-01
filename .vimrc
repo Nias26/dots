@@ -66,8 +66,8 @@ nmap <S-Tab> <cmd>bprevious<CR>
 nmap [t <cmd>tabprevious<CR>
 nmap ]t <cmd>tabnext<CR>
 tnoremap <Esc> <C-\><C-n>
-xnoremap <Esc>j :move '>+1<CR>gv=gv
-xnoremap <Esc>k :move '<-2<CR>gv=gv
+xnoremap <A-j> :move '>+1<CR>gv=gv
+xnoremap <A-k> :move '<-2<CR>gv=gv
 nnoremap <silent> <C-c> :if empty(filter(getwininfo(), 'v:val.quickfix')) \| copen \| else \| cclose \| endif<CR>
 nnoremap <leader>0 <cmd>Ex<CR>
 nmap U <cmd>UndoTreeToggle<CR>
