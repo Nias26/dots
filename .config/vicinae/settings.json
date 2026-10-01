@@ -15,6 +15,9 @@
    "pop_to_root_on_close": true,
    "favicon_service": "twenty",
    "search_files_in_root": false,
+   "global_shortcuts": {
+      "toggle": ""
+   },
    "font": {
       "normal": {
          "family": "JetBrainsMono NF"
@@ -741,7 +744,10 @@
          }
       },
       "calculator": {
-         "enabled": false,
+         "enabled": true,
+         "preferences": {
+            "backend": "numen"
+         },
          "entrypoints": {
             "history": {
                "enabled": false
@@ -840,6 +846,15 @@
             "suspend": {
                "enabled": false
             }
+         }
+      },
+      "snippets": {
+         "preferences": {
+            "enabled": true,
+            "keyDelay": "2",
+            "layout": "",
+            "prePasteDelay": "0",
+            "undo": true
          }
       },
       "system": {
