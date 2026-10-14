@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=nnn
+Comment=The fastest terminal file manager ever written.
+TryExec=nnn
+Exec=nnn %F
+Icon=nnn
+Terminal=true
+Categories=System;FileTools;FileManager;
+MimeType=inode/directory
+
