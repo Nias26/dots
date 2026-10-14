@@ -21,7 +21,7 @@ Terminal=false
 Icon=libreoffice-base
 Type=Application
 Categories=Office;Database;X-Red-Hat-Base;
-Exec=env SAL_USE_VCLPLUGIN=kf6 libreoffice --base %U
+Exec=env SAL_USE_VCLPLUGIN=qt6 libreoffice --base %U
 MimeType=application/vnd.oasis.opendocument.base;application/vnd.sun.xml.base;
 Name=LibreOffice Base
 GenericName=Database Development
