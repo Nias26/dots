@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Wifi
-Comment=Iwd manager on a TUI Interface
-Icon=/usr/share/icons/Papirus-Dark/16x16/devices/network-wireless.svg
-Exec=impala
-Terminal=true
-Categories=System;Management;Network;ConsoleOnly;
-Keywords=net;network;iwd;impala;

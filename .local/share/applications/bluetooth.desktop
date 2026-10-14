@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Bluetooth
-Comment=Bluetooth manager on a TUI Interface
-Icon=/usr/share/icons/Papirus-Dark/16x16/devices/bluetooth.svg
-Exec=bluetui
-Terminal=true
-Categories=System;Management;Bluetooth;ConsoleOnly;
-Keywords=bluetooth;bt;bluetui;
