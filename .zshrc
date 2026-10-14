@@ -1,5 +1,6 @@
 # Tmux
 # Attach to a detached session and if not create one
+# Make sure to run only in interactive sessions
 if [ -z "$TMUX" ]; then
   session=$(tmux list-sessions -F '#{session_name} #{session_attached}' 2>/dev/null | awk '$2 == 0 { print $1; exit }')
 
@@ -9,6 +10,26 @@ if [ -z "$TMUX" ]; then
     exec tmux new-session
   fi
 fi
+
+function tmux_exit(){
+  if [[ -z "$TMUX" ]]; then
+    builtin exit
+  fi
+
+  local sessions=$(tmux list-sessions 2>/dev/null | wc -l)
+  local windows=$(tmux list-windows -F '#{window_id}' 2>/dev/null | wc -l)
+  local panes=$(tmux list-panes -F '#{pane_id}' 2>/dev/null | wc -l)
+
+  if (( sessions == 1 && windows == 1 && panes == 1 )); then
+    cd ~
+    clear
+    tmux detach-client
+  else
+    builtin exit
+  fi
+}
+
+alias exit='tmux_exit'
 
 # update automatically without asking
 zstyle ':omz:update' mode auto
