@@ -60,4 +60,4 @@ export _JB_LINUX_WINDOW_TRANSPARENCY=true
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # LibreOffice
-export SAL_USE_VCLPLUGIN=kf6
+export SAL_USE_VCLPLUGIN=qt6
