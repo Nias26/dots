@@ -54,6 +54,8 @@ autocmd FileType *
       \ endif
 
 " Keymaps
+unmap <Esc>k
+unmap <Esc>j
 nnoremap Q <cmd>bd!<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
