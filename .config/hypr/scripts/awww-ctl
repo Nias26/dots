@@ -5,7 +5,7 @@ set -euo pipefail
 PID_FILE="/tmp/awww_manager.pid"
 SYMLINK="/tmp/current_wallpaper"
 WALLPAPER_DIR="$HOME/Immagini/Wallpapers"
-INTERVAL=$((3 * 60))
+INTERVAL=$((5 * 60))
 
 PAUSED=false
 RESET_TIMER=false
