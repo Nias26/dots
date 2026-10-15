@@ -60,3 +60,6 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # LibreOffice
 export SAL_USE_VCLPLUGIN=qt6
+
+# nnn
+export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview'
