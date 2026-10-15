@@ -18,7 +18,6 @@ export XDG_PICTURES_DIR="$HOME/Immagini"
 export XDG_PUBLICSHARE_DIR="$HOME/Pubblica"
 export XDG_TEMPLATES_DIR="$HOME/Modelli"
 export XDG_VIDEOS_DIR="$HOME/Video"
-export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 
 # Language locale
 export LANG=it_IT.UTF-8
