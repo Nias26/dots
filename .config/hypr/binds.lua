@@ -26,6 +26,7 @@ hl.bind(
 -- 	hl.dsp.exec_cmd("grim -g '$(slurp -w 0)'|wl-copy && notify-send 'Screenshot saved' -t 2000")
 -- )
 -- hl.bind("PRINT", hl.dsp.exec_cmd("exec, grim | wl-copy && notify-send 'Screenshot saved' -t 2000"))
+hl.bind("PRINT", hl.dsp.exec_cmd("rishot"))
 hl.bind("F11", hl.dsp.window.fullscreen())
 
 -- Window movement/management
