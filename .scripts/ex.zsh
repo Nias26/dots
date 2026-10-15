@@ -8,6 +8,7 @@ _ex() {
     '*:input file:_files'
 }
 
+
 _ex_usage() {
   echo "ex - archive extractor                 "
   echo "Usage:                                 "
@@ -58,14 +59,14 @@ ex() {
     mkdir -p "$dest"
   fi
 
-  if (( ${f_list} )); then
+  if (( ${#f_list} )); then
     case "$file" in
-      (*.tar.bz2|*.tbz2) tar tjvf "$file" -C "$dest" ;;
-      (*.tar.gz|*.tgz)   tar tzvf "$file" -C "$dest" ;;
-      (*.tar.xz)         tar tJvf "$file" -C "$dest" ;;
-      (*.tar)            tar tvf "$file" -C "$dest" ;;
+      (*.tar.bz2|*.tbz2) tar tjvf "$file" ;;
+      (*.tar.gz|*.tgz)   tar tzvf "$file" ;;
+      (*.tar.xz)         tar tJvf "$file" ;;
+      (*.tar)            tar tvf "$file" ;;
       (*.rar)            unrar l "$file" ;;
-      (*.7z|*.zip)       7z l "$file" -o"$dest" ;;
+      (*.7z|*.zip)       7z l "$file" ;;
       (*.gz)             gunzip -l "$file" ;;
       (*.Z)              uncompress -l "$file" ;;
       (*.zst)            zstd -d -c "$file" > "$dest/$base" ;;
