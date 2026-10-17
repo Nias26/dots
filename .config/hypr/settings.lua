@@ -29,12 +29,51 @@ hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1" })
 hl.workspace_rule({ workspace = "10", monitor = "eDP-1", default = true })
 hl.workspace_rule({ workspace = "special:magic", monitor = "HDMI-A-1" })
 
+local notified = {}
 hl.on("window.urgent", function(win)
-	hl.exec_cmd(string.format("notify-send -u critical '🚨 %s' '%s'", win.class or "Unknown", win.title or ""))
-	hl.dsp.focus({ urgent_or_last = true })
+	-- hl.exec_cmd(string.format("notify-send -u critical '🚨 %s' '%s'", win.class or "Unknown", win.title or ""))
+	-- hl.dsp.focus({ urgent_or_last = true })
+	if not win or not win.workspace then
+		return
+	end
+
+	local active = hl.get_last_workspace()
+	if not active or win.workspace.id == active.id then
+		return
+	end
+
+	local id = tostring(win.address)
+	if notified[id] then
+		return
+	end
+	notified[id] = true
+
+	local app = win.class
+	if not app or app == "" or app:match("^%d+$") then
+		app = "Application"
+	end
+
+	hl.exec_cmd(
+		string.format(
+			"notify-send -u critical 🚨 %s %s",
+			string.format("%q", app),
+			string.format("%q", win.title or "")
+		)
+	)
 end)
 
-hl.permission({ binary = "/usr/(bin|local/bin)/grim", type = "screencopy", mode = "allow" })
+hl.on("window.active", function(win)
+	if win then
+		notified[tostring(win.address)] = nil
+	end
+end)
+
+hl.on("window.destroy", function(win)
+	if win then
+		notified[tostring(win.address)] = nil
+	end
+end)
+
 hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
 hl.permission({ binary = "/usr/(bin|local/bin)/hyprpm", type = "plugin", mode = "allow" })
 
