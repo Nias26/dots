@@ -1,0 +1,75 @@
+// This file was created by Wireshark. Edit with care.
+[
+  {
+    "QUIC Protocol": {
+      "filter": "quic",
+      "foreground": "#32c6d3",
+      "background": "#191919",
+      "enabled": true
+    }
+  },
+  {
+    "ARP Protocol": {
+      "filter": "arp",
+      "foreground": "#ff7221",
+      "background": "#191919",
+      "enabled": true
+    }
+  },
+  {
+    "TCP Reset or Bad Checksum": {
+      "filter": "tcp.connection.rst || tcp.checksum.status == 0",
+      "foreground": "#ff5555",
+      "background": "#72151b",
+      "enabled": true
+    }
+  },
+  {
+    "TCP Retransmissions": {
+      "filter": "tcp.analysis.retransmission",
+      "foreground": "#ffb86c",
+      "background": "#3d2314",
+      "enabled": true
+    }
+  },
+  {
+    "TCP SYN (Handshake)": {
+      "filter": "tcp.connection.syn",
+      "foreground": "#8be9ff",
+      "background": "#0a2e36",
+      "enabled": true
+    }
+  },
+  {
+    "TCP FIN (Teardown)": {
+      "filter": "tcp.connection.fin",
+      "foreground": "#ff79c6",
+      "background": "#2a1a30",
+      "enabled": true
+    }
+  },
+  {
+    "Web Traffic (HTTP/TLS)": {
+      "filter": "http || tls || ssl",
+      "foreground": "#f0f0f0",
+      "background": "#0d2b44",
+      "enabled": true
+    }
+  },
+  {
+    "DNS & Resolution": {
+      "filter": "dns || mdns",
+      "foreground": "#50fa7b",
+      "background": "#1e222a",
+      "enabled": true
+    }
+  },
+  {
+    "ICMP / Diagnostics": {
+      "filter": "icmp || icmpv6",
+      "foreground": "#f1fa8c",
+      "background": "#282a1b",
+      "enabled": true
+    }
+  }
+]
